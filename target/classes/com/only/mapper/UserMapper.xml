@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.only.mapper.UserMapper">
+
+	<!-- 添加用户 -->
+	<insert id="addUser" useGeneratedKeys="true" keyProperty="id">
+		insert
+		into User(Name,Account,Password,Mobile)
+		values(#{name},#{account},#{password},#{mobile})
+	</insert>
+
+	<!-- 修改用户 -->
+	<update id="updateUser" parameterType="com.only.model.User">
+		update User set
+		Name=#{name},Account=#{account},Mobile=#{mobile},UpdateDate=#{updatedate}
+		where ID=#{id}
+	</update>
+
+	<!-- 删除用户 -->
+	<update id="deleteUser" parameterType="int">
+		update User set Enable=0 where ID=#{id}
+	</update>
+	
+	<!-- 用户列表 -->
+	<!-- <select id="getUserList" resultType="">
+	select 
+	</select> -->
+
+</mapper>

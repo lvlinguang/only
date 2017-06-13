@@ -1,0 +1,243 @@
+﻿
+/***************通用表单****************/
+
+/*通用表单1*/
+.dlg-form1 {
+    padding: 30px 0 10px 20px;
+}
+/*项*/
+.dlg-form1-item {
+    width: 300px;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+/*名称*/
+.dlg-form1-name {
+    width: 80px;
+    float: left;
+    line-height: 34px;
+    text-align: right;
+    margin-right: 6px;
+}
+    /*星号*/
+    .dlg-form1-name i {
+        color: #F00;
+        font-family: "SimSun";
+        padding-right: 4px;
+        font-style: normal;
+    }
+/*内容*/
+.dlg-form1-Info {
+    color: #4a4949;
+}
+
+.dlg-form1-text {
+    line-height: 30px;
+}
+
+
+/*通用表单2*/
+.dlg-form2 {
+    padding: 20px 0 10px 20px;
+}
+
+/*分割线*/
+.dlg-form2-divider {
+    clear: both;
+    padding: 10px 0 6px 20px;
+    margin: 0 0 20px 0; /*border-bottom: 1px solid #d9d7d7;*/
+    font-weight: bold;
+    color: #3c3c3c;
+}
+
+    .dlg-form2-divider a {
+        float: right;
+    }
+
+/*form项*/
+.dlg-form2-item {
+    padding-bottom: 20px;
+    position: relative;
+}
+
+/*名称*/
+.dlg-form2-name {
+    float: left;
+    width: 100px;
+    margin-right: 20px;
+    text-align: right;
+    color: #333;
+    line-height: 34px;
+}
+    /*星号*/
+    .dlg-form2-name i {
+        color: #F00;
+        font-family: "SimSun";
+        padding: 4px;
+        font-style: normal;
+    }
+/*内容*/
+.dlg-form2-Info {
+    color: #4a4949;
+}
+
+.dlg-form2-text {
+    line-height: 34px;
+}
+
+
+/*通用表单3*/
+.dlg-form3 {
+    padding: 20px 30px;
+}
+
+/*项*/
+.dlg-form3-item {
+    margin-bottom: 20px;
+}
+/*标题*/
+.dlg-form3-name {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+    /*星号*/
+    .dlg-form3-name i {
+        color: #F00;
+        font-family: "SimSun";
+        padding: 4px;
+        font-style: normal;
+    }
+
+    .dlg-form3-name span {
+        color: red;
+        font-weight: normal;
+    }
+/*内容*/
+.dlg-form3-Info {
+    margin-bottom: 8px;
+}
+
+
+/*通用分页*/
+.list-page {
+}
+
+    .list-page .link {
+        font-size: 12px;
+        text-align: center;
+    }
+
+        .list-page .link span {
+            height: 24px;
+            line-height: 24px;
+            display: inline-block; /*float: left;*/
+            text-align: center;
+            padding: 0 8px;
+            margin-right: 5px;
+            font-weight: bold;
+            vertical-align: middle;
+        }
+
+        .list-page .link a {
+            height: 22px;
+            line-height: 22px;
+            display: inline-block; /*float: left;*/
+            border: 1px solid #d7d7d7;
+            text-align: center;
+            padding: 0 8px;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+            .list-page .link a:hover {
+                background-color: #efefef;
+                text-decoration: none;
+            }
+
+
+
+/*搜索工具栏*/
+.search-bar {
+}
+
+    .search-bar.outline {
+        border: 1px solid #ededed;
+        background: #fff;
+        padding: 20px;
+    }
+
+    .search-bar .search-item {
+        float: left;
+        margin-right: 14px;
+    }
+
+    .search-bar .search-item-tit {
+        float: left;
+        line-height: 34px;
+    }
+
+
+/*操作按钮*/
+.man-opt-icon {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    margin-right: 4px;
+}
+
+/*添加*/
+.icon-add {
+    background: url(img/icon-add.png) no-repeat center center;
+}
+
+/*添加2*/
+.icon-add2 {
+    background: url(img/icon-add2.png) no-repeat center center;
+}
+
+/*详情*/
+.icon-detail {
+    background: url(img/icon-detail.png) no-repeat center center;
+}
+
+/*修改*/
+.icon-edit {
+    background: url(img/icon-edit.gif) no-repeat center center;
+}
+
+/*删除*/
+.icon-del {
+    background: url(img/icon-del.gif) no-repeat center center;
+}
+
+/*删除*/
+.icon-del2 {
+    background: url(img/icon-del2.png) no-repeat center center;
+}
+
+/*权限*/
+.icon-right {
+    background: url(img/icon-right.gif) no-repeat center center;
+}
+
+/*上架*/
+.icon-sj {
+    background: url(img/icon-sj.png) no-repeat center center;
+}
+
+/*下架*/
+.icon-xj {
+    background: url(img/icon-xj.png) no-repeat center center;
+}
+
+/*启动*/
+.icon-qd {
+    background: url(img/icon-qd.png) no-repeat center center;
+}
+
+/*停止*/
+.icon-tz {
+    background: url(img/icon-stop.png) no-repeat center center;
+}

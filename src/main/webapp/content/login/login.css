@@ -1,0 +1,110 @@
+﻿
+/*
+*   登录界面
+*   made by：lv
+*   Version：1.0.0
+*   Production in：2014-7-14
+*   Last updated：2014-7-15
+*/
+
+.login { }
+/*头部*/
+.layout-header { width: 980px; height: 100px; margin: 0 auto 20px; }
+
+.layout-header .header-logo { width: 192px; height: 50px; float: left; margin: 24px 0 0 0; }
+
+
+/*主内容*/
+.layout-body { }
+
+.layout-page { width: 980px; height: 330px; margin: 0 auto; }
+
+/*登录框*/
+.layout-page .login-box { width: 278px; height: 288px; padding: 20px 0; float: right; margin-right: 20px; border: 1px solid #dedede; border-radius: 2px; }
+
+.layout-page .login-box .input-item { width: 230px; margin: 14px auto 0; position: relative; }
+
+.layout-page .login-box .login-input { width: 208px; padding: 10px 10px; border: 1px solid #dedede; border-radius: 2px; color: #c1c1c1; }
+/*密码提示*/
+.layout-page .login-box .login-pwd-tip { position: absolute; left: 10px; top: 12px; color: #c1c1c1; }
+
+.layout-page .login-box .remember-item { width: 230px; margin: 14px auto; }
+
+.layout-page .login-box .remember-item a:hover { color: #fe4116; }
+/*复选框*/
+.layout-page .login-box .login-checkbox { display: inline-block; height: 18px; line-height: 18px; padding-left: 20px; background: url(img/checkbox.png) no-repeat 0 -18px; }
+
+.layout-page .login-box .login-checkbox:hover { text-decoration: none; }
+
+
+.layout-page .login-box .checked { background-position: 0 0; }
+/*登录按钮*/
+.layout-page .login-box .login-btn { width: 230px; margin: 0 auto 14px; }
+
+.layout-page .login-box .login-btn a { display: block; height: 38px; line-height: 38px; text-align: center; font-size: 16px; color: white; background-color: #fe4116; border-radius: 2px; }
+
+.layout-page .login-box .login-btn a:hover { text-decoration: none; background-color: #ff5630; }
+
+.layout-page .login-box .reg-item { width: 230px; margin: 0 auto 14px; color: #737373; }
+
+.layout-page .login-box .reg-item a { color: #fe4116; }
+
+.layout-page .login-box .other-login { width: 230px; margin: 0 auto; color: #737373; }
+
+/*合作伙伴QQ登录*/
+.layout-page .login-box .login-partners { width: 16px; height: 16px; display: inline-block; margin-right: 10px; background: url(img/partners.jpg) no-repeat; vertical-align: bottom; }
+
+/*QQ*/
+.layout-page .login-box .login-partners.QQ { background-position: 0 0; }
+
+/*weibo*/
+.layout-page .login-box .login-partners.weibo { background-position: 0 -18px; }
+
+/*xgbj*/
+.layout-page .login-box .login-partners.xgbj { background-position: 0 -36px; }
+
+/*广告信息*/
+.layout-page .pic-info { width: 640px; height: 330px; float: left; _display: inline; margin-left: 20px; overflow: hidden; }
+
+
+/*底部*/
+.layout-footer { margin-top: 60px; border-top: 1px solid #d1d0d0; padding: 10px 0; text-align: center; }
+
+.layout-footer .footer-wrap { width: 980px; margin: 0 auto; line-height: 24px; color: #706f6f; }
+
+
+/***************弹出绑定框****************/
+#bind-box { border: 1px solid #e4e4e4; border-radius: 0; box-shadow: 0 0 5px #c8c8c8; }
+/*头部*/
+#bind-box .xgui-msg-head { height: 45px; line-height: 45px; background-color: #f7f7f7; font-size: 16px; border-bottom: 1px solid #f2f2f2; border-radius: 0; }
+
+#bind-box .xgui-msg-tit { margin-left: 20px; font-weight: bold; color: #424242; }
+/*关闭*/
+#bind-box .xgui-msg-close { margin-right: 16px; color: #acacac; font-weight: normal; font-size: 20px; }
+
+#bind-box .xgui-msg-close:hover { color: #000000; }
+
+
+/*其它方式登录*/
+#bind-box .other-panel { padding: 20px; }
+
+#bind-box .other-panel .dlg-form3-item { margin-bottom: 16px; position: relative; }
+
+#bind-box .other-panel .toolbar { margin-right: -20px; _width: 340px; }
+
+#bind-box .other-panel .toolbar-btn { width: 320px; height: 40px; padding: 0; line-height: 40px; font-size: 18px; font-family: "\5FAE\8F6F\96C5\9ED1",helvetica,arial,sans-serif; border-radius: 4px; }
+
+/*绑定其它平台*/
+#bind-box .other-Bind { }
+
+/*按钮*/
+#bind-box .other-Bind .toolbar-btn { width: 153px; float: left; margin-right: 14px; }
+
+/*input*/
+#bind-box .other-Bind .login-input { width: 302px; padding: 11px 8px; color: #909090; height: 16px; line-height: 16px; border: 1px solid #ccc; border-radius: 2px;  vertical-align: middle; color: #4a4949; -webkit-box-shadow: 0px 1px 1px 0px #eaeaea inset; -moz-box-shadow: 0px 1px 1px 0px #eaeaea inset; box-shadow: 0px 1px 1px 0px #eaeaea inset; }
+#bind-box .other-Bind .login-input:focus { border: 1px solid #ff943b; }
+
+/*登录提示*/
+#bind-box .other-Bind .login-pswtip { position: absolute; left: 8px; top: 12px; color: #909090; }
+
+#bind-box .other-Bind .dlg-form2-input:focus { color: #000000; }

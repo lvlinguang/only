@@ -1,0 +1,132 @@
+﻿@charset "utf-8";
+
+body {
+	background: #2f313f;
+	font-family: "Microsoft YaHei", "宋体";
+}
+
+#loginBox {
+	width: 476px;
+	height: 347px;
+	display: block;
+	background: #fff;
+	border: 5px solid #262834;
+	border-radius: 10px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -170px;
+	margin-left: -240px;
+}
+
+#loginBox h2 {
+	font-size: 24px;
+	color: #383a49;
+	text-align: center;
+	padding: 40px 0 30px;
+	font-weight: normal;
+}
+
+#loginBox .tit {
+	color: #a5a6ab;
+	font-size: 20px;
+	border-top: 1px solid #ededed;
+	width: 300px;
+	text-align: center;
+	margin: 0 auto 10px;
+}
+
+#loginBox .tit span {
+	width: 160px;
+	height: 35px;
+	margin-top: -15px;
+	display: inline-block;
+	background: #fff;
+}
+
+form.login {
+	margin-left: 85px;
+}
+
+input.input-filed {
+	width: 290px;
+	padding-left: 10px;
+	height: 38px;
+	border: 1px solid #e5e5e5;
+	background: #f7f7f7;
+	border-radius: 6px;
+	font-size: 16px;
+	margin-right: 3px;
+}
+
+input.input-filed:focus {
+	box-Shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px
+		rgba(82, 168, 236, 0.6);
+	border-color: #74b9f0;
+}
+
+.row {
+	margin-bottom: 10px;
+}
+
+.error_txt {
+	color: #ff0000;
+	display: none;
+}
+
+.input-filed.error {
+	border-color: #ff0000;
+}
+
+input[type="checkbox"] {
+	vertical-align: middle;
+	margin-top: -2px;
+}
+
+.btnLogin {
+	width: 300px;
+	height: 40px;
+	line-height: 38px;
+	color: #fff;
+	font-size: 16px;
+	border: none;
+	cursor: pointer;
+	border-radius: 6px;
+}
+
+.btnLogin:hover {
+	background: #606080;
+}
+
+div.error {
+	color: red;
+}
+
+.tra {
+	transition: all 0.25s ease-in-out;
+	-ms-transition: all 0.25s ease-in-out 0s;
+	-webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+	-o-transition: all 0.25s ease-in-out;
+}
+
+.color9 {
+	color: #999;
+}
+
+.login-checkbox {
+	display: inline-block;
+	height: 18px;
+	line-height: 18px;
+	padding-left: 20px;
+	background: url(../common/img/ui-checkbox2.png) no-repeat 0 -18px;
+}
+
+.login-checkbox.checked {
+	background-position: 0 0;
+}
+
+.login-checkbox:hover {
+	color: #fe4116;
+	text-decoration: none;
+}

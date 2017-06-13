@@ -1,0 +1,95 @@
+﻿/********后台通用ui(重载)禁止改动********/
+/*
+*   后台所有插件等高34px
+*/
+
+
+/*validatebox样式*/
+.xgui-validatebox { width: 190px; height: 16px; line-height: 16px; border: 1px solid #ededed; padding: 8px 6px; vertical-align: middle; color: #4a4949;  }
+
+.xgui-validatebox:focus { box-Shadow:0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(82, 168, 236, 0.6); border-color: #74b9f0; }
+
+
+/*为兼容ie6*/
+input.error, textarea.error { border: 1px solid #ededed; }
+
+/*.xgui-validatebox.error {border: 1px solid #ccc; }*/
+
+
+/*validatebox tip1样式*/
+
+/*提示内容*/
+.xgui-validatebox-tip-con { padding: 8px 8px; }
+/*提示图标*/
+.xgui-validatebox-tip-icon { height: 34px; background-position: 0 6px; }
+
+
+/*combo插件*/
+.combo { padding: 6px;border: 1px solid #ededed;border-radius:0; }
+
+/*文本框*/
+.combo .combo-text { border: 0; }
+
+/*下拉列表*/
+.combobox-item,
+.searchbox-item,
+.combo-panel .xgui-tree-node { line-height: 34px; height: 34px; padding-left: 6px; }
+
+/*搜索插件*/
+.searchbox .combo-text { color: #4a4949; }
+
+.searchbox .combo-text:focus { color: #4a4949; }
+
+
+/*dialog对话框*/
+.xgui-dialog { border-radius: 0; }
+/*头部*/
+.xgui-dialog .xgui-msg-head { height: 40px; line-height: 40px; border-radius: 0; }
+
+.xgui-dialog .xgui-msg-tit { margin-left: 20px; font-weight: bold; }
+
+.xgui-dialog .xgui-msg-close { margin-right: 20px; }
+/*底部*/
+.xgui-dialog .xgui-msg-bottom { height: 40px; border-radius: 0; padding-right: 20px; }
+
+.xgui-dialog .xgui-msg-bottom .xgui-msg-btn { margin-top: 5px; height: 30px; line-height: 30px; padding: 0 20px; }
+
+
+/*工具栏按钮*/
+.toolbar-btn { height: 34px; line-height: 34px; padding: 0 24px; border-radius: 0; }
+
+/*表格和树形表格*/
+
+/*标题*/
+.xgui-datagrid-title,
+.xgui-treegrid-title { height: 40px; line-height: 40px; }
+/*行*/
+.xgui-treegrid-row,
+.xgui-datagrid-row { height: 40px; }
+/*分页*/
+.xgui-datagrid-pager { height: 26px; padding: 7px 14px; }
+/*分页按钮*/
+.xgui-datagrid-pager span { height: 24px; line-height: 24px; }
+
+/*操作按钮*/
+.datagrid-opt-btn { display: block; width: 40px; height: 20px; line-height: 20px; color: #3399e0; text-align: center; border: 1px solid transparent; }
+
+.datagrid-opt-btn:hover { background: #F9FAFC; border: 1px solid #ccc; text-decoration: none; }
+/*复选框*/
+.checkbox { vertical-align: -2px; }
+
+/*ui复选框*/
+.ui-checkbox { display: inline-block; height: 18px; line-height: 18px; padding-left: 20px; background: url(img/ui-checkbox.png) no-repeat 0 -18px; }
+
+/*选中*/
+.ui-checkbox.checked { background-position: 0 0; }
+
+/*禁用*/
+.ui-checkbox.disabled { background-position: 0 -36px; }
+
+
+/*combogrid样式*/
+.combo-panel .xgui-datagrid-title {height: 30px; line-height: 30px; }
+
+/*行*/
+.combo-panel .xgui-datagrid-row { height: 30px; }

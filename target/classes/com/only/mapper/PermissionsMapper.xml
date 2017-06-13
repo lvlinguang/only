@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.only.mapper.PermissionsMapper">
+
+	<!-- 权限列表 -->
+	<select id="getPermissionsList" resultType="com.only.model.Permissions">
+		select
+		ID,Name,GroupName,Description,CreateDate from
+		permissions
+		where
+		Enable=1
+		order by GroupName
+	</select>
+
+	<!-- 添加角色权限 -->
+	<insert id="addRolePermissions">
+		insert into RolePermissions(RoleID,PermissionID)
+		values(#{roleid},#{permissionid})
+	</insert>
+
+	<!-- 删除角色权限 -->
+	<delete id="deleteRolePermissions" parameterType="int">
+		delete from
+		rolepermissions where RoleID=#{roleid}
+	</delete>
+
+	<!-- 角色权限列表 -->
+	<select id="getRolePermissionsList" resultType="com.only.model.Permissions">
+
+		select
+		a.ID,
+		a.Name,
+		a.GroupName,
+		a.Controller,
+		a.Action,
+		a.Description,
+		a.CreateDate
+
+		from permissions AS a
+		left join rolepermissions as b on
+		a.ID=b.PermissionID
+		where a.Enable=1 AND b.RoleID=#{roleid}
+
+	</select>
+
+</mapper>
