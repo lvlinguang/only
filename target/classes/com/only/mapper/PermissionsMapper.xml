@@ -42,5 +42,34 @@
 		where a.Enable=1 AND b.RoleID=#{roleid}
 
 	</select>
+	
+	<!-- 添加用户权限 -->
+	<insert id="addUserPermissions">
+		insert into UserPermissions(UserID,PermissionID)
+		values(#{userid},#{permissionid})
+	</insert>
+
+	<!-- 删除用户权限 -->
+	<delete id="deleteUserPermissions" parameterType="int">
+		delete from
+		userpermissions where UserID=#{userid}
+	</delete>
+
+	<!-- 用户权限列表 -->
+	<select id="getUserPrmissionsList" resultType="com.only.model.Permissions">
+		SELECT
+		a.ID,
+		a.Name,
+		a.GroupName,
+		a.Controller,
+		a.Action,
+		a.Description,
+		a.CreateDate
+
+		FROM permissions AS a
+		LEFT JOIN userpermissions AS b ON
+		a.ID=b.PermissionID
+		WHERE a.Enable=1 AND b.UserID=#{userid}
+	</select>
 
 </mapper>

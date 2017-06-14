@@ -12,8 +12,8 @@
 	<!-- 修改角色 -->
 	<update id="updateRole" parameterType="com.only.model.Role">
 		update Role set
-		Name=#{name},Description=#{description},UpdateDate=#{updatedate} where
-		ID=#{id}
+		Name=#{name},Description=#{description},UpdateDate=#{updatedate}
+		where ID=#{id}
 	</update>
 
 	<!-- 删除角色 -->

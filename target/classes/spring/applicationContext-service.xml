@@ -19,5 +19,10 @@
 	<!-- 权限 -->
 	<bean class="com.only.service.impl.PermissionsServiceImpl" />
 
+	<!-- 用户管理 -->
+	<bean class="com.only.service.impl.UserServiceImpl"></bean>
+
+	<!-- 用户角色 -->
+	<bean class="com.only.service.impl.UserRoleServiceImpl"></bean>
 
 </beans>
