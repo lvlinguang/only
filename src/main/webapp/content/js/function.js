@@ -52,13 +52,13 @@ var role = {
 
 						if (o.success) {
 
-							xgui.msgtip(o.text, "success", function() {
+							xgui.msgtip(o.msg, "success", function() {
 
 								window.location.href = config.path + '/role/';
 							});
 						} else {
 
-							xgui.msgtip(o.text, "error");
+							xgui.msgtip(o.msg, "error");
 
 							// 启用按钮
 							common.enableAtag($(target));
@@ -86,14 +86,14 @@ var role = {
 
 						if (o.success) {
 
-							xgui.msgtip(o.text, "success", function() {
+							xgui.msgtip(o.msg, "success", function() {
 
 								// window.location.href = '/permission/index';
 								window.history.go(-1);
 							});
 						} else {
 
-							xgui.msgtip(o.text, "error");
+							xgui.msgtip(o.msg, "error");
 
 							// 启用按钮
 							common.enableAtag($(target));
@@ -373,13 +373,13 @@ var user = {
 
 						if (o.success) {
 
-							xgui.msgtip(o.text, "success", function() {
+							xgui.msgtip(o.msg, "success", function() {
 
 								window.location.href = config.path + '/user/';
 							});
 						} else {
 
-							xgui.msgtip(o.text, "error");
+							xgui.msgtip(o.msg, "error");
 
 							// 启用按钮
 							common.enableAtag($(target));
@@ -407,14 +407,14 @@ var user = {
 
 						if (o.success) {
 
-							xgui.msgtip(o.text, "success", function() {
+							xgui.msgtip(o.msg, "success", function() {
 
 								window.parent.location = backurl
 										|| '/user/index';
 							});
 						} else {
 
-							xgui.msgtip(o.text, "error");
+							xgui.msgtip(o.msg, "error");
 
 							// 启用按钮
 							common.enableAtag($(target));
@@ -622,7 +622,7 @@ var user = {
 
 					if (o.success) {
 
-						xgui.msgtip(o.text, "success");
+						xgui.msgtip(o.msg, "success");
 
 						// 关闭dialog对话框
 						$('#dlg1').dialog('close');
@@ -630,7 +630,7 @@ var user = {
 						// 刷新datagrid数据表格
 						$("#grid").datagrid('reload');
 					} else {
-						xgui.alert(o.text, "error");
+						xgui.alert(o.msg, "error");
 					}
 
 				}, null, function() {
@@ -657,10 +657,11 @@ var user = {
 							// 每页大小
 							pageSize : 20,
 							// 地址
-							url : "/User/List",
+							url : config.path + "/user/list",
 							// 远程参数
 							queryParams : {
-								keyWord : ''
+								roleid : 0,
+								name : ''
 							},
 							// 行标
 							rownumbers : true,
@@ -702,12 +703,12 @@ var user = {
 							// 列
 							columns : [ [
 									{
-										field : 'UserName',
+										field : 'name',
 										title : '用户名',
 										width : 120
 									},
 									{
-										field : 'Role',
+										field : 'rolename',
 										title : '角色',
 										width : 80
 									},
@@ -725,13 +726,13 @@ var user = {
 									// //}
 									// },
 									{
-										field : 'CreateDate',
+										field : 'createdate',
 										title : '创建时间',
-										width : 120,
-										formatter : function(value) {
+										width : 120
+										/*formatter : function(value) {
 											return common.jsonDateF(value,
 													"yyyy-MM-dd");
-										}
+										}*/
 									},
 									{
 										title : '操作',
@@ -857,12 +858,12 @@ var expressCompany = {
 
 				if (o.success) {
 
-					xgui.msgtip(o.text, "success");
+					xgui.msgtip(o.msg, "success");
 
 					// 刷新datagrid数据表格
 					$("#grid").datagrid('reload');
 				} else {
-					xgui.alert(o.text, "error");
+					xgui.alert(o.msg, "error");
 				}
 
 			}, null, function() {
@@ -891,7 +892,7 @@ var expressCompany = {
 
 						if (o.success) {
 
-							xgui.msgtip(o.text, "success");
+							xgui.msgtip(o.msg, "success");
 
 							// 关闭dialog对话框
 							$('#dlg1').dialog('close');
@@ -899,7 +900,7 @@ var expressCompany = {
 							// 刷新datagrid数据表格
 							$("#grid").datagrid('reload');
 						} else {
-							xgui.alert(o.text, "error");
+							xgui.alert(o.msg, "error");
 						}
 
 					}, null, function() {
@@ -926,7 +927,7 @@ var expressCompany = {
 
 						if (o.success) {
 
-							xgui.msgtip(o.text, "success");
+							xgui.msgtip(o.msg, "success");
 
 							// 关闭dialog对话框
 							$('#dlg1').dialog('close');
@@ -934,7 +935,7 @@ var expressCompany = {
 							// 刷新datagrid数据表格
 							$("#grid").datagrid('reload');
 						} else {
-							xgui.alert(o.text, "error");
+							xgui.alert(o.msg, "error");
 						}
 
 					}, null, function() {
@@ -1224,12 +1225,12 @@ var productCategory = {
 
 				if (o.success) {
 
-					xgui.msgtip(o.text, "success");
+					xgui.msgtip(o.msg, "success");
 
 					// 刷新datagrid数据表格
 					$("#grid").datagrid('reload');
 				} else {
-					xgui.alert(o.text, "error");
+					xgui.alert(o.msg, "error");
 				}
 
 			}, null, function() {
@@ -1261,7 +1262,7 @@ var productCategory = {
 
 						if (o.success) {
 
-							xgui.msgtip(o.text, "success");
+							xgui.msgtip(o.msg, "success");
 
 							// 关闭dialog对话框
 							$('#dlg1').dialog('close');
@@ -1269,7 +1270,7 @@ var productCategory = {
 							// 刷新datagrid数据表格
 							$("#grid").datagrid('reload');
 						} else {
-							xgui.alert(o.text, "error");
+							xgui.alert(o.msg, "error");
 						}
 
 					}, null, function() {
@@ -1296,7 +1297,7 @@ var productCategory = {
 
 						if (o.success) {
 
-							xgui.msgtip(o.text, "success");
+							xgui.msgtip(o.msg, "success");
 
 							// 关闭dialog对话框
 							$('#dlg1').dialog('close');
@@ -1304,7 +1305,7 @@ var productCategory = {
 							// 刷新datagrid数据表格
 							$("#grid").datagrid('reload');
 						} else {
-							xgui.alert(o.text, "error");
+							xgui.alert(o.msg, "error");
 						}
 
 					}, null, function() {
@@ -1591,12 +1592,12 @@ var group = {
 
 				if (o.success) {
 
-					xgui.msgtip(o.text, "success");
+					xgui.msgtip(o.msg, "success");
 
 					// 刷新datagrid数据表格
 					$("#grid").datagrid('reload');
 				} else {
-					xgui.alert(o.text, "error");
+					xgui.alert(o.msg, "error");
 				}
 
 			}, null, function() {
@@ -1629,7 +1630,7 @@ var group = {
 
 						if (o.success) {
 
-							xgui.msgtip(o.text, "success");
+							xgui.msgtip(o.msg, "success");
 
 							// 关闭dialog对话框
 							$('#dlg1').dialog('close');
@@ -1637,7 +1638,7 @@ var group = {
 							// 刷新datagrid数据表格
 							$("#grid").datagrid('reload');
 						} else {
-							xgui.alert(o.text, "error");
+							xgui.alert(o.msg, "error");
 						}
 
 					}, null, function() {
@@ -1664,7 +1665,7 @@ var group = {
 
 						if (o.success) {
 
-							xgui.msgtip(o.text, "success");
+							xgui.msgtip(o.msg, "success");
 
 							// 关闭dialog对话框
 							$('#dlg1').dialog('close');
@@ -1672,7 +1673,7 @@ var group = {
 							// 刷新datagrid数据表格
 							$("#grid").datagrid('reload');
 						} else {
-							xgui.alert(o.text, "error");
+							xgui.alert(o.msg, "error");
 						}
 
 					}, null, function() {
@@ -1895,12 +1896,12 @@ var product = {
 
 				if (o.success) {
 
-					xgui.msgtip(o.text, "success");
+					xgui.msgtip(o.msg, "success");
 
 					// 刷新数据
 					$("#grid").datagrid("reload");
 				} else {
-					xgui.alert(o.text, "error");
+					xgui.alert(o.msg, "error");
 				}
 
 			}, null, function() {
@@ -1949,12 +1950,12 @@ var product = {
 
 				if (o.success) {
 
-					xgui.msgtip(o.text, "success");
+					xgui.msgtip(o.msg, "success");
 
 					// 刷新数据
 					$("#grid").datagrid("reload");
 				} else {
-					xgui.alert(o.text, "error");
+					xgui.alert(o.msg, "error");
 				}
 
 			}, null, function() {
@@ -2004,12 +2005,12 @@ var product = {
 
 				if (o.success) {
 
-					xgui.msgtip(o.text, "success");
+					xgui.msgtip(o.msg, "success");
 
 					// 刷新数据
 					$("#grid").datagrid("reload");
 				} else {
-					xgui.alert(o.text, "error");
+					xgui.alert(o.msg, "error");
 				}
 
 			}, null, function() {
@@ -2064,12 +2065,12 @@ var product = {
 
 				if (o.success) {
 
-					xgui.msgtip(o.text, "success");
+					xgui.msgtip(o.msg, "success");
 
 					// 刷新数据
 					$("#grid").datagrid("reload");
 				} else {
-					xgui.alert(o.text, "error");
+					xgui.alert(o.msg, "error");
 				}
 
 			}, null, function() {
@@ -2159,14 +2160,14 @@ var product = {
 
 								if (o.success) {
 
-									xgui.msgtip(o.text, "success", function() {
+									xgui.msgtip(o.msg, "success", function() {
 
 										window.parent.location = backurl
 												|| '/product?tag=' + Flag;
 									});
 								} else {
 
-									xgui.msgtip(o.text, "error");
+									xgui.msgtip(o.msg, "error");
 
 									// 启用按钮
 									common.enableAtag($(target));
@@ -2202,14 +2203,14 @@ var product = {
 
 				if (o.success) {
 
-					xgui.msgtip(o.text, "success", function() {
+					xgui.msgtip(o.msg, "success", function() {
 
 						window.parent.location = backurl || '/product?tag='
 								+ Flag;
 					});
 				} else {
 
-					xgui.msgtip(o.text, "error");
+					xgui.msgtip(o.msg, "error");
 
 					// 启用按钮
 					common.enableAtag($(target));
@@ -2726,12 +2727,12 @@ var activity = {
 
 				if (o.success) {
 
-					xgui.msgtip(o.text, "success");
+					xgui.msgtip(o.msg, "success");
 
 					// 刷新数据
 					$("#grid").datagrid("reload");
 				} else {
-					xgui.alert(o.text, "error");
+					xgui.alert(o.msg, "error");
 				}
 
 			}, null, function() {
@@ -2787,7 +2788,7 @@ var activity = {
 
 						if (o.success) {
 
-							xgui.msgtip(o.text, "success", function() {
+							xgui.msgtip(o.msg, "success", function() {
 
 								var type = $(".js-ActivityType").combobox(
 										"getValue");
@@ -2797,7 +2798,7 @@ var activity = {
 							});
 						} else {
 
-							xgui.msgtip(o.text, "error");
+							xgui.msgtip(o.msg, "error");
 
 							// 启用按钮
 							common.enableAtag($(target));
@@ -2863,7 +2864,7 @@ var activity = {
 
 								if (o.success) {
 
-									xgui.msgtip(o.text, "success", function() {
+									xgui.msgtip(o.msg, "success", function() {
 
 										window.parent.location = backurl
 												|| "/activity?activitytype="
@@ -2871,7 +2872,7 @@ var activity = {
 									});
 								} else {
 
-									xgui.alert(o.text, "error");
+									xgui.alert(o.msg, "error");
 
 									// 启用按钮
 									common.enableAtag($(target));
@@ -2914,12 +2915,12 @@ var activity = {
 
 				if (o.success) {
 
-					xgui.msgtip(o.text, "success");
+					xgui.msgtip(o.msg, "success");
 
 					// 刷新数据
 					$("#grid").datagrid("reload");
 				} else {
-					xgui.alert(o.text, "error");
+					xgui.alert(o.msg, "error");
 				}
 
 			}, null, function() {
@@ -3933,12 +3934,12 @@ var activityaudit = {
 
 				if (o.success) {
 
-					xgui.msgtip(o.text, "success");
+					xgui.msgtip(o.msg, "success");
 
 					// 刷新数据
 					$("#grid").datagrid("reload");
 				} else {
-					xgui.alert(o.text, "error");
+					xgui.alert(o.msg, "error");
 				}
 
 			}, null, function() {
@@ -4019,7 +4020,7 @@ var activityaudit = {
 
 														xgui
 																.msgtip(
-																		o.text,
+																		o.msg,
 																		"success",
 																		function() {
 
@@ -4029,7 +4030,7 @@ var activityaudit = {
 																		});
 													} else {
 
-														xgui.msgtip(o.text,
+														xgui.msgtip(o.msg,
 																"error");
 
 														// 启用按钮
@@ -5062,7 +5063,7 @@ var order = {
 				order.Event();
 			} else {
 
-				xgui.alert(o.text, "error");
+				xgui.alert(o.msg, "error");
 			}
 		}, null, function() {
 
@@ -5168,7 +5169,7 @@ var order = {
 
 							if (o.success) {
 
-								xgui.msgtip(o.text, "success");
+								xgui.msgtip(o.msg, "success");
 
 								var text = '<span class="info-tit">备注：</span><span class="js-remark-info">'
 										+ $(".js-desc").val() + '</span>';
@@ -5183,7 +5184,7 @@ var order = {
 								$("#dlg1").dialog("close");
 							} else {
 
-								xgui.msgtip(o.text, "error");
+								xgui.msgtip(o.msg, "error");
 							}
 
 						}, null, function() {
@@ -5219,7 +5220,7 @@ var order = {
 				// 重设对话框居中
 				xgui.setcenter($("#dlg2"));
 			} else {
-				xgui.alert(o.text, "error");
+				xgui.alert(o.msg, "error");
 			}
 
 		}, null, function() {
@@ -5271,12 +5272,12 @@ var order = {
 				// 关闭dialog对话框
 				$('#dlg2').dialog('close');
 
-				xgui.msgtip(o.text, "success", function() {
+				xgui.msgtip(o.msg, "success", function() {
 
 					window.location.href = window.location.href;
 				});
 			} else {
-				xgui.alert(o.text, "error");
+				xgui.alert(o.msg, "error");
 			}
 
 		}, null, function() {
@@ -5476,12 +5477,12 @@ var orderinfo = {
 						// 关闭dialog对话框
 						$('#dlg1').dialog('close');
 
-						xgui.msgtip(o.text, "success", function() {
+						xgui.msgtip(o.msg, "success", function() {
 
 							window.location.href = window.location.href;
 						});
 					} else {
-						xgui.alert(o.text, "error");
+						xgui.alert(o.msg, "error");
 					}
 
 				}, null, function() {
@@ -6295,12 +6296,12 @@ var banner = {
 
 				if (o.success) {
 
-					xgui.msgtip(o.text, "success");
+					xgui.msgtip(o.msg, "success");
 
 					// 刷新datagrid数据表格
 					$("#grid").datagrid('reload');
 				} else {
-					xgui.alert(o.text, "error");
+					xgui.alert(o.msg, "error");
 				}
 
 			}, null, function() {
@@ -6328,7 +6329,7 @@ var banner = {
 
 						if (o.success) {
 
-							xgui.msgtip(o.text, "success");
+							xgui.msgtip(o.msg, "success");
 
 							// 关闭dialog对话框
 							$('#dlg1').dialog('close');
@@ -6336,7 +6337,7 @@ var banner = {
 							// 刷新datagrid数据表格
 							$("#grid").datagrid('reload');
 						} else {
-							xgui.alert(o.text, "error");
+							xgui.alert(o.msg, "error");
 						}
 
 					}, null, function() {
@@ -6363,7 +6364,7 @@ var banner = {
 
 						if (o.success) {
 
-							xgui.msgtip(o.text, "success");
+							xgui.msgtip(o.msg, "success");
 
 							// 关闭dialog对话框
 							$('#dlg1').dialog('close');
@@ -6371,7 +6372,7 @@ var banner = {
 							// 刷新datagrid数据表格
 							$("#grid").datagrid('reload');
 						} else {
-							xgui.alert(o.text, "error");
+							xgui.alert(o.msg, "error");
 						}
 
 					}, null, function() {
@@ -6664,12 +6665,12 @@ var comment = {
 
 				if (o.success) {
 
-					xgui.msgtip(o.text, "success");
+					xgui.msgtip(o.msg, "success");
 
 					// 刷新数据
 					$("#grid").datagrid("reload");
 				} else {
-					xgui.alert(o.text, "error");
+					xgui.alert(o.msg, "error");
 				}
 
 			}, null, function() {
@@ -6708,12 +6709,12 @@ var comment = {
 
 				if (o.success) {
 
-					xgui.msgtip(o.text, "success");
+					xgui.msgtip(o.msg, "success");
 
 					// 刷新datagrid数据表格
 					$("#grid").datagrid('reload');
 				} else {
-					xgui.alert(o.text, "error");
+					xgui.alert(o.msg, "error");
 				}
 
 			}, null, function() {
@@ -6936,7 +6937,7 @@ var problem = {
 
 						if (o.success) {
 
-							xgui.msgtip(o.text, "success");
+							xgui.msgtip(o.msg, "success");
 
 							// 关闭dialog对话框
 							$('#dlg1').dialog('close');
@@ -6944,7 +6945,7 @@ var problem = {
 							// 刷新datagrid数据表格
 							$("#grid").datagrid('reload');
 						} else {
-							xgui.alert(o.text, "error");
+							xgui.alert(o.msg, "error");
 						}
 
 					}, null, function() {
@@ -6971,7 +6972,7 @@ var problem = {
 
 						if (o.success) {
 
-							xgui.msgtip(o.text, "success");
+							xgui.msgtip(o.msg, "success");
 
 							// 关闭dialog对话框
 							$('#dlg1').dialog('close');
@@ -6979,7 +6980,7 @@ var problem = {
 							// 刷新datagrid数据表格
 							$("#grid").datagrid('reload');
 						} else {
-							xgui.alert(o.text, "error");
+							xgui.alert(o.msg, "error");
 						}
 
 					}, null, function() {
@@ -7018,7 +7019,7 @@ var problem = {
 
 				if (o.success) {
 
-					xgui.msgtip(o.text, "success");
+					xgui.msgtip(o.msg, "success");
 
 					// 关闭dialog对话框
 					$('#dlg1').dialog('close');
@@ -7026,7 +7027,7 @@ var problem = {
 					// 刷新datagrid数据表格
 					$("#grid").datagrid('reload');
 				} else {
-					xgui.alert(o.text, "error");
+					xgui.alert(o.msg, "error");
 				}
 
 			}, null, function() {
@@ -7200,13 +7201,13 @@ var city = {
 			xgui.Ajax("/city/addregion", $("#dlg-form2").serialize(), "json",
 					true, function(o) {
 						if (o.success) {
-							xgui.msgtip(o.text, "success");
+							xgui.msgtip(o.msg, "success");
 							// 关闭dialog对话框
 							$('#dlg2').dialog('close');
 							// 刷新datagrid数据表格
 							$("#grid").treegrid('reload');
 						} else {
-							xgui.alert(o.text, "error");
+							xgui.alert(o.msg, "error");
 						}
 					}, null, function() {
 						xgui.loading("show", "正在提交。。。");
@@ -7223,13 +7224,13 @@ var city = {
 			xgui.Ajax("/city/updateregion", $("#dlg-form2").serialize(),
 					"json", true, function(o) {
 						if (o.success) {
-							xgui.msgtip(o.text, "success");
+							xgui.msgtip(o.msg, "success");
 							// 关闭dialog对话框
 							$('#dlg2').dialog('close');
 							// 刷新datagrid数据表格
 							$("#grid").treegrid('reload');
 						} else {
-							xgui.alert(o.text, "error");
+							xgui.alert(o.msg, "error");
 						}
 					}, null, function() {
 						xgui.loading("show", "正在提交。。。");
@@ -7255,7 +7256,7 @@ var city = {
 					true, function(o) {
 						if (o.success) {
 
-							xgui.msgtip(o.text, "success");
+							xgui.msgtip(o.msg, "success");
 
 							// 关闭dialog对话框
 							$('#dlg1').dialog('close');
@@ -7263,7 +7264,7 @@ var city = {
 							// 刷新datagrid数据表格
 							$("#grid").treegrid('reload');
 						} else {
-							xgui.alert(o.text, "error");
+							xgui.alert(o.msg, "error");
 						}
 					}, null, function() {
 						xgui.loading("show", "正在提交。。。");
@@ -7282,7 +7283,7 @@ var city = {
 
 						if (o.success) {
 
-							xgui.msgtip(o.text, "success");
+							xgui.msgtip(o.msg, "success");
 
 							// 关闭dialog对话框
 							$('#dlg1').dialog('close');
@@ -7290,7 +7291,7 @@ var city = {
 							// 刷新datagrid数据表格
 							$("#grid").treegrid('reload');
 						} else {
-							xgui.alert(o.text, "error");
+							xgui.alert(o.msg, "error");
 						}
 					}, null, function() {
 						xgui.loading("show", "正在提交。。。");
@@ -7527,7 +7528,7 @@ var menu = {
 
 			if (o.success) {
 
-				xgui.msgtip(o.text, "success");
+				xgui.msgtip(o.msg, "success");
 
 				// 关闭dialog对话框
 				$('#dlg1').dialog('close');
@@ -7535,7 +7536,7 @@ var menu = {
 				// 刷新treegrid数据表格
 				$("#grid").treegrid('reload');
 			} else {
-				xgui.alert(o.text, "error");
+				xgui.alert(o.msg, "error");
 				// 刷新treegrid数据表格
 				$("#grid").treegrid('reload');
 			}

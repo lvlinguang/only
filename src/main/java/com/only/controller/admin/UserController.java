@@ -10,17 +10,22 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.only.mapper.UserMapper;
 import com.only.model.Permissions;
 import com.only.model.Role;
 import com.only.model.User;
 import com.only.model.UserCustom;
+import com.only.model.UserQueryVo;
+import com.only.model.xgui.DataGrid;
 import com.only.model.xgui.Json;
+import com.only.model.xgui.PageHelper;
 import com.only.model.xgui.Tree;
 import com.only.service.PermissionsService;
 import com.only.service.RoleService;
@@ -182,6 +187,17 @@ public class UserController extends BaseController {
 	Json AddUser(User user, Integer roleId, String permissions)
 			throws Exception {
 
+		Json json = new Json();
+
+		User checkUser = userService.getUserByAccount(user.getAccount());
+
+		if (checkUser != null) {
+			json.setSuccess(false);
+			json.setMsg("此帐号已存在！");
+
+			return json;
+		}
+
 		// 添加用户
 		userService.addUser(user);
 
@@ -191,11 +207,34 @@ public class UserController extends BaseController {
 		// 添加用户权限
 		permissionsService.addUserPermissions(user.getId(), permissions);
 
-		Json json = new Json();
 		json.setSuccess(true);
 		json.setMsg("操作成功");
 
 		return json;
+	}
+
+	/**
+	 * 用户列表
+	 * 
+	 * @param page
+	 * @param roleid
+	 * @param name
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "list", method = RequestMethod.POST)
+	public @ResponseBody
+	DataGrid getUser(PageHelper page, int roleid, String name) throws Exception {
+
+		DataGrid dataGrid = new DataGrid();
+		
+		dataGrid.setCount(0);
+
+		List<UserCustom> list = userService.getUserList(page, roleid, name);
+
+		dataGrid.setData(list);
+
+		return dataGrid;
 	}
 
 	/**
