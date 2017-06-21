@@ -46,10 +46,10 @@
 						<div class="search-item">
 							<div class="outline p20 aountRow clearFix">
 								<select class="xgui-combobox" name="roleId" id="roleId">
-									<option value=" ">全部角色</option>
-
 									<option value="0">全部角色</option>
-
+									<c:forEach var="item" items="${role}">
+										<option value="${item.id}">${item.name}</option>
+									</c:forEach>
 								</select>
 								<div class="search">
 									<input class="searchI js-search-input" placeholder="请输入用户名称"

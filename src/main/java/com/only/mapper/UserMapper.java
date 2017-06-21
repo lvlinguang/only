@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.only.model.User;
 import com.only.model.UserCustom;
+import com.only.model.UserRole;
 import com.only.model.xgui.PageHelper;
 
 /**
@@ -31,6 +32,15 @@ public interface UserMapper {
 	 * @throws Exception
 	 */
 	public void updateUser(User user) throws Exception;
+
+	/**
+	 * 根据id得到用户
+	 * 
+	 * @param id
+	 * @return
+	 * @throws exception
+	 */
+	public User getUserByID(int id) throws Exception;
 
 	/**
 	 * 根据帐号得到用户

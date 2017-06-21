@@ -283,10 +283,7 @@ var role = {
 										title : '创建时间',
 										width : 80,
 										formatter : function(value) {
-											// return common.jsonDateF(value,
-											// "yyyy-MM-dd
-											// hh:mm");
-											return value;
+											return common.timeStampF(value);
 										}
 									},
 									{
@@ -340,7 +337,7 @@ var user = {
 			return;
 		}
 
-		window.location.href = '/user/Update?ID=' + data.UserID;
+		window.location.href = config.path + '/user/update?id=' + data.id;
 	},
 	// 保存
 	save : function(target) {
@@ -402,37 +399,36 @@ var user = {
 		// 修改
 		else {
 
-			xgui.Ajax("/user/EditAccount", $("#dlg-form").serialize(), "json",
-					true, function(o) {
+			xgui.Ajax(config.path + "/user/updateuser", $("#dlg-form")
+					.serialize(), "json", true, function(o) {
 
-						if (o.success) {
+				if (o.success) {
 
-							xgui.msgtip(o.msg, "success", function() {
+					xgui.msgtip(o.msg, "success", function() {
 
-								window.parent.location = backurl
-										|| '/user/index';
-							});
-						} else {
-
-							xgui.msgtip(o.msg, "error");
-
-							// 启用按钮
-							common.enableAtag($(target));
-						}
-
-					}, null, function() {
-
-						// 禁用按钮
-						common.disableAtag($(target));
-
-						// 显示loading
-						xgui.loading("show");
-
-					}, function() {
-
-						// 隐藏loading
-						xgui.loading("hide");
+						window.parent.location = config.path + '/user/';
 					});
+				} else {
+
+					xgui.msgtip(o.msg, "error");
+
+					// 启用按钮
+					common.enableAtag($(target));
+				}
+
+			}, null, function() {
+
+				// 禁用按钮
+				common.disableAtag($(target));
+
+				// 显示loading
+				xgui.loading("show");
+
+			}, function() {
+
+				// 隐藏loading
+				xgui.loading("hide");
+			});
 
 		}
 
@@ -705,38 +701,30 @@ var user = {
 									{
 										field : 'name',
 										title : '用户名',
-										width : 120
+										width : 100
+									},
+									{
+										field : 'account',
+										title : '帐号',
+										width : 100
 									},
 									{
 										field : 'rolename',
 										title : '角色',
 										width : 80
 									},
-									// {
-									// field: 'Permissions', title: '权限', width:
-									// 300,
-									// //formatter:function(value){
-									// // var permissions = value.split('；');
-									// // var perSentence="<p>"
-									// // permissions.each(function () {
-									// //
-									// perSentence.push('<span>'+$(this).split('：')[0]+'<\/span>'+$(this).split('：')[1]);
-									// // });
-									// // perSentence+="</p>";
-									// //}
-									// },
 									{
 										field : 'createdate',
 										title : '创建时间',
-										width : 120
-										/*formatter : function(value) {
-											return common.jsonDateF(value,
-													"yyyy-MM-dd");
-										}*/
+										width : 120,
+										formatter : function(value) {
+
+											return common.timeStampF(value);
+										}
 									},
 									{
 										title : '操作',
-										field : 'UserID',
+										field : 'id',
 										width : 60,
 										formatter : function(value, rowData,
 												rowIndex) {
@@ -767,16 +755,14 @@ var user = {
 
 			// 名称
 			var keyword = $(".js-search-input").val();
-			var dateFrom = $("#dateFrom").datebox("getValue");
-			var dateTo = $("#dateTo").datebox("getValue");
-			var roleId = $("#roleId").combobox("getValue");
+
+			var roleId = $("#roleId").combobox("getValue") || 0;
+
 			// 刷新数据
 			$("#grid").datagrid("reload", {
-				keyWord : keyword,
+				name : keyword,
 				pageIndex : 1,
-				dateFrom : dateFrom,
-				dateTo : dateTo,
-				roleId : roleId,
+				roleid : roleId,
 			});
 
 		});

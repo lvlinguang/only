@@ -11,8 +11,13 @@
 
 	<!-- 修改用户 -->
 	<update id="updateUser" parameterType="com.only.model.User">
-		update User set
-		Name=#{name},Account=#{account},Mobile=#{mobile},UpdateDate=#{updatedate}
+		update User
+		<set>
+			<if test="name!=null and name!=''">Name=#{name},</if>
+			<if test="account!=null and account!=''">Account=#{account},</if>
+			<if test="mobile!=null and mobile!=''">Mobile=#{mobile},</if>
+			<if test="updatedate!=null and updatedate!=''">UpdateDate=#{updatedate},</if>
+		</set>
 		where ID=#{id}
 	</update>
 
@@ -21,6 +26,14 @@
 		update User set Enable=0
 		where ID=#{id}
 	</update>
+
+	<!-- 根据id得到数据 -->
+	<select id="getUserByID" parameterType="int" resultType="com.only.model.User">
+		select *
+		from User
+		Where
+		ID=#{id}
+	</select>
 
 	<!-- 根据帐号得到数据 -->
 	<select id="getUserByAccount" resultType="com.only.model.User">
@@ -48,6 +61,9 @@
 		left join Role AS r on u2.RoleID=r.ID
 		where
 		u1.enable=1
+		<if test="roleid!=null and roleid!=0">
+			and r.ID=#{roleid}
+		</if>
 		<if test="name!=null and name !=''">
 			and u1.Name like concat('%',#{name},'%')
 		</if>

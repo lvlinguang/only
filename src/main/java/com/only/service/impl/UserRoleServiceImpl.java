@@ -3,6 +3,7 @@ package com.only.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.only.mapper.UserRoleMapper;
+import com.only.model.UserRole;
 import com.only.service.UserRoleService;
 
 /**
@@ -30,6 +31,14 @@ public class UserRoleServiceImpl implements UserRoleService {
 	public void updateUserRole(Integer userid, Integer roleid) throws Exception {
 
 		userRoleMapper.updateUserRole(userid, roleid);
+	}
+
+	/**
+	 * 得到用户角色
+	 */
+	public UserRole getUserRoleByUser(int userid) throws Exception {
+
+		return userRoleMapper.getUserRoleByUser(userid);
 	}
 
 }

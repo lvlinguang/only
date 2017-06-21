@@ -39,6 +39,14 @@ public class UserServiceImpl implements UserService {
 	}
 
 	/**
+	 * 根据id得到数据
+	 */
+	public User getUserByID(int id) throws Exception {
+
+		return userMapper.getUserByID(id);
+	}
+
+	/**
 	 * 根据帐号得到用户
 	 */
 	public User getUserByAccount(String account) throws Exception {

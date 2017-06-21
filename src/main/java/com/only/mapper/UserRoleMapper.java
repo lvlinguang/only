@@ -2,6 +2,8 @@ package com.only.mapper;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.only.model.UserRole;
+
 /**
  * 用户角色管理
  * 
@@ -29,4 +31,13 @@ public interface UserRoleMapper {
 	 */
 	public void updateUserRole(@Param("userid") Integer userid,
 			@Param("roleid") Integer roleid) throws Exception;
+
+	/**
+	 * 得到用户角色
+	 * 
+	 * @param userid
+	 * @throws Exception
+	 */
+	public UserRole getUserRoleByUser(int userid) throws Exception;
+	
 }

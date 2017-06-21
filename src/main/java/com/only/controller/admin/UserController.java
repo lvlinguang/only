@@ -1,6 +1,7 @@
 package com.only.controller.admin;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -23,6 +24,7 @@ import com.only.model.Role;
 import com.only.model.User;
 import com.only.model.UserCustom;
 import com.only.model.UserQueryVo;
+import com.only.model.UserRole;
 import com.only.model.xgui.DataGrid;
 import com.only.model.xgui.Json;
 import com.only.model.xgui.PageHelper;
@@ -134,6 +136,11 @@ public class UserController extends BaseController {
 
 		ModelAndView modelAndView = new ModelAndView();
 
+		// 角色
+		List<Role> roles = roleService.getRoleList(null, "");
+
+		modelAndView.addObject("role", roles);
+
 		modelAndView.setViewName("user/index");
 
 		return modelAndView;
@@ -166,9 +173,42 @@ public class UserController extends BaseController {
 
 	// 用户修改
 	@RequestMapping("/update")
-	public ModelAndView Update() throws Exception {
+	public ModelAndView Update(Integer id) throws Exception {
 
 		ModelAndView modelAndView = new ModelAndView();
+
+		// 用户权限
+		List<Permissions> permissions = permissionsService
+				.getUserPrmissionsList(UID());
+
+		// 权限树
+		List<Tree> trees = getPermissionTree(permissions);
+
+		// 用户权限
+		List<Permissions> userpermissions = permissionsService
+				.getUserPrmissionsList(id);
+
+		// 权限树
+		List<Tree> usertrees = getPermissionTree(userpermissions);
+
+		// 角色
+		List<Role> roles = roleService.getRoleList(null, "");
+
+		// 用户详情
+		User user = userService.getUserByID(id);
+
+		// 用户角色
+		UserRole userRole = userRoleService.getUserRoleByUser(id);
+
+		modelAndView.addObject("userRole", userRole);
+
+		modelAndView.addObject("roles", roles);
+
+		modelAndView.addObject("user", user);
+
+		modelAndView.addObject("permissions", trees);
+
+		modelAndView.addObject("userpermissions", usertrees);
 
 		modelAndView.setViewName("user/update");
 
@@ -214,6 +254,42 @@ public class UserController extends BaseController {
 	}
 
 	/**
+	 * 修改用户
+	 * 
+	 * @param user
+	 * @param roleId
+	 * @param permissions
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/updateuser", method = RequestMethod.POST)
+	public @ResponseBody
+	Json UpdateUser(User user, Integer roleId, String permissions)
+			throws Exception {
+
+		Json json = new Json();
+
+		user.setUpdatedate(new Date());
+
+		// 修改用户
+		userService.updateUser(user);
+
+		// 修改用户角色
+		userRoleService.updateUserRole(user.getId(), roleId);
+
+		// 删除用户权限
+		permissionsService.deleteUserPermissions(user.getId());
+
+		// 添加用户权限
+		permissionsService.addUserPermissions(user.getId(), permissions);
+
+		json.setSuccess(true);
+		json.setMsg("操作成功");
+
+		return json;
+	}
+
+	/**
 	 * 用户列表
 	 * 
 	 * @param page
@@ -227,7 +303,7 @@ public class UserController extends BaseController {
 	DataGrid getUser(PageHelper page, int roleid, String name) throws Exception {
 
 		DataGrid dataGrid = new DataGrid();
-		
+
 		dataGrid.setCount(0);
 
 		List<UserCustom> list = userService.getUserList(page, roleid, name);

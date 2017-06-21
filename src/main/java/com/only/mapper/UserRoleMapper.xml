@@ -16,4 +16,10 @@
 		UserID=#{userid}
 	</update>
 
+	<!-- 用户角色 -->
+	<select id="getUserRoleByUser" parameterType="int"
+		resultType="com.only.model.UserRole">
+		select * from UserRole where UserID=#{userid} limit 1
+	</select>
+
 </mapper>

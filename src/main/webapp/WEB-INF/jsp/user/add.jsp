@@ -28,7 +28,6 @@
 {{/each}}
 </script>
 
-
 </head>
 <body>
 
@@ -44,7 +43,7 @@
 				<ul class="sub-navi clearFix half">
 					<li style="width: 49%;"><a class="active"
 						href="${path}/user/add">用户创建</a></li>
-					<li style="width: 49%;"><a href="${path}/user/">用户与权限管理</a></li>
+					<li style="width: 49%;"><a href="${path}/user/">用户管理</a></li>
 				</ul>
 
 				<form id="dlg-form" class="dlg-form2">

@@ -2,6 +2,8 @@ package com.only.service;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.only.model.UserRole;
+
 /**
  * 用户角色
  * 
@@ -27,4 +29,12 @@ public interface UserRoleService {
 	 * @throws Exception
 	 */
 	public void updateUserRole(Integer userid, Integer roleid) throws Exception;
+
+	/**
+	 * 得到用户角色
+	 * 
+	 * @param userid
+	 * @throws Exception
+	 */
+	public UserRole getUserRoleByUser(int userid) throws Exception;
 }
