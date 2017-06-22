@@ -51,6 +51,16 @@ public interface UserService {
 	public User getUserByAccount(String account) throws Exception;
 
 	/**
+	 * 用户列表条数
+	 * 
+	 * @param roleid
+	 * @param name
+	 * @return
+	 * @throws Exception
+	 */
+	public int getUserListTotal(int roleid, String name) throws Exception;
+
+	/**
 	 * 得到用户列表
 	 * 
 	 * @param roleid

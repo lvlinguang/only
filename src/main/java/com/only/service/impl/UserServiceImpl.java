@@ -55,6 +55,14 @@ public class UserServiceImpl implements UserService {
 	}
 
 	/**
+	 * 用户列表条数
+	 */
+	public int getUserListTotal(int roleid, String name) throws Exception {
+
+		return userMapper.getUserListTotal(roleid, name);
+	}
+
+	/**
 	 * 得到用户列表
 	 */
 	public List<UserCustom> getUserList(PageHelper page, int roleid, String name)

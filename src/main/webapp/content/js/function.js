@@ -610,11 +610,17 @@ var user = {
 		// 打开dialog框并设置标题
 		$("#dlg1").dialog("open").dialog("setTitle", "重置密码");
 		$("#dlg-form1").form('clear').form("load", data);
+		$("#Password").val("");
 
 	},
 	resetcode : function(target) {
-		xgui.Ajax("/user/reset", $("#dlg-form1").serialize(), "json", true,
-				function(o) {
+
+		if (!$("#dlg-form1").form("validate")) {
+			return false;
+		}
+
+		xgui.Ajax(config.path + "/user/reset", $("#dlg-form1").serialize(),
+				"json", true, function(o) {
 
 					if (o.success) {
 

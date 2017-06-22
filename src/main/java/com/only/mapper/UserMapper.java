@@ -53,6 +53,17 @@ public interface UserMapper {
 			throws Exception;
 
 	/**
+	 * 用户列表条数
+	 * 
+	 * @param roleid
+	 * @param name
+	 * @return
+	 * @throws Exception
+	 */
+	public int getUserListTotal(@Param("roleid") int roleid,
+			@Param("name") String name) throws Exception;
+
+	/**
 	 * 得到用户列表
 	 * 
 	 * @param roleid

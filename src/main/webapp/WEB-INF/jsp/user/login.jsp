@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -43,8 +42,8 @@
 		<!--头部-->
 		<div class="layout-header">
 			<div class="header-logo">
-				<a href="#" title="某某中学" target="_blank"> <img
-					src="${path}/content/login/img/logo.jpg" />
+				<a href="#" title="浙江宝信" target="_blank">
+					<img src="${path}/content/login/img/logo.png" style="width:160px;" />
 				</a>
 			</div>
 		</div>
@@ -57,23 +56,24 @@
 						<input name="Account" type="text" id="Account" class="login-input" />
 					</div>
 					<div class="input-item clearfix">
-						<input name="PassWord" type="password" id="PassWord"
-							class="login-input" /> <span class="login-pwd-tip">密码</span>
+						<input name="PassWord" type="password" id="PassWord" class="login-input" />
+						<span class="login-pwd-tip">密码</span>
 					</div>
 					<div class="remember-item">
 						<a href="javascript:;" class="js-remember login-checkbox">记住密码</a>
-						｜ <a href="/user/getpwd" title="忘记密码">忘记密码</a>
+						｜
+						<a href="/user/getpwd" title="忘记密码">忘记密码</a>
 					</div>
 					<div class="login-btn">
 						<a href="javascript:;" class="js-submit">登 录 </a>
 					</div>
 					<div class="reg-item">
-						<span>还没有帐号？</span> <a href="javascript:;" title="马上注册"
-							id="js-reg">马上注册</a>
+						<span>还没有帐号？</span>
+						<a href="javascript:;" title="马上注册" id="js-reg">马上注册</a>
 					</div>
 					<div class="other-login">
-						<span>其它帐号登录：</span> <a href="javascript:;"
-							class="login-partners xgbj js-bj-login" title="星光班级登录"></a>
+						<span>其它帐号登录：</span>
+						<a href="javascript:;" class="login-partners xgbj js-bj-login" title="星光班级登录"></a>
 					</div>
 				</div>
 				<!--广告信息-->
@@ -87,10 +87,14 @@
 		<div class="layout-footer">
 			<div class="footer-wrap">
 				<p>
-					<span>台州朗星网络技术有限公司</span> <span>地址：三峰路158号</span> <span>联系电话：0576-85123320</span>
+					<span>浙江宝信网络技术有限公司</span>
+					<span>地址：浙江鄞州城南商务大厦B座12B01</span>
+					<span>联系电话：0574-56803063</span>
 				</p>
 				<p>
-					<span>Copyright &#169; 2016</span> <span>浙ICP备13030673号-1</span> <span>系统版本:V2.01</span>
+					<span>Copyright &#169; 2016</span>
+					<span>浙ICP备13030673号-1</span>
+					<span>系统版本:V2.01</span>
 				</p>
 			</div>
 		</div>

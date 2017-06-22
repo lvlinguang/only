@@ -55,7 +55,7 @@ var login = {
 						|| window.location.href;
 			} else {
 
-				xgui.alert(o.text, "error");
+				xgui.alert(o.msg, "error");
 			}
 
 		}, null, function() {

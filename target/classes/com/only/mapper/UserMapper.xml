@@ -5,8 +5,8 @@
 	<!-- 添加用户 -->
 	<insert id="addUser" useGeneratedKeys="true" keyProperty="id">
 		insert
-		into User(Name,Account,Password,Mobile)
-		values(#{name},#{account},#{password},#{mobile})
+		into User(Name,Account,Password,Mobile,Salt)
+		values(#{name},#{account},#{password},#{mobile},#{salt})
 	</insert>
 
 	<!-- 修改用户 -->
@@ -17,6 +17,8 @@
 			<if test="account!=null and account!=''">Account=#{account},</if>
 			<if test="mobile!=null and mobile!=''">Mobile=#{mobile},</if>
 			<if test="updatedate!=null and updatedate!=''">UpdateDate=#{updatedate},</if>
+			<if test="salt!=null and salt!=''">Salt=#{salt},</if>
+			<if test="password!=null and password!=''">PassWord=#{password},</if>
 		</set>
 		where ID=#{id}
 	</update>
@@ -39,6 +41,25 @@
 	<select id="getUserByAccount" resultType="com.only.model.User">
 		select * from User
 		Where Account=#{account} limit 1
+	</select>
+
+	<!-- 用户列表条数 -->
+	<select id="getUserListTotal" resultType="int">
+		SELECT
+		count(0)
+		from User AS u1
+		left join
+		UserRole AS
+		u2 on u1.ID=u2.UserID
+		left join Role AS r on u2.RoleID=r.ID
+		where
+		u1.enable=1
+		<if test="roleid!=null and roleid!=0">
+			and r.ID=#{roleid}
+		</if>
+		<if test="name!=null and name !=''">
+			and u1.Name like concat('%',#{name},'%')
+		</if>
 	</select>
 
 	<!-- 用户列表 -->

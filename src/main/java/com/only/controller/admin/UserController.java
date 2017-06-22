@@ -3,12 +3,16 @@ package com.only.controller.admin;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang.StringUtils;
+import org.apache.ibatis.scripting.xmltags.VarDeclSqlNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,6 +37,8 @@ import com.only.service.PermissionsService;
 import com.only.service.RoleService;
 import com.only.service.UserRoleService;
 import com.only.service.UserService;
+import com.only.util.CookieUtil;
+import com.only.util.Encrypt;
 
 /**
  * 用户控制器
@@ -61,7 +67,7 @@ public class UserController extends BaseController {
 	public String Login(HttpSession session) {
 
 		// 得到session用户
-		String uString = (String) session.getAttribute("username");
+		User uString = (User) session.getAttribute("user");
 
 		// 如果已登录中转到首页
 		if (uString != null) {
@@ -74,18 +80,39 @@ public class UserController extends BaseController {
 	// 登录验证
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public @ResponseBody
-	Json login(HttpSession session, String Account, String PassWord,
-			boolean Rememberme) throws Exception {
-
-		// 设置session
-		session.setAttribute("username", Account);
+	Json login(HttpServletRequest request, HttpServletResponse response, HttpSession session, String Account, String PassWord, boolean Rememberme)
+			throws Exception {
 
 		Json json = new Json();
 
+		// 验证帐号是否存在
+		User user = userService.getUserByAccount(Account);
+
+		if (user == null) {
+			json.setSuccess(false);
+			json.setMsg("帐号不存在！");
+			return json;
+		}
+
+		// 密码验证
+		String pString = Encrypt.EncodeMD5(PassWord + user.getSalt());
+
+		if (!pString.equals(user.getPassword())) {
+			json.setSuccess(false);
+			json.setMsg("密码不正确！");
+			return json;
+		}
+
+		// 设置session
+		session.setAttribute("user", user);
+
+		// 设置cookie
+		//CookieUtil.addCookie(request, response, "username", user.getName());
+
 		json.setSuccess(true);
 		json.setMsg("验证成功");
-
 		return json;
+
 		//
 		// if (code.toLowerCase().equals(
 		// request.getSession().getAttribute("RANDOMCODE").toString()
@@ -123,9 +150,11 @@ public class UserController extends BaseController {
 
 	// 用户注销
 	@RequestMapping("/logout")
-	public String logout(HttpSession session) {
+	public String logout(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		// 清除session
 		session.invalidate();
+
+		//CookieUtil.removeCookie(request, response, "username");
 
 		return "redirect:/user/login";
 	}
@@ -153,8 +182,7 @@ public class UserController extends BaseController {
 		ModelAndView modelAndView = new ModelAndView();
 
 		// 用户权限
-		List<Permissions> permissions = permissionsService
-				.getUserPrmissionsList(UID());
+		List<Permissions> permissions = permissionsService.getUserPrmissionsList(UID());
 
 		// 权限树
 		List<Tree> trees = getPermissionTree(permissions);
@@ -178,15 +206,13 @@ public class UserController extends BaseController {
 		ModelAndView modelAndView = new ModelAndView();
 
 		// 用户权限
-		List<Permissions> permissions = permissionsService
-				.getUserPrmissionsList(UID());
+		List<Permissions> permissions = permissionsService.getUserPrmissionsList(UID());
 
 		// 权限树
 		List<Tree> trees = getPermissionTree(permissions);
 
 		// 用户权限
-		List<Permissions> userpermissions = permissionsService
-				.getUserPrmissionsList(id);
+		List<Permissions> userpermissions = permissionsService.getUserPrmissionsList(id);
 
 		// 权限树
 		List<Tree> usertrees = getPermissionTree(userpermissions);
@@ -224,8 +250,7 @@ public class UserController extends BaseController {
 	 */
 	@RequestMapping(value = "/adduser", method = RequestMethod.POST)
 	public @ResponseBody
-	Json AddUser(User user, Integer roleId, String permissions)
-			throws Exception {
+	Json AddUser(User user, Integer roleId, String permissions) throws Exception {
 
 		Json json = new Json();
 
@@ -237,6 +262,15 @@ public class UserController extends BaseController {
 
 			return json;
 		}
+
+		String salt = UUID.randomUUID().toString().replace("-", "");
+
+		String hashedPassword = Encrypt.EncodeMD5(user.getPassword() + salt);
+
+		user.setSalt(salt);
+
+		// md5加密
+		user.setPassword(hashedPassword);
 
 		// 添加用户
 		userService.addUser(user);
@@ -264,8 +298,7 @@ public class UserController extends BaseController {
 	 */
 	@RequestMapping(value = "/updateuser", method = RequestMethod.POST)
 	public @ResponseBody
-	Json UpdateUser(User user, Integer roleId, String permissions)
-			throws Exception {
+	Json UpdateUser(User user, Integer roleId, String permissions) throws Exception {
 
 		Json json = new Json();
 
@@ -304,13 +337,50 @@ public class UserController extends BaseController {
 
 		DataGrid dataGrid = new DataGrid();
 
-		dataGrid.setCount(0);
+		int count = userService.getUserListTotal(roleid, name);
+
+		dataGrid.setCount(count);
 
 		List<UserCustom> list = userService.getUserList(page, roleid, name);
 
 		dataGrid.setData(list);
 
 		return dataGrid;
+	}
+
+	/**
+	 * 修改密码
+	 * 
+	 * @param userid
+	 * @param password
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "reset", method = RequestMethod.POST)
+	public @ResponseBody
+	Json Reset(int id, String password) throws Exception {
+		Json json = new Json();
+
+		User user = new User();
+
+		user.setId(id);
+
+		String salt = UUID.randomUUID().toString().replace("-", "");
+
+		String hashedPassword = Encrypt.EncodeMD5(password + salt);
+
+		user.setSalt(salt);
+
+		// md5加密
+		user.setPassword(hashedPassword);
+
+		// 修改用户
+		userService.updateUser(user);
+
+		json.setSuccess(true);
+		json.setMsg("操作成功");
+
+		return json;
 	}
 
 	/**

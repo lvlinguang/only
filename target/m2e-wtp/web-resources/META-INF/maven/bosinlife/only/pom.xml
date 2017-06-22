@@ -8,6 +8,11 @@
 	<name>only Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
+	<!-- <build> <plugins> <plugin> <groupId>org.apache.maven.plugins</groupId> 
+		<artifactId>maven-compiler-plugin</artifactId> <version>3.1</version> <configuration> 
+		<source>1.8</source> <target>1.8</target> </configuration> </plugin> </plugins> 
+		</build> -->
+
 	<properties>
 		<!-- spring版本号 -->
 		<spring.version>4.0.2.RELEASE</spring.version>
@@ -162,6 +167,14 @@
 			<artifactId>commons-codec</artifactId>
 			<version>1.9</version>
 		</dependency>
+		<!-- StringUtil -->
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
+			<scope>provided</scope>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<finalName>only</finalName>

@@ -55,7 +55,8 @@ public interface PermissionsService {
 	 * @param rolepermissions
 	 * @throws Exception
 	 */
-	public void addUserPermissions(Integer userid,String permissionid) throws Exception;
+	public void addUserPermissions(Integer userid, String permissionid)
+			throws Exception;
 
 	/**
 	 * 删除用户权限
@@ -72,5 +73,6 @@ public interface PermissionsService {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<Permissions> getUserPrmissionsList(Integer userid) throws Exception;
+	public List<Permissions> getUserPrmissionsList(Integer userid)
+			throws Exception;
 }

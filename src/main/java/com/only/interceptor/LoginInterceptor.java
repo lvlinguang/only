@@ -9,6 +9,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.only.model.User;
+
 /**
  * 登录控制
  * 
@@ -17,8 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 public class LoginInterceptor implements HandlerInterceptor {
 
-	public boolean preHandle(HttpServletRequest request,
-			HttpServletResponse response, Object handler) throws Exception {
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
 		// 获取请求的url
 		String url = request.getRequestURI();
@@ -35,7 +36,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		HttpSession session = request.getSession();
 
 		// 从session中取出用户身份信息
-		String username = (String) session.getAttribute("username");
+		User username = (User) session.getAttribute("user");
 
 		if (username != null) {
 			// 身份存在，放行
@@ -45,15 +46,10 @@ public class LoginInterceptor implements HandlerInterceptor {
 		if (request.getMethod().equalsIgnoreCase("GET")) {
 
 			// 跳转地址
-			String redirectUrl = request.getQueryString() != null ? request
-					.getRequestURI() + "?" + request.getQueryString() : request
-					.getRequestURI();
+			String redirectUrl = request.getQueryString() != null ? request.getRequestURI() + "?" + request.getQueryString() : request.getRequestURI();
 
 			// 重定向
-					
-			response.sendRedirect(request.getContextPath()
-					+ "/user/login?backurl="
-					+ URLEncoder.encode(redirectUrl, "utf-8"));
+			response.sendRedirect(request.getContextPath() + "/user/login?backurl=" + URLEncoder.encode(redirectUrl, "utf-8"));
 		} else {
 			response.sendRedirect(request.getContextPath() + "/user/login");
 		}
@@ -66,16 +62,12 @@ public class LoginInterceptor implements HandlerInterceptor {
 
 	}
 
-	public void postHandle(HttpServletRequest request,
-			HttpServletResponse response, Object handler,
-			ModelAndView modelAndView) throws Exception {
+	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
 		// TODO Auto-generated method stub
 
 	}
 
-	public void afterCompletion(HttpServletRequest request,
-			HttpServletResponse response, Object handler, Exception ex)
-			throws Exception {
+	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
 		// TODO Auto-generated method stub
 
 	}
