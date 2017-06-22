@@ -19,6 +19,7 @@
 			<if test="updatedate!=null and updatedate!=''">UpdateDate=#{updatedate},</if>
 			<if test="salt!=null and salt!=''">Salt=#{salt},</if>
 			<if test="password!=null and password!=''">PassWord=#{password},</if>
+			<if test="lastlogondate!=null and lastlogondate!=''">LastLogonDate=#{lastlogondate}</if>
 		</set>
 		where ID=#{id}
 	</update>

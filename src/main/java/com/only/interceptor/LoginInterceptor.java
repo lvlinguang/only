@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.only.controller.admin.BaseController;
 import com.only.model.User;
 
 /**
@@ -17,12 +18,12 @@ import com.only.model.User;
  * @author lvlinguang
  * 
  */
-public class LoginInterceptor implements HandlerInterceptor {
+public class LoginInterceptor extends BaseController implements HandlerInterceptor {
 
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
 		// 获取请求的url
-		String url = request.getRequestURI();
+		// String url = request.getRequestURI();
 
 		// 判断url是否是公开 地址（实际使用时将公开 地址配置配置文件中）
 		// 这里公开地址是登陆提交的地址
@@ -32,13 +33,15 @@ public class LoginInterceptor implements HandlerInterceptor {
 		// return true;
 		// }
 
-		// 判断session
-		HttpSession session = request.getSession();
+		// // 判断session
+		// HttpSession session = request.getSession();
+		//
+		// // 从session中取出用户身份信息
+		// User username = (User) session.getAttribute("user");
 
-		// 从session中取出用户身份信息
-		User username = (User) session.getAttribute("user");
+		// 验证是否已登录
+		if (IsLogin(request)) {
 
-		if (username != null) {
 			// 身份存在，放行
 			return true;
 		}

@@ -1,5 +1,6 @@
 package com.only.controller.admin;
 
+import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -22,19 +23,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.only.mapper.UserMapper;
 import com.only.model.Permissions;
 import com.only.model.Role;
 import com.only.model.User;
 import com.only.model.UserCustom;
-import com.only.model.UserQueryVo;
 import com.only.model.UserRole;
+import com.only.model.Userlogon;
 import com.only.model.xgui.DataGrid;
 import com.only.model.xgui.Json;
 import com.only.model.xgui.PageHelper;
 import com.only.model.xgui.Tree;
 import com.only.service.PermissionsService;
 import com.only.service.RoleService;
+import com.only.service.UserLogonService;
 import com.only.service.UserRoleService;
 import com.only.service.UserService;
 import com.only.util.CookieUtil;
@@ -62,15 +63,15 @@ public class UserController extends BaseController {
 	@Autowired
 	private PermissionsService permissionsService;
 
+	@Autowired
+	private UserLogonService userLogonService;
+
 	// 登录界面
 	@RequestMapping("/login")
-	public String Login(HttpSession session) {
-
-		// 得到session用户
-		User uString = (User) session.getAttribute("user");
+	public String Login(HttpServletRequest request, HttpSession session) throws NumberFormatException, Exception {
 
 		// 如果已登录中转到首页
-		if (uString != null) {
+		if (IsLogin(request)) {
 			return "redirect:/";
 		}
 
@@ -80,8 +81,7 @@ public class UserController extends BaseController {
 	// 登录验证
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public @ResponseBody
-	Json login(HttpServletRequest request, HttpServletResponse response, HttpSession session, String Account, String PassWord, boolean Rememberme)
-			throws Exception {
+	Json login(HttpServletRequest request, HttpServletResponse response, HttpSession session, String Account, String PassWord, boolean Rememberme) throws Exception {
 
 		Json json = new Json();
 
@@ -103,49 +103,51 @@ public class UserController extends BaseController {
 			return json;
 		}
 
+		// 用户登录日志
+		Userlogon userlogon = userLogonService.getUserLogonByUser(user.getId());
+
+		// 更新用户信息
+		if (userlogon != null) {
+
+			User user2 = new User();
+			user2.setId(user.getId());
+			user2.setLastlogondate(userlogon.getCreatedate());
+			user2.setUpdatedate(new Date());
+			userService.updateUser(user2);
+		}
+
+		// 删除登录日志
+		userLogonService.deleteUserLogon(user.getId());
+
+		// 添加登录日志
+		Userlogon data = new Userlogon();
+		data.setUserid(user.getId());
+		data.setToken(UUID.randomUUID().toString().replace("-", ""));
+		data.setExpirydate(new Date());
+
+		// ip地址
+		String ip = InetAddress.getLocalHost().getHostAddress();
+
+		data.setIpaddress(ip);
+
+		userLogonService.addUserLogon(data);
+
 		// 设置session
 		session.setAttribute("user", user);
 
-		// 设置cookie
-		//CookieUtil.addCookie(request, response, "username", user.getName());
+		// 记住密码
+		if (Rememberme) {
+
+			// 设置cookie
+			CookieUtil.addCookie(request, response, "uid", user.getId().toString());
+
+			CookieUtil.addCookie(request, response, "valid", data.getToken());
+		}
 
 		json.setSuccess(true);
 		json.setMsg("验证成功");
 		return json;
 
-		//
-		// if (code.toLowerCase().equals(
-		// request.getSession().getAttribute("RANDOMCODE").toString()
-		// .toLowerCase())) {
-		// User user = userService.findUserByName(loginname);
-		// if (user == null) {
-		// log.info("登陆用户名不存在");
-		// request.getSession().setAttribute("message", "用户名不存在，请重新登录");
-		// return "login";
-		// } else {
-		// if (user.getPassword().equals(password)) {
-		//
-		// if (autologinch != null && autologinch.equals("Y")) { //
-		// 判断是否要添加到cookie中
-		// // 保存用户信息到cookie
-		// UserCookieUtil.saveCookie(user, response);
-		// }
-		//
-		// // 保存用信息到session
-		// request.getSession().setAttribute(Const.SESSION_USER, user);
-		// return "redirect:" + RequestUtil.retrieveSavedRequest();// 跳转至访问页面
-		//
-		// } else {
-		// log.info("登陆密码错误");
-		// request.getSession().setAttribute("message",
-		// "用户名密码错误，请重新登录");
-		// return "login";
-		// }
-		// }
-		// } else {
-		// request.getSession().setAttribute("message", "验证码错误，请重新输入");
-		// return "login";
-		// }
 	}
 
 	// 用户注销
@@ -154,7 +156,7 @@ public class UserController extends BaseController {
 		// 清除session
 		session.invalidate();
 
-		//CookieUtil.removeCookie(request, response, "username");
+		// CookieUtil.removeCookie(request, response, "username");
 
 		return "redirect:/user/login";
 	}
@@ -177,12 +179,12 @@ public class UserController extends BaseController {
 
 	// 用户添加
 	@RequestMapping("/add")
-	public ModelAndView Add() throws Exception {
+	public ModelAndView Add(HttpServletRequest request) throws Exception {
 
 		ModelAndView modelAndView = new ModelAndView();
 
 		// 用户权限
-		List<Permissions> permissions = permissionsService.getUserPrmissionsList(UID());
+		List<Permissions> permissions = permissionsService.getUserPrmissionsList(UID(request));
 
 		// 权限树
 		List<Tree> trees = getPermissionTree(permissions);
@@ -201,12 +203,12 @@ public class UserController extends BaseController {
 
 	// 用户修改
 	@RequestMapping("/update")
-	public ModelAndView Update(Integer id) throws Exception {
+	public ModelAndView Update(HttpServletRequest request, Integer id) throws Exception {
 
 		ModelAndView modelAndView = new ModelAndView();
 
 		// 用户权限
-		List<Permissions> permissions = permissionsService.getUserPrmissionsList(UID());
+		List<Permissions> permissions = permissionsService.getUserPrmissionsList(UID(request));
 
 		// 权限树
 		List<Tree> trees = getPermissionTree(permissions);
