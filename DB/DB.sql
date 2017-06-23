@@ -82,69 +82,75 @@ CREATE TABLE `user` (
   `Name` varchar(30) NOT NULL COMMENT '姓名',
   `Account` varchar(100) NOT NULL COMMENT '帐号',
   `Password` varchar(100) NOT NULL COMMENT '密码',
-  `Salt` varchar(200) NOT NULL,
+  `Salt` varchar(200) DEFAULT NULL,
   `Mobile` varchar(30) DEFAULT NULL COMMENT '手机',
   `QQ` varchar(20) DEFAULT NULL COMMENT 'QQ',
   `Email` varchar(50) DEFAULT NULL COMMENT '邮件',
   `Address` varchar(200) DEFAULT NULL COMMENT '地址',
   `Avatar` varchar(200) DEFAULT NULL COMMENT '头像',
   `Description` varchar(500) DEFAULT NULL COMMENT '描述',
-  `LastLogonDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最后一次登录时间',
+  `LastLogonDate` datetime DEFAULT NULL COMMENT '最后一次登录时间',
   `Enable` bit(1) NOT NULL DEFAULT b'1' COMMENT '是否可用',
   `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `UpdateDate` datetime DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=gbk;
 
 /*Data for the table `user` */
 
-insert  into `user`(`ID`,`Name`,`Account`,`Password`,`Salt`,`Mobile`,`QQ`,`Email`,`Address`,`Avatar`,`Description`,`LastLogonDate`,`Enable`,`CreateDate`,`UpdateDate`) values (1,'管理员','admin','111111','sf',NULL,NULL,NULL,NULL,NULL,NULL,'2017-06-08 22:17:50','','2012-06-08 00:00:00',NULL);
+insert  into `user`(`ID`,`Name`,`Account`,`Password`,`Salt`,`Mobile`,`QQ`,`Email`,`Address`,`Avatar`,`Description`,`LastLogonDate`,`Enable`,`CreateDate`,`UpdateDate`) values (1,'管理员','admin','111111','sf','15825477180',NULL,NULL,NULL,NULL,NULL,'2017-06-08 22:17:50','','2012-06-08 00:00:00','2017-06-21 23:26:22'),(2,'小吕','admin2','e12324',NULL,'',NULL,NULL,NULL,NULL,NULL,'2017-06-21 21:11:47','','2017-06-21 21:11:47',NULL),(3,'小吕','admin3','8x/uFhuq6nmWY9f7eRoqCg==','e8ed31b527d240878331414c8f7bfbe5','15825477180',NULL,NULL,NULL,NULL,NULL,'2017-06-22 23:18:27','','2017-06-21 21:14:29','2017-06-22 23:41:30'),(4,'小吕修改','admin5','e12324',NULL,'13666496036',NULL,NULL,NULL,NULL,NULL,'2017-06-21 21:15:36','','2017-06-21 21:15:36','2017-06-21 23:20:39');
 
 /*Table structure for table `userlogon` */
 
 DROP TABLE IF EXISTS `userlogon`;
 
 CREATE TABLE `userlogon` (
-  `ID` int(11) NOT NULL,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `UserID` int(11) NOT NULL COMMENT '用户ID',
-  `Token` varchar(50) NOT NULL COMMENT 'token',
+  `Token` varchar(200) NOT NULL COMMENT 'token',
   `ExpiryDate` datetime NOT NULL COMMENT 'token过期时间',
   `IPAddress` varchar(50) NOT NULL COMMENT '登录IP地址',
   `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=gbk;
 
 /*Data for the table `userlogon` */
+
+insert  into `userlogon`(`ID`,`UserID`,`Token`,`ExpiryDate`,`IPAddress`,`CreateDate`) values (9,3,'bc4c8d9a24de43ab88916a7e390c87d3','2017-06-24 23:41:31','192.168.221.1','2017-06-22 23:41:30');
 
 /*Table structure for table `userpermissions` */
 
 DROP TABLE IF EXISTS `userpermissions`;
 
 CREATE TABLE `userpermissions` (
-  `ID` int(11) NOT NULL,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `UserID` int(11) NOT NULL COMMENT '用户ID',
   `PermissionID` int(11) NOT NULL COMMENT '权限ID',
   `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `UpdateDate` datetime DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=gbk;
 
 /*Data for the table `userpermissions` */
+
+insert  into `userpermissions`(`ID`,`UserID`,`PermissionID`,`CreateDate`,`UpdateDate`) values (7,4,5,'2017-06-21 23:21:56',NULL),(8,4,6,'2017-06-21 23:21:56',NULL),(21,1,1,'2017-06-21 23:26:22',NULL),(22,1,2,'2017-06-21 23:26:22',NULL),(23,1,3,'2017-06-21 23:26:22',NULL),(24,1,4,'2017-06-21 23:26:22',NULL),(25,1,5,'2017-06-21 23:26:22',NULL),(26,1,6,'2017-06-21 23:26:22',NULL),(27,3,1,'2017-06-22 20:44:19',NULL),(28,3,2,'2017-06-22 20:44:19',NULL),(29,3,3,'2017-06-22 20:44:19',NULL),(30,3,4,'2017-06-22 20:44:19',NULL),(31,3,5,'2017-06-22 20:44:19',NULL),(32,3,6,'2017-06-22 20:44:19',NULL);
 
 /*Table structure for table `userrole` */
 
 DROP TABLE IF EXISTS `userrole`;
 
 CREATE TABLE `userrole` (
-  `ID` int(11) NOT NULL,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `UserID` int(11) NOT NULL COMMENT '用户ID',
   `RoleID` int(11) NOT NULL COMMENT '角色ID',
   `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `UpdateDate` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=gbk;
 
 /*Data for the table `userrole` */
+
+insert  into `userrole`(`ID`,`UserID`,`RoleID`,`CreateDate`,`UpdateDate`) values (1,3,1,'2017-06-21 21:14:30','2017-06-21 21:14:30'),(2,4,2,'2017-06-21 21:15:36','2017-06-21 21:15:36');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

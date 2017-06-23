@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.only.mapper.UserlogonMapper" >
- 
+<mapper namespace="com.only.mapper.UserlogonMapper">
+
+	<!-- 添加登录日志 -->
+	<insert id="addUserLogon" useGeneratedKeys="true" keyProperty="id">
+		insert into UserLogon(UserID,Token,ExpiryDate,IPAddress)
+		values(#{userid},#{token},#{expirydate},#{ipaddress})
+	</insert>
+
+	<!-- 删除登录日志 -->
+	<delete id="deleteUserLogon" parameterType="int">
+		delete from UserLogon
+		where UserID=#{userid}
+	</delete>
+
+	<!-- 日志详情 -->
+	<select id="getUserLogonByUser" resultType="com.only.model.Userlogon">
+		select * from
+		UserLogon where UserID=#{userid} limit 1
+	</select>
+
 </mapper>

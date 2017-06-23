@@ -25,4 +25,7 @@
 	<!-- 用户角色 -->
 	<bean class="com.only.service.impl.UserRoleServiceImpl"></bean>
 
+	<!-- 用户登录日志 -->
+	<bean class="com.only.service.impl.UserLogonServiceImpl"></bean>
+
 </beans>
