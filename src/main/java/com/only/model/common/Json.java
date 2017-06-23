@@ -1,4 +1,4 @@
-package com.only.model.xgui;
+package com.only.model.common;
 
 /**
  * json返回结果

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<only>
+	<setting name="siteName" value="一元夺宝" />
+	<setting name="siteUrl" value="http://127.0.0.1:8080/only/" />
+	<setting name="address" value="浙江省，宁波市" />
+	<setting name="phone" value="0574-8556665" />
+	<setting name="email" value="635074566@qq.com" />
+	<setting name="certtext" value="浙ICP备13030673号-1" />
+	<setting name="uploadMaxSize" value="10" />
+	<setting name="uploadImageExtension" value="jpg,jpeg,bmp,gif,png" />
+	<setting name="uploadFileExtension" value="zip,rar,7z,doc,docx,xls,xlsx,ppt,pptx" />
+	<setting name="imageUploadPath" value="/upload/image/" />
+	<setting name="isDevelopmentEnabled" value="false" />
+	<setting name="cookiePath" value="/" />
+	<setting name="cookieDomain" value="" />
+
+</only>

@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.only.mapper.RoleMapper;
 import com.only.model.Role;
-import com.only.model.xgui.PageHelper;
+import com.only.model.common.PageHelper;
 import com.only.service.RoleService;
 
 /**

@@ -8,7 +8,7 @@ import com.only.mapper.UserMapper;
 import com.only.model.User;
 import com.only.model.UserCustom;
 import com.only.model.UserQueryVo;
-import com.only.model.xgui.PageHelper;
+import com.only.model.common.PageHelper;
 import com.only.service.UserService;
 
 /**

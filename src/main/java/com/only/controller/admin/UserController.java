@@ -29,10 +29,11 @@ import com.only.model.User;
 import com.only.model.UserCustom;
 import com.only.model.UserRole;
 import com.only.model.Userlogon;
-import com.only.model.xgui.DataGrid;
-import com.only.model.xgui.Json;
-import com.only.model.xgui.PageHelper;
-import com.only.model.xgui.Tree;
+import com.only.model.common.DataGrid;
+import com.only.model.common.Json;
+import com.only.model.common.PageHelper;
+import com.only.model.common.Setting;
+import com.only.model.common.Tree;
 import com.only.service.PermissionsService;
 import com.only.service.RoleService;
 import com.only.service.UserLogonService;
@@ -40,6 +41,7 @@ import com.only.service.UserRoleService;
 import com.only.service.UserService;
 import com.only.util.CookieUtil;
 import com.only.util.Encrypt;
+import com.only.util.SettingUtil;
 
 /**
  * 用户控制器
@@ -69,6 +71,10 @@ public class UserController extends BaseController {
 	// 登录界面
 	@RequestMapping("/login")
 	public String Login(HttpServletRequest request, HttpSession session) throws NumberFormatException, Exception {
+		
+		Setting setting=SettingUtil.get();
+		
+		String name=setting.getSiteName();
 
 		// 如果已登录中转到首页
 		if (IsLogin(request)) {

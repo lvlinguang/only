@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.only.model.User;
 import com.only.model.UserCustom;
-import com.only.model.xgui.PageHelper;
+import com.only.model.common.PageHelper;
 
 /**
  * 用户信息接口

@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.only.model.Role;
-import com.only.model.xgui.PageHelper;
+import com.only.model.common.PageHelper;
 
 /**
  * 角色
