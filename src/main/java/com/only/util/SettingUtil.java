@@ -22,7 +22,6 @@ import com.only.model.common.Setting;
  * @author lvlinguang
  * 
  */
-// @SuppressWarnings("unchecked")
 public class SettingUtil {
 
 	/** BeanUtilsBean */
@@ -69,8 +68,11 @@ public class SettingUtil {
 
 			Document document = new SAXReader().read(shopXmlFile);
 
-			// 得到setting节点
-			List<Element> elements = document.selectNodes("/only/setting");
+			// 获取根元素
+			Element root = document.getRootElement();
+
+			// 获取所有子元素
+			List<Element> elements = root.elements("setting");
 
 			for (Element element : elements) {
 
@@ -79,7 +81,7 @@ public class SettingUtil {
 
 				// 值
 				String value = element.attributeValue("value");
-//gh_d013fcae11bb
+
 				try {
 
 					// 设置数据

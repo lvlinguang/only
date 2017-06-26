@@ -8,8 +8,10 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.Assert;
+
+import com.only.model.common.Setting;
 
 public class CookieUtil {
 
@@ -39,7 +41,8 @@ public class CookieUtil {
 	 * @param secure
 	 *            是否启用加密
 	 */
-	public static void addCookie(HttpServletRequest request, HttpServletResponse response, String name, String value, Integer maxAge, String path, String domain, Boolean secure) {
+	public static void addCookie(HttpServletRequest request, HttpServletResponse response, String name, String value, Integer maxAge, String path,
+			String domain, Boolean secure) {
 		Assert.notNull(request);
 		Assert.notNull(response);
 		Assert.hasText(name);
@@ -50,16 +53,10 @@ public class CookieUtil {
 			if (maxAge != null) {
 				cookie.setMaxAge(maxAge);
 			}
-			// if (StringUtils.isNotEmpty(path)) {
-			// cookie.setPath(path);
-			// }
-			// if (StringUtils.isNotEmpty(domain)) {
-			// cookie.setDomain(domain);
-			// }
-			if (path != null && path != "") {
+			if (StringUtils.isNotEmpty(path)) {
 				cookie.setPath(path);
 			}
-			if (domain != null && domain != "") {
+			if (StringUtils.isNotEmpty(domain)) {
 				cookie.setDomain(domain);
 			}
 			if (secure != null) {
@@ -87,7 +84,9 @@ public class CookieUtil {
 	 */
 	public static void addCookie(HttpServletRequest request, HttpServletResponse response, String name, String value, Integer maxAge) {
 
-		addCookie(request, response, name, value, maxAge, "", "", null);
+		Setting setting = SettingUtil.get();
+
+		addCookie(request, response, name, value, maxAge, setting.getCookiePath(), setting.getCookieDomain(), null);
 	}
 
 	/**
@@ -104,7 +103,9 @@ public class CookieUtil {
 	 */
 	public static void addCookie(HttpServletRequest request, HttpServletResponse response, String name, String value) {
 
-		addCookie(request, response, name, value, null, "/", "", null);
+		Setting setting = SettingUtil.get();
+
+		addCookie(request, response, name, value, null, setting.getCookiePath(), setting.getCookieDomain(), null);
 	}
 
 	/**
@@ -181,7 +182,9 @@ public class CookieUtil {
 	 */
 	public static void removeCookie(HttpServletRequest request, HttpServletResponse response, String name) {
 
-		removeCookie(request, response, name, null, null);
+		Setting setting = SettingUtil.get();
+
+		removeCookie(request, response, name, setting.getCookiePath(), setting.getCookieDomain());
 	}
 
 }

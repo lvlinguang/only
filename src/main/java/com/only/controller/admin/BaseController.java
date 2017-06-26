@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.only.model.User;
@@ -65,7 +66,7 @@ public class BaseController {
 
 			String token = CookieUtil.getCookie(request, "valid");
 
-			if (uid != null && uid != "" && token != null && token != "") {
+			if (StringUtils.isNotEmpty(uid) && StringUtils.isNotEmpty(token)) {
 
 				// 用户登录信息
 				Userlogon userlogon = userLogonService.getUserLogonByUser(Integer.parseInt(uid));

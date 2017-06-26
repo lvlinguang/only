@@ -2,24 +2,19 @@ package com.only.controller.admin;
 
 import java.net.InetAddress;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.lang.StringUtils;
-import org.apache.ibatis.scripting.xmltags.VarDeclSqlNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -32,7 +27,6 @@ import com.only.model.Userlogon;
 import com.only.model.common.DataGrid;
 import com.only.model.common.Json;
 import com.only.model.common.PageHelper;
-import com.only.model.common.Setting;
 import com.only.model.common.Tree;
 import com.only.service.PermissionsService;
 import com.only.service.RoleService;
@@ -41,7 +35,7 @@ import com.only.service.UserRoleService;
 import com.only.service.UserService;
 import com.only.util.CookieUtil;
 import com.only.util.Encrypt;
-import com.only.util.SettingUtil;
+import com.only.util.Tool;
 
 /**
  * 用户控制器
@@ -71,10 +65,6 @@ public class UserController extends BaseController {
 	// 登录界面
 	@RequestMapping("/login")
 	public String Login(HttpServletRequest request, HttpSession session) throws NumberFormatException, Exception {
-		
-		Setting setting=SettingUtil.get();
-		
-		String name=setting.getSiteName();
 
 		// 如果已登录中转到首页
 		if (IsLogin(request)) {
@@ -87,7 +77,8 @@ public class UserController extends BaseController {
 	// 登录验证
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public @ResponseBody
-	Json login(HttpServletRequest request, HttpServletResponse response, HttpSession session, String Account, String PassWord, boolean Rememberme) throws Exception {
+	Json login(HttpServletRequest request, HttpServletResponse response, HttpSession session, String Account, String PassWord, boolean Rememberme)
+			throws Exception {
 
 		Json json = new Json();
 
@@ -129,7 +120,9 @@ public class UserController extends BaseController {
 		Userlogon data = new Userlogon();
 		data.setUserid(user.getId());
 		data.setToken(UUID.randomUUID().toString().replace("-", ""));
-		data.setExpirydate(new Date());
+
+		// 设置过期时间
+		data.setExpirydate(Tool.getDateAdd(new Date(), Calendar.DATE, 7));
 
 		// ip地址
 		String ip = InetAddress.getLocalHost().getHostAddress();
@@ -145,9 +138,9 @@ public class UserController extends BaseController {
 		if (Rememberme) {
 
 			// 设置cookie
-			CookieUtil.addCookie(request, response, "uid", user.getId().toString());
+			CookieUtil.addCookie(request, response, "uid", user.getId().toString(), 7 * 24 * 3600);
 
-			CookieUtil.addCookie(request, response, "valid", data.getToken());
+			CookieUtil.addCookie(request, response, "valid", data.getToken(), 7 * 24 * 3600);
 		}
 
 		json.setSuccess(true);
@@ -162,7 +155,9 @@ public class UserController extends BaseController {
 		// 清除session
 		session.invalidate();
 
-		// CookieUtil.removeCookie(request, response, "username");
+		CookieUtil.removeCookie(request, response, "uid");
+		
+		CookieUtil.removeCookie(request, response, "valid");
 
 		return "redirect:/user/login";
 	}
