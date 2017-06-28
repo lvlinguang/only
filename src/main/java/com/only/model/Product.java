@@ -3,7 +3,7 @@ package com.only.model;
 import java.util.Date;
 
 /**
- * 商品管理
+ * 商品
  * 
  * @author lvlinguang
  * 
@@ -13,29 +13,29 @@ public class Product {
 
 	private String name;
 
-	private Integer categoryid;
+	private Integer categoryId;
 
 	private String thumbnail;
 
 	private Long price;
 
-	private String artnamber;
+	private String artNumber;
 
-	private Date puttime;
+	private Date putTime;
 
-	private Date intime;
+	private Date inTime;
 
-	private Date undertime;
+	private Date underTime;
 
-	private Integer uid;
+	private Integer userId;
 
-	private Date createdate;
+	private Date createDate;
 
-	private Date updatedate;
+	private Date updateDate;
 
 	private Integer flag;
 
-	private Integer cityid;
+	private Integer cityId;
 
 	private Boolean enalble;
 
@@ -57,12 +57,12 @@ public class Product {
 		this.name = name == null ? null : name.trim();
 	}
 
-	public Integer getCategoryid() {
-		return categoryid;
+	public Integer getCategoryId() {
+		return categoryId;
 	}
 
-	public void setCategoryid(Integer categoryid) {
-		this.categoryid = categoryid;
+	public void setCategoryId(Integer categoryId) {
+		this.categoryId = categoryId;
 	}
 
 	public String getThumbnail() {
@@ -81,60 +81,60 @@ public class Product {
 		this.price = price;
 	}
 
-	public String getArtnamber() {
-		return artnamber;
+	public String getArtNumber() {
+		return artNumber;
 	}
 
-	public void setArtnamber(String artnamber) {
-		this.artnamber = artnamber == null ? null : artnamber.trim();
+	public void setArtNumber(String artNumber) {
+		this.artNumber = artNumber == null ? null : artNumber.trim();
 	}
 
-	public Date getPuttime() {
-		return puttime;
+	public Date getPutTime() {
+		return putTime;
 	}
 
-	public void setPuttime(Date puttime) {
-		this.puttime = puttime;
+	public void setPutTime(Date putTime) {
+		this.putTime = putTime;
 	}
 
-	public Date getIntime() {
-		return intime;
+	public Date getInTime() {
+		return inTime;
 	}
 
-	public void setIntime(Date intime) {
-		this.intime = intime;
+	public void setInTime(Date inTime) {
+		this.inTime = inTime;
 	}
 
-	public Date getUndertime() {
-		return undertime;
+	public Date getUnderTime() {
+		return underTime;
 	}
 
-	public void setUndertime(Date undertime) {
-		this.undertime = undertime;
+	public void setUnderTime(Date underTime) {
+		this.underTime = underTime;
 	}
 
-	public Integer getUid() {
-		return uid;
+	public Integer getUserId() {
+		return userId;
 	}
 
-	public void setUid(Integer uid) {
-		this.uid = uid;
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
-	public Date getCreatedate() {
-		return createdate;
+	public Date getCreateDate() {
+		return createDate;
 	}
 
-	public void setCreatedate(Date createdate) {
-		this.createdate = createdate;
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
 	}
 
-	public Date getUpdatedate() {
-		return updatedate;
+	public Date getUpdateDate() {
+		return updateDate;
 	}
 
-	public void setUpdatedate(Date updatedate) {
-		this.updatedate = updatedate;
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
 	}
 
 	public Integer getFlag() {
@@ -145,12 +145,12 @@ public class Product {
 		this.flag = flag;
 	}
 
-	public Integer getCityid() {
-		return cityid;
+	public Integer getCityId() {
+		return cityId;
 	}
 
-	public void setCityid(Integer cityid) {
-		this.cityid = cityid;
+	public void setCityId(Integer cityId) {
+		this.cityId = cityId;
 	}
 
 	public Boolean getEnalble() {

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.only.mapper.ProductCategoryMapper">
+
+	<!-- 添加分类 -->
+	<insert id="addProductCategory" useGeneratedKeys="true"
+		keyProperty="id">
+		insert into
+		product_category(name,description,canshow,icon,sequence)
+		values(#{name},#{description},#{canshow},#{icon},#{sequence})
+	</insert>
+
+	<!-- 修改分类 -->
+	<update id="updateProductCategory">
+		update product_category
+		<set>
+			<if test="name!=null and name !=''">name=#{name},</if>
+			<if test="description!=null and description !=''">description=#{description},</if>
+			<if test="canshow!=null and canshow !=''">canshow=#{canshow},</if>
+			<if test="icon!=null and icon !=''">Icon=#{icon},</if>
+			<if test="sequence!=null and sequence !=''">sequence=#{sequence}</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<!-- 删除分类 -->
+	<update id="deleteProductCategory" parameterType="int">
+		update
+		product_category set
+		enable=0 where ID=#{id}
+	</update>
+
+	<!-- 分类列表总数 -->
+	<select id="getProductCategoryListTotal" resultType="int">
+		select count(0)
+		from product_category
+		where enable=1
+		<if test="name!=null and name!=''">
+			and Name like concat('%',#{name},'%')
+		</if>
+	</select>
+
+
+	<!-- 分类列表 -->
+	<select id="getProductCategoryList" resultType="com.only.model.ProductCategory">
+		select
+		id,
+		name,
+		canshow,
+		icon,
+		sequence,
+		description,
+		create_date as
+		createDate
+		from product_category
+		where enable=1
+		<if test="name!=null and name!=''">
+			and name like concat('%',#{name},'%')
+		</if>
+		<if test="page!=null">
+			<if test="page.sort!=null and page.sort!=''">
+				order by #{page.sort} #{page.order}
+			</if>
+			<if test="page.pageIndex>0">
+				limit #{page.start},#{page.end}
+			</if>
+		</if>
+	</select>
+
+
+</mapper>

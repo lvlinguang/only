@@ -20,40 +20,32 @@
 
 		<li class=""><a href="${path}/user/">用户管理</a></li>
 
-		<li class=""><a href="~/menu/index">菜单管理</a></li>
+		<li class=""><a href="${path}/category/">商品类目</a></li>
 
-		<li class=""><a href="~/ExpressCompany/index">物流管理</a></li>
+		<li class=""><a href="${path}/group/">商品分组</a></li>
 
-		<li class=""><a href="~/city/index">地区管理</a></li>
+		<li class=""><a href="${path}/banner/">Banner管理</a></li>
 
-		<li class=""><a href="~/Category/index">商品类目</a></li>
+		<li class=""><a href="${path}/comment/">晒单管理</a></li>
 
-		<li class=""><a href="~/Group/index">商品分组</a></li>
-
-		<li class=""><a href="~/Banner/index">Banner管理</a></li>
-
-		<li class=""><a href="~/Comment/index">晒单管理</a></li>
-
-		<li class=""><a href="~/ProblemManagement/index">问题管理</a></li>
-
-		<li class=""><a href="/product">商品管理</a>
+		<li class=""><a href="${path}/product">商品管理</a>
 
 			<ul class="subList">
-				<li><a href="/product/add" class=""> 商品发布 </a></li>
+				<li><a href="${path}/product/add" class=""> 商品发布 </a></li>
 			</ul></li>
 
-		<li class=""><a href="/activity">活动管理</a>
+		<li class=""><a href="${path}/activity">活动管理</a>
 			<ul class="subList">
 
-				<li><a href="/activity/add" class=""> 活动创建 </a></li>
+				<li><a href="${path}/activity/add" class=""> 活动创建 </a></li>
 
-				<li><a href="/activity/manage" class=""> 活动审核 </a></li>
+				<li><a href="${path}/activity/manage" class=""> 活动审核 </a></li>
 
 			</ul></li>
 
-		<li class=""><a href="~/order?type=1">订单管理</a></li>
+		<li class=""><a href="${path}/order/">订单管理</a></li>
 
-		<li class=""><a href="~/income?type=1">收入管理</a></li>
+		<li class=""><a href="${path}/income/">收入管理</a></li>
 
 	</ul>
 </div>

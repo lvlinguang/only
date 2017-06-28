@@ -5,71 +5,78 @@
 	<!-- 权限列表 -->
 	<select id="getPermissionsList" resultType="com.only.model.Permissions">
 		select
-		ID,Name,GroupName,Description,CreateDate from
+		id,
+		name,
+		group_name as groupName,
+		description,
+		create_date as createDate
+		from
 		permissions
 		where
-		Enable=1
-		order by GroupName
+		enable=1
+		order by group_name
 	</select>
 
 	<!-- 添加角色权限 -->
 	<insert id="addRolePermissions">
-		insert into RolePermissions(RoleID,PermissionID)
+		insert into role_permissions(role_id,permission_id)
 		values(#{roleid},#{permissionid})
 	</insert>
 
 	<!-- 删除角色权限 -->
 	<delete id="deleteRolePermissions" parameterType="int">
 		delete from
-		rolepermissions where RoleID=#{roleid}
+		role_permissions where role_id=#{roleid}
 	</delete>
 
 	<!-- 角色权限列表 -->
 	<select id="getRolePermissionsList" resultType="com.only.model.Permissions">
 
 		select
-		a.ID,
-		a.Name,
-		a.GroupName,
-		a.Controller,
-		a.Action,
-		a.Description,
-		a.CreateDate
+		a.id,
+		a.name,
+		a.group_name as groupName,
+		a.controller,
+		a.action,
+		a.description,
+		a.create_date as createDate
 
 		from permissions AS a
-		left join rolepermissions as b on
-		a.ID=b.PermissionID
-		where a.Enable=1 AND b.RoleID=#{roleid}
+		left join
+		role_permissions as b on
+		a.id=b.permission_id
+		where a.enable=1 AND
+		b.role_id=#{roleid}
 
 	</select>
-	
+
 	<!-- 添加用户权限 -->
 	<insert id="addUserPermissions">
-		insert into UserPermissions(UserID,PermissionID)
+		insert into user_permissions(user_id,permission_id)
 		values(#{userid},#{permissionid})
 	</insert>
 
 	<!-- 删除用户权限 -->
 	<delete id="deleteUserPermissions" parameterType="int">
 		delete from
-		userpermissions where UserID=#{userid}
+		user_permissions where user_id=#{userid}
 	</delete>
 
 	<!-- 用户权限列表 -->
 	<select id="getUserPrmissionsList" resultType="com.only.model.Permissions">
 		SELECT
-		a.ID,
-		a.Name,
-		a.GroupName,
-		a.Controller,
-		a.Action,
-		a.Description,
-		a.CreateDate
+		a.id,
+		a.name,
+		a.group_name as groupName,
+		a.controller,
+		a.action,
+		a.description,
+		a.create_date as createDate
 
 		FROM permissions AS a
-		LEFT JOIN userpermissions AS b ON
-		a.ID=b.PermissionID
-		WHERE a.Enable=1 AND b.UserID=#{userid}
+		LEFT JOIN user_permissions AS b ON
+		a.id=b.permission_id
+		WHERE a.enable=1 AND b.user_id=#{userid}
 	</select>
 
 </mapper>

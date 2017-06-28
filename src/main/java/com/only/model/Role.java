@@ -2,74 +2,80 @@ package com.only.model;
 
 import java.util.Date;
 
+/**
+ * 角色
+ * 
+ * @author lvlinguang
+ * 
+ */
 public class Role {
-    private Integer id;
+	private Integer id;
 
-    private String name;
+	private String name;
 
-    private Integer indentation;
+	private Integer indentation;
 
-    private String description;
+	private String description;
 
-    private Boolean enable;
+	private Boolean enable;
 
-    private Date createdate;
+	private Date createDate;
 
-    private Date updatedate;
+	private Date updateDate;
 
-    public Integer getId() {
-        return id;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
+	public void setName(String name) {
+		this.name = name == null ? null : name.trim();
+	}
 
-    public Integer getIndentation() {
-        return indentation;
-    }
+	public Integer getIndentation() {
+		return indentation;
+	}
 
-    public void setIndentation(Integer indentation) {
-        this.indentation = indentation;
-    }
+	public void setIndentation(Integer indentation) {
+		this.indentation = indentation;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
-    }
+	public void setDescription(String description) {
+		this.description = description == null ? null : description.trim();
+	}
 
-    public Boolean getEnable() {
-        return enable;
-    }
+	public Boolean getEnable() {
+		return enable;
+	}
 
-    public void setEnable(Boolean enable) {
-        this.enable = enable;
-    }
+	public void setEnable(Boolean enable) {
+		this.enable = enable;
+	}
 
-    public Date getCreatedate() {
-        return createdate;
-    }
+	public Date getCreateDate() {
+		return createDate;
+	}
 
-    public void setCreatedate(Date createdate) {
-        this.createdate = createdate;
-    }
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
 
-    public Date getUpdatedate() {
-        return updatedate;
-    }
+	public Date getUpdateDate() {
+		return updateDate;
+	}
 
-    public void setUpdatedate(Date updatedate) {
-        this.updatedate = updatedate;
-    }
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
+	}
 }

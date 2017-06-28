@@ -2,8 +2,6 @@ package com.only.service;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-
 import com.only.model.User;
 import com.only.model.UserCustom;
 import com.only.model.common.PageHelper;
@@ -68,6 +66,5 @@ public interface UserService {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<UserCustom> getUserList(PageHelper page, int roleid, String name)
-			throws Exception;
+	public List<UserCustom> getUserList(PageHelper page, int roleid, String name) throws Exception;
 }

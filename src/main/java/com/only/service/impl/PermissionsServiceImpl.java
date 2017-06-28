@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.only.mapper.PermissionsMapper;
 import com.only.model.Permissions;
-import com.only.model.RolePermissions;
 import com.only.service.PermissionsService;
 
 /**
@@ -31,8 +30,7 @@ public class PermissionsServiceImpl implements PermissionsService {
 	/**
 	 * 添加角色权限
 	 */
-	public void addRolePermissions(Integer roleid, String permissionid)
-			throws Exception {
+	public void addRolePermissions(int roleid, String permissionid) throws Exception {
 
 		// 添加权限
 		String[] array = permissionid.split(",");
@@ -49,7 +47,7 @@ public class PermissionsServiceImpl implements PermissionsService {
 	/**
 	 * 删除角色权限
 	 */
-	public void deleteRolePermissions(Integer roleid) throws Exception {
+	public void deleteRolePermissions(int roleid) throws Exception {
 
 		permissionsMapper.deleteRolePermissions(roleid);
 	}
@@ -57,8 +55,7 @@ public class PermissionsServiceImpl implements PermissionsService {
 	/**
 	 * 角色权限列表
 	 */
-	public List<Permissions> getRolePermissionsList(Integer roleid)
-			throws Exception {
+	public List<Permissions> getRolePermissionsList(int roleid) throws Exception {
 
 		return permissionsMapper.getRolePermissionsList(roleid);
 	}
@@ -66,8 +63,7 @@ public class PermissionsServiceImpl implements PermissionsService {
 	/**
 	 * 添加用户权限
 	 */
-	public void addUserPermissions(Integer userid, String permissionid)
-			throws Exception {
+	public void addUserPermissions(int userid, String permissionid) throws Exception {
 
 		// 添加权限
 		String[] array = permissionid.split(",");
@@ -84,7 +80,7 @@ public class PermissionsServiceImpl implements PermissionsService {
 	/**
 	 * 删除用户权限
 	 */
-	public void deleteUserPermissions(Integer userid) throws Exception {
+	public void deleteUserPermissions(int userid) throws Exception {
 
 		permissionsMapper.deleteUserPermissions(userid);
 	}
@@ -92,8 +88,7 @@ public class PermissionsServiceImpl implements PermissionsService {
 	/**
 	 * 用户权限列表
 	 */
-	public List<Permissions> getUserPrmissionsList(Integer userid)
-			throws Exception {
+	public List<Permissions> getUserPrmissionsList(int userid) throws Exception {
 
 		return permissionsMapper.getUserPrmissionsList(userid);
 	}

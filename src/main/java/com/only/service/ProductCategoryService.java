@@ -2,7 +2,7 @@ package com.only.service;
 
 import java.util.List;
 
-import com.only.model.Category;
+import com.only.model.ProductCategory;
 import com.only.model.common.PageHelper;
 
 /**
@@ -11,7 +11,7 @@ import com.only.model.common.PageHelper;
  * @author lvlinguang
  * 
  */
-public interface CategoryService {
+public interface ProductCategoryService {
 
 	/**
 	 * 添加分类
@@ -19,7 +19,7 @@ public interface CategoryService {
 	 * @param category
 	 * @throws Exception
 	 */
-	public void addCategory(Category category) throws Exception;
+	public void addCategory(ProductCategory productCategory) throws Exception;
 
 	/**
 	 * 修改分类
@@ -27,7 +27,7 @@ public interface CategoryService {
 	 * @param category
 	 * @throws Exception
 	 */
-	public void updateCategory(Category category) throws Exception;
+	public void updateCategory(ProductCategory productCategory) throws Exception;
 
 	/**
 	 * 删除分类
@@ -54,5 +54,5 @@ public interface CategoryService {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<Category> getCategoryList(PageHelper page, String name) throws Exception;
+	public List<ProductCategory> getCategoryList(PageHelper page, String name) throws Exception;
 }

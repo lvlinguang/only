@@ -2,8 +2,6 @@ package com.only.service;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-
 import com.only.model.Role;
 import com.only.model.common.PageHelper;
 
@@ -65,7 +63,6 @@ public interface RoleService {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<Role> getRoleList(PageHelper page, String name)
-			throws Exception;
+	public List<Role> getRoleList(PageHelper page, String name) throws Exception;
 
 }

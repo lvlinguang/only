@@ -20,7 +20,7 @@ public class UserRoleServiceImpl implements UserRoleService {
 	/**
 	 * 添加用户角色
 	 */
-	public void addUserRole(Integer userid, Integer roleid) throws Exception {
+	public void addUserRole(int userid, int roleid) throws Exception {
 
 		userRoleMapper.addUserRole(userid, roleid);
 	}
@@ -28,7 +28,7 @@ public class UserRoleServiceImpl implements UserRoleService {
 	/**
 	 * 修改用户角色
 	 */
-	public void updateUserRole(Integer userid, Integer roleid) throws Exception {
+	public void updateUserRole(int userid, int roleid) throws Exception {
 
 		userRoleMapper.updateUserRole(userid, roleid);
 	}

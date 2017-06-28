@@ -17,15 +17,15 @@ public class City {
 
 	private String pinyin;
 
-	private Integer parentid;
+	private Integer parentId;
 
 	private Integer hierarchy;
 
 	private Integer sequence;
 
-	private Date createdate;
+	private Date createDate;
 
-	private Date updatedate;
+	private Date updateDate;
 
 	public Integer getId() {
 		return id;
@@ -59,12 +59,12 @@ public class City {
 		this.pinyin = pinyin == null ? null : pinyin.trim();
 	}
 
-	public Integer getParentid() {
-		return parentid;
+	public Integer getParentId() {
+		return parentId;
 	}
 
-	public void setParentid(Integer parentid) {
-		this.parentid = parentid;
+	public void setParentId(Integer parentId) {
+		this.parentId = parentId;
 	}
 
 	public Integer getHierarchy() {
@@ -83,19 +83,19 @@ public class City {
 		this.sequence = sequence;
 	}
 
-	public Date getCreatedate() {
-		return createdate;
+	public Date getCreateDate() {
+		return createDate;
 	}
 
-	public void setCreatedate(Date createdate) {
-		this.createdate = createdate;
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
 	}
 
-	public Date getUpdatedate() {
-		return updatedate;
+	public Date getUpdateDate() {
+		return updateDate;
 	}
 
-	public void setUpdatedate(Date updatedate) {
-		this.updatedate = updatedate;
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
 	}
 }

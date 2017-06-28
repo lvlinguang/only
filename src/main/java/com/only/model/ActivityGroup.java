@@ -3,12 +3,12 @@ package com.only.model;
 import java.util.Date;
 
 /**
- * 分组（1元、十元）
+ * 活动分组（一元、十元）
  * 
  * @author lvlinguang
  * 
  */
-public class Group {
+public class ActivityGroup {
 	private Integer id;
 
 	private String name;
@@ -23,9 +23,9 @@ public class Group {
 
 	private Boolean enable;
 
-	private Date createdate;
+	private Date createDate;
 
-	private Date updatedate;
+	private Date updateDate;
 
 	public Integer getId() {
 		return id;
@@ -83,19 +83,19 @@ public class Group {
 		this.enable = enable;
 	}
 
-	public Date getCreatedate() {
-		return createdate;
+	public Date getCreateDate() {
+		return createDate;
 	}
 
-	public void setCreatedate(Date createdate) {
-		this.createdate = createdate;
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
 	}
 
-	public Date getUpdatedate() {
-		return updatedate;
+	public Date getUpdateDate() {
+		return updateDate;
 	}
 
-	public void setUpdatedate(Date updatedate) {
-		this.updatedate = updatedate;
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
 	}
 }

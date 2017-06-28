@@ -5,93 +5,115 @@
 	<!-- 添加用户 -->
 	<insert id="addUser" useGeneratedKeys="true" keyProperty="id">
 		insert
-		into User(Name,Account,Password,Mobile,Salt)
+		into user(name,account,password,mobile,salt)
 		values(#{name},#{account},#{password},#{mobile},#{salt})
 	</insert>
 
 	<!-- 修改用户 -->
 	<update id="updateUser" parameterType="com.only.model.User">
-		update User
+		update user
 		<set>
-			<if test="name!=null and name!=''">Name=#{name},</if>
-			<if test="account!=null and account!=''">Account=#{account},</if>
-			<if test="mobile!=null and mobile!=''">Mobile=#{mobile},</if>
-			<if test="updatedate!=null and updatedate!=''">UpdateDate=#{updatedate},</if>
-			<if test="salt!=null and salt!=''">Salt=#{salt},</if>
+			<if test="name!=null and name!=''">name=#{name},</if>
+			<if test="account!=null and account!=''">account=#{account},</if>
+			<if test="mobile!=null and mobile!=''">mobile=#{mobile},</if>
+			<if test="updateDate!=null and updateDate!=''">update_date=#{updateDate},</if>
+			<if test="salt!=null and salt!=''">salt=#{salt},</if>
 			<if test="password!=null and password!=''">PassWord=#{password},</if>
-			<if test="lastlogondate!=null and lastlogondate!=''">LastLogonDate=#{lastlogondate}</if>
+			<if test="lastLogonDate!=null and lastLogonDate!=''">last_logon_date=#{lastLogonDate}</if>
 		</set>
-		where ID=#{id}
+		where id=#{id}
 	</update>
 
 	<!-- 删除用户 -->
 	<update id="deleteUser" parameterType="int">
-		update User set Enable=0
-		where ID=#{id}
+		update user set enable=0
+		where id=#{id}
 	</update>
 
 	<!-- 根据id得到数据 -->
 	<select id="getUserByID" parameterType="int" resultType="com.only.model.User">
-		select *
-		from User
+		select
+		u1.id,
+		u1.name,
+		u1.account,
+		u1.password,
+		u1.salt,
+		u1.mobile,
+		u1.qq,
+		u1.email,
+		u1.create_date as createDate
+		from user as u1
 		Where
-		ID=#{id}
+		id=#{id}
 	</select>
 
 	<!-- 根据帐号得到数据 -->
 	<select id="getUserByAccount" resultType="com.only.model.User">
-		select * from User
-		Where Account=#{account} limit 1
+		select
+		u1.id,
+		u1.name,
+		u1.account,
+		u1.password,
+		u1.salt,
+		u1.mobile,
+		u1.qq,
+		u1.email,
+		u1.create_date as createDate
+		from user as u1
+		Where account=#{account}
+		limit 1
 	</select>
 
 	<!-- 用户列表条数 -->
 	<select id="getUserListTotal" resultType="int">
 		SELECT
 		count(0)
-		from User AS u1
-		left join
-		UserRole AS
-		u2 on u1.ID=u2.UserID
-		left join Role AS r on u2.RoleID=r.ID
+		from user AS u1
+		left join user_role AS u2
+		on
+		u1.id=u2.user_id
+		left join role AS r on
+		u2.role_id=r.id
 		where
 		u1.enable=1
 		<if test="roleid!=null and roleid!=0">
-			and r.ID=#{roleid}
+			and r.id=#{roleid}
 		</if>
 		<if test="name!=null and name !=''">
-			and u1.Name like concat('%',#{name},'%')
+			and u1.name like concat('%',#{name},'%')
 		</if>
 	</select>
 
 	<!-- 用户列表 -->
 	<select id="getUserList" resultType="com.only.model.UserCustom">
 		SELECT
-		u1.ID,
-		u1.Name,
-		u1.Account,
-		u1.Password,
-		u1.Salt,
-		u1.Mobile,
-		u1.QQ,
-		u1.Email,
-		u1.CreateDate,
-		r.Name AS rolename
-		from User AS u1
-		left join
-		UserRole AS
-		u2 on u1.ID=u2.UserID
-		left join Role AS r on u2.RoleID=r.ID
+		u1.id,
+		u1.name,
+		u1.account,
+		u1.password,
+		u1.salt,
+		u1.mobile,
+		u1.qq,
+		u1.email,
+		u1.create_date as createDate,
+		r.name AS rolename
+		from user AS
+		u1
+		left join user_role AS u2
+		on u1.id=u2.user_id
+		left join role AS r on
+		u2.role_id=r.id
 		where
 		u1.enable=1
 		<if test="roleid!=null and roleid!=0">
-			and r.ID=#{roleid}
+			and r.id=#{roleid}
 		</if>
 		<if test="name!=null and name !=''">
-			and u1.Name like concat('%',#{name},'%')
+			and u1.name like concat('%',#{name},'%')
 		</if>
 		<if test="page!=null">
 			<if test="page.sort!=null and page.sort!=''">
-				order by concat('u1.',#{page.sort}) #{page.order}
+				order by u1.${page.sort} ${page.order}
 			</if>
 			<if test="page.pageIndex>0">
 				limit #{page.start},#{page.end}

@@ -15,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.only.model.Permissions;
 import com.only.model.Role;
-import com.only.model.RolePermissions;
 import com.only.model.common.DataGrid;
 import com.only.model.common.Json;
 import com.only.model.common.PageHelper;
@@ -159,7 +158,7 @@ public class RoleController extends BaseController {
 	Json Update(Role role, String permissions) throws Exception {
 
 		role.setDescription(role.getName());
-		role.setUpdatedate(new Date());
+		role.setUpdateDate(new Date());
 
 		// 删除角色权限
 		permissionsService.deleteRolePermissions(role.getId());
@@ -264,7 +263,7 @@ public class RoleController extends BaseController {
 
 		for (Permissions item : data) {
 
-			if (!hasTree(resulTrees, item.getGroupname())) {
+			if (!hasTree(resulTrees, item.getGroupName())) {
 
 				i++;
 
@@ -272,9 +271,9 @@ public class RoleController extends BaseController {
 
 				t1.setId(i);
 
-				t1.setText(item.getGroupname());
+				t1.setText(item.getGroupName());
 
-				t1.setChildren(getdata(data, item.getGroupname()));
+				t1.setChildren(getdata(data, item.getGroupName()));
 
 				resulTrees.add(t1);
 			}
@@ -319,7 +318,7 @@ public class RoleController extends BaseController {
 
 		for (Permissions p : data) {
 
-			if (p.getGroupname().equals(groupName)) {
+			if (p.getGroupName().equals(groupName)) {
 				Tree t1 = new Tree();
 
 				t1.setId(p.getId());

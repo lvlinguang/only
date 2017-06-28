@@ -4,22 +4,27 @@
 
 	<!-- 添加用户角色 -->
 	<insert id="addUserRole">
-		insert into UserRole(UserID,RoleID)
+		insert into user_role(user_id,role_id)
 		values(#{userid},#{roleid})
 	</insert>
 
 
 	<!-- 修改用户角色 -->
 	<update id="updateUserRole">
-		update UserRole set RoleID=#{roleid}
+		update user_role set role_id=#{roleid}
 		where
-		UserID=#{userid}
+		user_id=#{userid}
 	</update>
 
 	<!-- 用户角色 -->
 	<select id="getUserRoleByUser" parameterType="int"
 		resultType="com.only.model.UserRole">
-		select * from UserRole where UserID=#{userid} limit 1
+		select
+		id,
+		user_id as userId,
+		role_id as roleId,
+		create_date as createDate
+		from user_role where user_id=#{userid} limit 1
 	</select>
 
 </mapper>

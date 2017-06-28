@@ -1,10 +1,6 @@
 package com.only.mapper;
 
-import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
-
-import com.only.model.Userlogon;
+import com.only.model.UserLogon;
 
 /**
  * 用户登录日志
@@ -12,15 +8,15 @@ import com.only.model.Userlogon;
  * @author lvlinguang
  * 
  */
-public interface UserlogonMapper {
+public interface UserLogonMapper {
 
 	/**
 	 * 添加登录日志
 	 * 
-	 * @param userlogon
+	 * @param UserLogon
 	 * @throws Exception
 	 */
-	public void addUserLogon(Userlogon userlogon)
+	public void addUserLogon(UserLogon UserLogon)
 			throws Exception;
 
 	/**
@@ -38,5 +34,5 @@ public interface UserlogonMapper {
 	 * @return
 	 * @throws Exception
 	 */
-	public Userlogon getUserLogonByUser(int userid) throws Exception;
+	public UserLogon getUserLogonByUser(int userid) throws Exception;
 }

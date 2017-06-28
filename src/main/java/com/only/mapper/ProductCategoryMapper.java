@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.only.model.Category;
+import com.only.model.ProductCategory;
 import com.only.model.common.PageHelper;
 
 /**
@@ -13,23 +13,23 @@ import com.only.model.common.PageHelper;
  * @author lvlinguang
  * 
  */
-public interface CategoryMapper {
+public interface ProductCategoryMapper {
 
 	/**
 	 * 添加分类
 	 * 
-	 * @param category
+	 * @param ProductCategory
 	 * @throws Exception
 	 */
-	public void addCategory(Category category) throws Exception;
+	public void addProductCategory(ProductCategory productCategory) throws Exception;
 
 	/**
 	 * 修改分类
 	 * 
-	 * @param category
+	 * @param ProductCategory
 	 * @throws Exception
 	 */
-	public void updateCategory(Category category) throws Exception;
+	public void updateProductCategory(ProductCategory productCategory) throws Exception;
 
 	/**
 	 * 删除分类
@@ -37,7 +37,7 @@ public interface CategoryMapper {
 	 * @param id
 	 * @throws Exception
 	 */
-	public void deleteCategory(int id) throws Exception;
+	public void deleteProductCategory(int id) throws Exception;
 
 	/**
 	 * 分类列表数量
@@ -46,7 +46,7 @@ public interface CategoryMapper {
 	 * @return
 	 * @throws Exception
 	 */
-	public int getCategoryListTotal(@Param("name") String name) throws Exception;
+	public int getProductCategoryListTotal(@Param("name") String name) throws Exception;
 
 	/**
 	 * 分类列表
@@ -56,5 +56,5 @@ public interface CategoryMapper {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<Category> getCategoryList(@Param("page") PageHelper page, @Param("name") String name) throws Exception;
+	public List<ProductCategory> getProductCategoryList(@Param("page") PageHelper page, @Param("name") String name) throws Exception;
 }

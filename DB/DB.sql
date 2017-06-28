@@ -21,246 +21,302 @@ USE `only_dev`;
 DROP TABLE IF EXISTS `activity`;
 
 CREATE TABLE `activity` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `ProductID` int(11) NOT NULL COMMENT '商品ID',
-  `GroupID` int(11) NOT NULL COMMENT '所属分组',
-  `TotalCount` int(11) NOT NULL COMMENT '总需人次',
-  `Periods` int(11) NOT NULL COMMENT '共几期',
-  `Status` int(11) NOT NULL COMMENT '活动状态',
-  `StartDate` datetime DEFAULT NULL COMMENT '启动时间',
-  `UID` int(11) NOT NULL COMMENT '添加者',
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `UpdateDate` datetime DEFAULT NULL COMMENT '修改时间',
-  `AuditUID` int(11) NOT NULL DEFAULT '0' COMMENT '审核者',
-  `AuditDate` datetime DEFAULT NULL COMMENT '审核时间',
-  `AuditStatus` int(11) NOT NULL DEFAULT '0' COMMENT '审核状态',
-  `Price` decimal(10,0) NOT NULL COMMENT '商品价格',
-  `LssueNumber` int(11) NOT NULL COMMENT '发行数量',
-  PRIMARY KEY (`ID`)
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) NOT NULL COMMENT '商品ID',
+  `group_id` int(11) NOT NULL COMMENT '所属分组',
+  `total_count` int(11) NOT NULL COMMENT '总需人次',
+  `periods` int(11) NOT NULL COMMENT '共几期',
+  `status` int(11) NOT NULL COMMENT '活动状态',
+  `start_date` datetime DEFAULT NULL COMMENT '启动时间',
+  `user_id` int(11) NOT NULL COMMENT '添加者',
+  `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_date` datetime DEFAULT NULL COMMENT '修改时间',
+  `audit_user_id` int(11) NOT NULL DEFAULT '0' COMMENT '审核者',
+  `audit_date` datetime DEFAULT NULL COMMENT '审核时间',
+  `audit_status` int(11) NOT NULL DEFAULT '0' COMMENT '审核状态',
+  `price` decimal(10,0) NOT NULL COMMENT '商品价格',
+  `lssue_number` int(11) NOT NULL COMMENT '发行数量',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=gbk;
 
 /*Data for the table `activity` */
 
-/*Table structure for table `category` */
+/*Table structure for table `activity_group` */
 
-DROP TABLE IF EXISTS `category`;
+DROP TABLE IF EXISTS `activity_group`;
 
-CREATE TABLE `category` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `ParentID` int(11) NOT NULL DEFAULT '0' COMMENT '父ID',
-  `Name` varchar(200) NOT NULL COMMENT '名称',
-  `Level` int(11) NOT NULL DEFAULT '1' COMMENT '级别',
-  `CanShow` bit(1) NOT NULL DEFAULT b'1' COMMENT '是否展示',
-  `Icon` varchar(200) DEFAULT NULL COMMENT 'icon图标',
-  `Sequence` int(11) NOT NULL DEFAULT '1' COMMENT '顺序',
-  `Description` varchar(500) DEFAULT NULL COMMENT '描述',
-  `Enable` bit(1) NOT NULL DEFAULT b'1' COMMENT '删除标记',
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `UpdateDate` datetime DEFAULT NULL COMMENT '修改时间',
-  PRIMARY KEY (`ID`)
+CREATE TABLE `activity_group` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(200) NOT NULL COMMENT '名称',
+  `description` varchar(500) DEFAULT NULL COMMENT '描述',
+  `icon` varchar(200) DEFAULT NULL COMMENT 'ico图标',
+  `sequence` int(11) NOT NULL DEFAULT '1' COMMENT '顺序',
+  `price` int(11) NOT NULL COMMENT '几元区',
+  `enable` bit(1) NOT NULL DEFAULT b'1' COMMENT '删除标记',
+  `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_date` datetime DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=gbk;
 
-/*Data for the table `category` */
+/*Data for the table `activity_group` */
+
+/*Table structure for table `banner` */
+
+DROP TABLE IF EXISTS `banner`;
+
+CREATE TABLE `banner` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL COMMENT '名称',
+  `sequence` int(11) NOT NULL DEFAULT '1' COMMENT '顺序',
+  `activity_id` int(11) NOT NULL DEFAULT '0' COMMENT '绑定活动ID',
+  `url` varchar(200) DEFAULT NULL COMMENT '跳转地址',
+  `img` varchar(200) NOT NULL COMMENT '图片地址',
+  `is_valid` bit(1) NOT NULL DEFAULT b'1' COMMENT '是否有效',
+  `enable` bit(1) NOT NULL DEFAULT b'1' COMMENT '删除标记',
+  `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
+  `update_date` datetime DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=gbk;
+
+/*Data for the table `banner` */
 
 /*Table structure for table `city` */
 
 DROP TABLE IF EXISTS `city`;
 
 CREATE TABLE `city` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Name` varchar(200) NOT NULL COMMENT '名称',
-  `Letter` varchar(50) DEFAULT NULL COMMENT '前缀',
-  `PinYin` varchar(100) DEFAULT NULL COMMENT '全拼',
-  `ParentID` int(11) NOT NULL DEFAULT '0' COMMENT '父ID',
-  `Hierarchy` int(11) NOT NULL COMMENT '层级',
-  `Sequence` int(11) NOT NULL COMMENT '顺序',
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `UpdateDate` datetime DEFAULT NULL COMMENT '修改时间',
-  PRIMARY KEY (`ID`)
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(200) NOT NULL COMMENT '名称',
+  `letter` varchar(50) DEFAULT NULL COMMENT '前缀',
+  `pinyin` varchar(100) DEFAULT NULL COMMENT '全拼',
+  `parent_id` int(11) NOT NULL DEFAULT '0' COMMENT '父ID',
+  `hierarchy` int(11) NOT NULL COMMENT '层级',
+  `sequence` int(11) NOT NULL COMMENT '顺序',
+  `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_date` datetime DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=gbk;
 
 /*Data for the table `city` */
 
-/*Table structure for table `group` */
+/*Table structure for table `express_company` */
 
-DROP TABLE IF EXISTS `group`;
+DROP TABLE IF EXISTS `express_company`;
 
-CREATE TABLE `group` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Name` varchar(200) NOT NULL COMMENT '名称',
-  `Description` varchar(500) DEFAULT NULL COMMENT '描述',
-  `Icon` varchar(200) DEFAULT NULL COMMENT 'ico图标',
-  `Sequence` int(11) NOT NULL DEFAULT '1' COMMENT '顺序',
-  `Price` int(11) NOT NULL COMMENT '几元区',
-  `Enable` bit(1) NOT NULL DEFAULT b'1' COMMENT '删除标记',
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `UpdateDate` datetime DEFAULT NULL COMMENT '修改时间',
-  PRIMARY KEY (`ID`)
+CREATE TABLE `express_company` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `number` varchar(50) NOT NULL COMMENT '编码',
+  `name` varchar(50) NOT NULL COMMENT '名称',
+  `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
+  `update_date` datetime DEFAULT NULL COMMENT '修改时间',
+  `enable` bit(1) NOT NULL DEFAULT b'1' COMMENT '删除标记',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=gbk;
 
-/*Data for the table `group` */
+/*Data for the table `express_company` */
 
 /*Table structure for table `permissions` */
 
 DROP TABLE IF EXISTS `permissions`;
 
 CREATE TABLE `permissions` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Name` varchar(50) NOT NULL COMMENT '名称',
-  `GroupName` varchar(50) NOT NULL COMMENT '分组名称',
-  `Controller` varchar(50) NOT NULL COMMENT '控制器',
-  `Action` varchar(50) NOT NULL COMMENT '方法',
-  `Description` varchar(100) DEFAULT NULL COMMENT '描述',
-  `Enable` bit(1) NOT NULL DEFAULT b'1' COMMENT '是否可用',
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `UpdateDate` datetime DEFAULT NULL COMMENT '修改时间',
-  PRIMARY KEY (`ID`)
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL COMMENT '名称',
+  `group_name` varchar(50) NOT NULL COMMENT '分组名称',
+  `controller` varchar(50) NOT NULL COMMENT '控制器',
+  `action` varchar(50) NOT NULL COMMENT '方法',
+  `description` varchar(100) DEFAULT NULL COMMENT '描述',
+  `enable` bit(1) NOT NULL DEFAULT b'1' COMMENT '是否可用',
+  `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_date` datetime DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=gbk;
 
 /*Data for the table `permissions` */
 
-insert  into `permissions`(`ID`,`Name`,`GroupName`,`Controller`,`Action`,`Description`,`Enable`,`CreateDate`,`UpdateDate`) values (1,'角色创建','角色管理','role','add','角色管理','','2017-06-10 12:27:25',NULL),(2,'角色编辑','角色管理','role','update','角色管理','','2017-06-10 12:27:46',NULL),(3,'角色删除','角色管理','role','delete','角色管理','','2017-06-10 12:28:08',NULL),(4,'用户创建','用户管理','user','add','用户管理','','2017-06-10 12:28:33',NULL),(5,'用户编辑','用户管理','user','update','用户管理','','2017-06-10 12:28:47',NULL),(6,'用户删除','用户管理','user','delete','用户管理','','2017-06-10 12:29:54',NULL);
+insert  into `permissions`(`id`,`name`,`group_name`,`controller`,`action`,`description`,`enable`,`create_date`,`update_date`) values (1,'角色创建','角色管理','role','add','角色管理','','2017-06-10 12:27:25',NULL),(2,'角色编辑','角色管理','role','update','角色管理','','2017-06-10 12:27:46',NULL),(3,'角色删除','角色管理','role','delete','角色管理','','2017-06-10 12:28:08',NULL),(4,'用户创建','用户管理','user','add','用户管理','','2017-06-10 12:28:33',NULL),(5,'用户编辑','用户管理','user','update','用户管理','','2017-06-10 12:28:47',NULL),(6,'用户删除','用户管理','user','delete','用户管理','','2017-06-10 12:29:54',NULL);
 
 /*Table structure for table `product` */
 
 DROP TABLE IF EXISTS `product`;
 
 CREATE TABLE `product` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Name` varchar(200) NOT NULL COMMENT '商品名称',
-  `CategoryID` int(11) NOT NULL COMMENT '分类ID',
-  `Thumbnail` varchar(200) DEFAULT NULL COMMENT '缩略图',
-  `Price` decimal(10,0) DEFAULT NULL COMMENT '商品价格',
-  `ArtNamber` varchar(100) DEFAULT NULL COMMENT '商品货号',
-  `PutTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '入库时间',
-  `InTime` datetime DEFAULT NULL COMMENT '上架时间',
-  `UnderTime` datetime DEFAULT NULL COMMENT '下架时间',
-  `Description` text COMMENT '商品描述',
-  `UID` int(11) NOT NULL COMMENT '添加者',
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
-  `UpdateDate` datetime DEFAULT NULL COMMENT '修改时间',
-  `Flag` int(11) NOT NULL DEFAULT '1' COMMENT '状态',
-  `CityID` int(11) NOT NULL COMMENT '所属省市',
-  `Enalble` bit(1) NOT NULL DEFAULT b'1' COMMENT '删除标记',
-  PRIMARY KEY (`ID`)
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(200) NOT NULL COMMENT '商品名称',
+  `category_id` int(11) NOT NULL COMMENT '分类ID',
+  `thumbnail` varchar(200) DEFAULT NULL COMMENT '缩略图',
+  `price` decimal(10,0) DEFAULT NULL COMMENT '商品价格',
+  `art_number` varchar(100) DEFAULT NULL COMMENT '商品货号',
+  `put_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '入库时间',
+  `in_time` datetime DEFAULT NULL COMMENT '上架时间',
+  `under_time` datetime DEFAULT NULL COMMENT '下架时间',
+  `description` text COMMENT '商品描述',
+  `user_id` int(11) NOT NULL COMMENT '添加者',
+  `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
+  `update_date` datetime DEFAULT NULL COMMENT '修改时间',
+  `flag` int(11) NOT NULL DEFAULT '1' COMMENT '状态',
+  `city_id` int(11) NOT NULL COMMENT '所属省市',
+  `enalble` bit(1) NOT NULL DEFAULT b'1' COMMENT '删除标记',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=gbk;
 
 /*Data for the table `product` */
+
+/*Table structure for table `product_category` */
+
+DROP TABLE IF EXISTS `product_category`;
+
+CREATE TABLE `product_category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `parent_id` int(11) NOT NULL DEFAULT '0' COMMENT '父ID',
+  `name` varchar(200) NOT NULL COMMENT '名称',
+  `level` int(11) NOT NULL DEFAULT '1' COMMENT '级别',
+  `canshow` bit(1) NOT NULL DEFAULT b'1' COMMENT '是否展示',
+  `icon` varchar(200) DEFAULT NULL COMMENT 'icon图标',
+  `sequence` int(11) NOT NULL DEFAULT '1' COMMENT '顺序',
+  `description` varchar(500) DEFAULT NULL COMMENT '描述',
+  `enable` bit(1) NOT NULL DEFAULT b'1' COMMENT '删除标记',
+  `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_date` datetime DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=gbk;
+
+/*Data for the table `product_category` */
+
+insert  into `product_category`(`id`,`parent_id`,`name`,`level`,`canshow`,`icon`,`sequence`,`description`,`enable`,`create_date`,`update_date`) values (1,0,'电脑办公',1,'','/',10,'这里是描述','','2017-06-28 17:29:37',NULL),(2,0,'数码影音',1,'','',20,'数码影音类','','2017-06-28 17:46:46',NULL),(3,0,'潮流新品',1,'','',30,'这里是描述','','2017-06-28 17:52:39',NULL),(4,0,'美食天地',1,'','',40,'','','2017-06-28 18:03:28',NULL),(5,0,'女性时尚',1,'','',50,'','','2017-06-28 18:03:39',NULL);
+
+/*Table structure for table `product_comment` */
+
+DROP TABLE IF EXISTS `product_comment`;
+
+CREATE TABLE `product_comment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_id` int(11) NOT NULL COMMENT '订单ID',
+  `title` varchar(200) NOT NULL COMMENT '标题',
+  `content` varchar(2000) NOT NULL COMMENT '内容',
+  `pic` varchar(500) DEFAULT NULL COMMENT '图片',
+  `is_show` bit(1) NOT NULL DEFAULT b'0' COMMENT '是否显示',
+  `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
+  `enable` bit(1) NOT NULL DEFAULT b'1' COMMENT '删除标记',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=gbk;
+
+/*Data for the table `product_comment` */
 
 /*Table structure for table `role` */
 
 DROP TABLE IF EXISTS `role`;
 
 CREATE TABLE `role` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Name` varchar(50) NOT NULL COMMENT '名称',
-  `Indentation` int(11) NOT NULL DEFAULT '0' COMMENT '级别',
-  `Description` varchar(100) DEFAULT NULL COMMENT '描述',
-  `Enable` bit(1) NOT NULL DEFAULT b'1' COMMENT '是否可用',
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `UpdateDate` datetime DEFAULT NULL COMMENT '修改时间',
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=gbk;
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL COMMENT '名称',
+  `indentation` int(11) NOT NULL DEFAULT '0' COMMENT '级别',
+  `description` varchar(100) DEFAULT NULL COMMENT '描述',
+  `enable` bit(1) NOT NULL DEFAULT b'1' COMMENT '是否可用',
+  `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_date` datetime DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=gbk;
 
 /*Data for the table `role` */
 
-insert  into `role`(`ID`,`Name`,`Indentation`,`Description`,`Enable`,`CreateDate`,`UpdateDate`) values (1,'超级管理员',1,'超级管理员','','2017-06-10 11:48:02','2017-06-11 23:24:19'),(2,'普通管理员修改',2,'普通管理员修改','','2017-06-10 11:48:57','2017-06-11 23:27:25'),(3,'订单处理员',2,'订单处理员','','2017-06-10 11:49:08',NULL),(22,'测试角色',2,'测试角色','\0','2017-06-11 23:00:04','2017-06-11 23:20:05');
+insert  into `role`(`id`,`name`,`indentation`,`description`,`enable`,`create_date`,`update_date`) values (1,'超级管理员',1,'超级管理员','','2017-06-10 11:48:02','2017-06-11 23:24:19'),(2,'普通管理员',2,'普通管理员','','2017-06-10 11:48:57','2017-06-28 16:57:34'),(3,'商品管理员',2,'商品管理员','','2017-06-10 11:49:08','2017-06-28 16:58:03'),(24,'活动管理员',2,'活动管理员','','2017-06-28 16:58:21',NULL);
 
-/*Table structure for table `rolepermissions` */
+/*Table structure for table `role_permissions` */
 
-DROP TABLE IF EXISTS `rolepermissions`;
+DROP TABLE IF EXISTS `role_permissions`;
 
-CREATE TABLE `rolepermissions` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `RoleID` int(11) NOT NULL COMMENT '角色ID',
-  `PermissionID` int(11) NOT NULL COMMENT '权限ID',
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `UpdateDate` datetime DEFAULT NULL COMMENT '修改时间',
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=gbk;
+CREATE TABLE `role_permissions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `role_id` int(11) NOT NULL COMMENT '角色ID',
+  `permission_id` int(11) NOT NULL COMMENT '权限ID',
+  `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_date` datetime DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=gbk;
 
-/*Data for the table `rolepermissions` */
+/*Data for the table `role_permissions` */
 
-insert  into `rolepermissions`(`ID`,`RoleID`,`PermissionID`,`CreateDate`,`UpdateDate`) values (30,1,1,'2017-06-11 23:24:19',NULL),(31,1,2,'2017-06-11 23:24:19',NULL),(32,1,3,'2017-06-11 23:24:19',NULL),(33,1,4,'2017-06-11 23:24:19',NULL),(34,1,5,'2017-06-11 23:24:19',NULL),(35,1,6,'2017-06-11 23:24:19',NULL),(49,2,4,'2017-06-11 23:27:24',NULL),(50,2,5,'2017-06-11 23:27:24',NULL),(51,2,6,'2017-06-11 23:27:24',NULL);
+insert  into `role_permissions`(`id`,`role_id`,`permission_id`,`create_date`,`update_date`) values (30,1,1,'2017-06-11 23:24:19',NULL),(31,1,2,'2017-06-11 23:24:19',NULL),(32,1,3,'2017-06-11 23:24:19',NULL),(33,1,4,'2017-06-11 23:24:19',NULL),(34,1,5,'2017-06-11 23:24:19',NULL),(35,1,6,'2017-06-11 23:24:19',NULL),(58,2,4,'2017-06-28 16:57:34',NULL),(59,2,5,'2017-06-28 16:57:34',NULL),(60,2,6,'2017-06-28 16:57:34',NULL),(61,3,4,'2017-06-28 16:58:03',NULL),(62,24,4,'2017-06-28 16:58:21',NULL),(63,24,5,'2017-06-28 16:58:21',NULL),(64,24,6,'2017-06-28 16:58:21',NULL);
 
 /*Table structure for table `user` */
 
 DROP TABLE IF EXISTS `user`;
 
 CREATE TABLE `user` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Name` varchar(30) NOT NULL COMMENT '姓名',
-  `Account` varchar(100) NOT NULL COMMENT '帐号',
-  `Password` varchar(100) NOT NULL COMMENT '密码',
-  `Salt` varchar(200) DEFAULT NULL,
-  `Mobile` varchar(30) DEFAULT NULL COMMENT '手机',
-  `QQ` varchar(20) DEFAULT NULL COMMENT 'QQ',
-  `Email` varchar(50) DEFAULT NULL COMMENT '邮件',
-  `Address` varchar(200) DEFAULT NULL COMMENT '地址',
-  `Avatar` varchar(200) DEFAULT NULL COMMENT '头像',
-  `Description` varchar(500) DEFAULT NULL COMMENT '描述',
-  `LastLogonDate` datetime DEFAULT NULL COMMENT '最后一次登录时间',
-  `Enable` bit(1) NOT NULL DEFAULT b'1' COMMENT '是否可用',
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `UpdateDate` datetime DEFAULT NULL COMMENT '修改时间',
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=gbk;
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) NOT NULL COMMENT '姓名',
+  `account` varchar(100) NOT NULL COMMENT '帐号',
+  `password` varchar(100) NOT NULL COMMENT '密码',
+  `salt` varchar(200) DEFAULT NULL,
+  `mobile` varchar(30) DEFAULT NULL COMMENT '手机',
+  `qq` varchar(20) DEFAULT NULL COMMENT 'QQ',
+  `email` varchar(50) DEFAULT NULL COMMENT '邮件',
+  `address` varchar(200) DEFAULT NULL COMMENT '地址',
+  `avatar` varchar(200) DEFAULT NULL COMMENT '头像',
+  `description` varchar(500) DEFAULT NULL COMMENT '描述',
+  `last_logon_date` datetime DEFAULT NULL COMMENT '最后一次登录时间',
+  `enable` bit(1) NOT NULL DEFAULT b'1' COMMENT '是否可用',
+  `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_date` datetime DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=gbk;
 
 /*Data for the table `user` */
 
-insert  into `user`(`ID`,`Name`,`Account`,`Password`,`Salt`,`Mobile`,`QQ`,`Email`,`Address`,`Avatar`,`Description`,`LastLogonDate`,`Enable`,`CreateDate`,`UpdateDate`) values (1,'管理员','admin','111111','sf','15825477180',NULL,NULL,NULL,NULL,NULL,'2017-06-08 22:17:50','','2012-06-08 00:00:00','2017-06-21 23:26:22'),(2,'小吕','admin2','e12324',NULL,'',NULL,NULL,NULL,NULL,NULL,'2017-06-21 21:11:47','','2017-06-21 21:11:47',NULL),(3,'小吕','admin3','8x/uFhuq6nmWY9f7eRoqCg==','e8ed31b527d240878331414c8f7bfbe5','15825477180',NULL,NULL,NULL,NULL,NULL,'2017-06-26 16:41:34','','2017-06-21 21:14:29','2017-06-26 16:42:08'),(4,'小吕修改','admin5','e12324',NULL,'13666496036',NULL,NULL,NULL,NULL,NULL,'2017-06-21 21:15:36','','2017-06-21 21:15:36','2017-06-21 23:20:39');
+insert  into `user`(`id`,`name`,`account`,`password`,`salt`,`mobile`,`qq`,`email`,`address`,`avatar`,`description`,`last_logon_date`,`enable`,`create_date`,`update_date`) values (3,'小吕','admin3','8x/uFhuq6nmWY9f7eRoqCg==','e8ed31b527d240878331414c8f7bfbe5','15825477180',NULL,NULL,NULL,NULL,NULL,'2017-06-28 16:52:55','','2017-06-21 21:14:29','2017-06-28 17:03:58');
 
-/*Table structure for table `userlogon` */
+/*Table structure for table `user_logon` */
 
-DROP TABLE IF EXISTS `userlogon`;
+DROP TABLE IF EXISTS `user_logon`;
 
-CREATE TABLE `userlogon` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `UserID` int(11) NOT NULL COMMENT '用户ID',
-  `Token` varchar(200) NOT NULL COMMENT 'token',
-  `ExpiryDate` datetime NOT NULL COMMENT 'token过期时间',
-  `IPAddress` varchar(50) NOT NULL COMMENT '登录IP地址',
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=gbk;
+CREATE TABLE `user_logon` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL COMMENT '用户ID',
+  `token` varchar(200) NOT NULL COMMENT 'token',
+  `expiry_date` datetime NOT NULL COMMENT 'token过期时间',
+  `ip_address` varchar(50) NOT NULL COMMENT '登录IP地址',
+  `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=gbk;
 
-/*Data for the table `userlogon` */
+/*Data for the table `user_logon` */
 
-insert  into `userlogon`(`ID`,`UserID`,`Token`,`ExpiryDate`,`IPAddress`,`CreateDate`) values (28,3,'0264c3b86b63485e908387ef899e2ab4','2017-07-03 16:42:08','192.168.10.1','2017-06-26 16:42:08');
+insert  into `user_logon`(`id`,`user_id`,`token`,`expiry_date`,`ip_address`,`create_date`) values (31,9,'614135d4847e42a1ab7e5008bd5c8fe2','2017-07-05 16:51:33','192.168.10.1','2017-06-28 16:51:32'),(34,3,'fdb7270e5332495fa9a7e1df7db17dee','2017-07-05 17:03:58','192.168.10.1','2017-06-28 17:03:57');
 
-/*Table structure for table `userpermissions` */
+/*Table structure for table `user_permissions` */
 
-DROP TABLE IF EXISTS `userpermissions`;
+DROP TABLE IF EXISTS `user_permissions`;
 
-CREATE TABLE `userpermissions` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `UserID` int(11) NOT NULL COMMENT '用户ID',
-  `PermissionID` int(11) NOT NULL COMMENT '权限ID',
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `UpdateDate` datetime DEFAULT NULL COMMENT '修改时间',
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=gbk;
+CREATE TABLE `user_permissions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL COMMENT '用户ID',
+  `permission_id` int(11) NOT NULL COMMENT '权限ID',
+  `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_date` datetime DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=gbk;
 
-/*Data for the table `userpermissions` */
+/*Data for the table `user_permissions` */
 
-insert  into `userpermissions`(`ID`,`UserID`,`PermissionID`,`CreateDate`,`UpdateDate`) values (7,4,5,'2017-06-21 23:21:56',NULL),(8,4,6,'2017-06-21 23:21:56',NULL),(21,1,1,'2017-06-21 23:26:22',NULL),(22,1,2,'2017-06-21 23:26:22',NULL),(23,1,3,'2017-06-21 23:26:22',NULL),(24,1,4,'2017-06-21 23:26:22',NULL),(25,1,5,'2017-06-21 23:26:22',NULL),(26,1,6,'2017-06-21 23:26:22',NULL),(27,3,1,'2017-06-22 20:44:19',NULL),(28,3,2,'2017-06-22 20:44:19',NULL),(29,3,3,'2017-06-22 20:44:19',NULL),(30,3,4,'2017-06-22 20:44:19',NULL),(31,3,5,'2017-06-22 20:44:19',NULL),(32,3,6,'2017-06-22 20:44:19',NULL);
+insert  into `user_permissions`(`id`,`user_id`,`permission_id`,`create_date`,`update_date`) values (50,3,1,'2017-06-28 16:57:13',NULL),(51,3,2,'2017-06-28 16:57:13',NULL),(52,3,3,'2017-06-28 16:57:13',NULL),(53,3,4,'2017-06-28 16:57:13',NULL),(54,3,5,'2017-06-28 16:57:13',NULL),(55,3,6,'2017-06-28 16:57:14',NULL);
 
-/*Table structure for table `userrole` */
+/*Table structure for table `user_role` */
 
-DROP TABLE IF EXISTS `userrole`;
+DROP TABLE IF EXISTS `user_role`;
 
-CREATE TABLE `userrole` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `UserID` int(11) NOT NULL COMMENT '用户ID',
-  `RoleID` int(11) NOT NULL COMMENT '角色ID',
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `UpdateDate` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=gbk;
+CREATE TABLE `user_role` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL COMMENT '用户ID',
+  `role_id` int(11) NOT NULL COMMENT '角色ID',
+  `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_date` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=gbk;
 
-/*Data for the table `userrole` */
+/*Data for the table `user_role` */
 
-insert  into `userrole`(`ID`,`UserID`,`RoleID`,`CreateDate`,`UpdateDate`) values (1,3,1,'2017-06-21 21:14:30','2017-06-21 21:14:30'),(2,4,2,'2017-06-21 21:15:36','2017-06-21 21:15:36');
+insert  into `user_role`(`id`,`user_id`,`role_id`,`create_date`,`update_date`) values (1,3,1,'2017-06-21 21:14:30','2017-06-21 21:14:30');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

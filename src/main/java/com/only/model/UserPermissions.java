@@ -2,54 +2,60 @@ package com.only.model;
 
 import java.util.Date;
 
+/**
+ * 用户权限
+ * 
+ * @author lvlinguang
+ * 
+ */
 public class UserPermissions {
-    private Integer id;
+	private Integer id;
 
-    private Integer userid;
+	private Integer userId;
 
-    private Integer permissionid;
+	private Integer permissionId;
 
-    private Date createdate;
+	private Date createDate;
 
-    private Date updatedate;
+	private Date updateDate;
 
-    public Integer getId() {
-        return id;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public Integer getUserid() {
-        return userid;
-    }
+	public Integer getUserId() {
+		return userId;
+	}
 
-    public void setUserid(Integer userid) {
-        this.userid = userid;
-    }
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
 
-    public Integer getPermissionid() {
-        return permissionid;
-    }
+	public Integer getPermissionId() {
+		return permissionId;
+	}
 
-    public void setPermissionid(Integer permissionid) {
-        this.permissionid = permissionid;
-    }
+	public void setPermissionId(Integer permissionId) {
+		this.permissionId = permissionId;
+	}
 
-    public Date getCreatedate() {
-        return createdate;
-    }
+	public Date getCreateDate() {
+		return createDate;
+	}
 
-    public void setCreatedate(Date createdate) {
-        this.createdate = createdate;
-    }
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
 
-    public Date getUpdatedate() {
-        return updatedate;
-    }
+	public Date getUpdateDate() {
+		return updateDate;
+	}
 
-    public void setUpdatedate(Date updatedate) {
-        this.updatedate = updatedate;
-    }
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
+	}
 }

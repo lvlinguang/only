@@ -3,15 +3,15 @@ package com.only.model;
 import java.util.Date;
 
 /**
- * 分类管理（电脑办公、数码影音）
+ * 商品分类（电脑办公、数码影音）
  * 
  * @author lvlinguang
  * 
  */
-public class Category {
+public class ProductCategory {
 	private Integer id;
 
-	private Integer parentid;
+	private Integer parentId;
 
 	private String name;
 
@@ -27,9 +27,9 @@ public class Category {
 
 	private Boolean enable;
 
-	private Date createdate;
+	private Date createDate;
 
-	private Date updatedate;
+	private Date updateDate;
 
 	public Integer getId() {
 		return id;
@@ -39,12 +39,12 @@ public class Category {
 		this.id = id;
 	}
 
-	public Integer getParentid() {
-		return parentid;
+	public Integer getParentId() {
+		return parentId;
 	}
 
-	public void setParentid(Integer parentid) {
-		this.parentid = parentid;
+	public void setParentId(Integer parentId) {
+		this.parentId = parentId;
 	}
 
 	public String getName() {
@@ -103,19 +103,19 @@ public class Category {
 		this.enable = enable;
 	}
 
-	public Date getCreatedate() {
-		return createdate;
+	public Date getCreateDate() {
+		return createDate;
 	}
 
-	public void setCreatedate(Date createdate) {
-		this.createdate = createdate;
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
 	}
 
-	public Date getUpdatedate() {
-		return updatedate;
+	public Date getUpdateDate() {
+		return updateDate;
 	}
 
-	public void setUpdatedate(Date updatedate) {
-		this.updatedate = updatedate;
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
 	}
 }

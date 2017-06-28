@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.only.model.Group;
+import com.only.model.ActivityGroup;
 import com.only.model.common.PageHelper;
 
 /**
@@ -13,23 +13,23 @@ import com.only.model.common.PageHelper;
  * @author lvlinguang
  * 
  */
-public interface GroupMapper {
+public interface ActivityGroupMapper {
 
 	/**
 	 * 添加分组
 	 * 
-	 * @param Group
+	 * @param ActivityGroup
 	 * @throws Exception
 	 */
-	public void addGroup(Group group) throws Exception;
+	public void addActivityGroup(ActivityGroup activityGroup) throws Exception;
 
 	/**
 	 * 修改分组
 	 * 
-	 * @param Group
+	 * @param ActivityGroup
 	 * @throws Exception
 	 */
-	public void updateGroup(Group group) throws Exception;
+	public void updateActivityGroup(ActivityGroup activityGroup) throws Exception;
 
 	/**
 	 * 删除分组
@@ -37,7 +37,7 @@ public interface GroupMapper {
 	 * @param id
 	 * @throws Exception
 	 */
-	public void deleteGroup(int id) throws Exception;
+	public void deleteActivityGroup(int id) throws Exception;
 
 	/**
 	 * 分组列表数量
@@ -46,7 +46,7 @@ public interface GroupMapper {
 	 * @return
 	 * @throws Exception
 	 */
-	public int getGroupListTotal(@Param("name") String name) throws Exception;
+	public int getActivityGroupListTotal(@Param("name") String name) throws Exception;
 
 	/**
 	 * 分组列表
@@ -56,5 +56,5 @@ public interface GroupMapper {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<Group> getGroupList(@Param("page") PageHelper page, @Param("name") String name) throws Exception;
+	public List<ActivityGroup> getActivityGroupList(@Param("page") PageHelper page, @Param("name") String name) throws Exception;
 }

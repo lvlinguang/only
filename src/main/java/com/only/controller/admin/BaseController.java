@@ -9,7 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.only.model.User;
-import com.only.model.Userlogon;
+import com.only.model.UserLogon;
 import com.only.service.UserLogonService;
 import com.only.service.UserService;
 import com.only.util.CookieUtil;
@@ -69,9 +69,9 @@ public class BaseController {
 			if (StringUtils.isNotEmpty(uid) && StringUtils.isNotEmpty(token)) {
 
 				// 用户登录信息
-				Userlogon userlogon = userLogonService.getUserLogonByUser(Integer.parseInt(uid));
+				UserLogon userlogon = userLogonService.getUserLogonByUser(Integer.parseInt(uid));
 
-				if (userlogon.getToken().equals(token) && new Date().before(userlogon.getExpirydate())) {
+				if (userlogon.getToken().equals(token) && new Date().before(userlogon.getExpiryDate())) {
 
 					// 用户信息
 					user = userService.getUserByID(Integer.parseInt(uid));

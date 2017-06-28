@@ -46,6 +46,11 @@ public class PageHelper {
 		return sort;
 	}
 
+	/**
+	 * 排序字段名
+	 * 
+	 * @param sort
+	 */
 	public void setSort(String sort) {
 		this.sort = sort;
 	}
@@ -54,6 +59,11 @@ public class PageHelper {
 		return order;
 	}
 
+	/**
+	 * 按什么排序（asc desc）
+	 * 
+	 * @param order
+	 */
 	public void setOrder(String order) {
 		this.order = order;
 	}

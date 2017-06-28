@@ -5,36 +5,36 @@
 	<!-- 添加角色 -->
 	<insert id="addRole" useGeneratedKeys="true" keyProperty="id">
 		insert
-		into Role(Name,Indentation,Description)
+		into role(name,indentation,description)
 		values(#{name},#{indentation},#{description})
 	</insert>
 
 	<!-- 修改角色 -->
 	<update id="updateRole" parameterType="com.only.model.Role">
-		update Role set
-		Name=#{name},Description=#{description},UpdateDate=#{updatedate}
-		where ID=#{id}
+		update role set
+		name=#{name},description=#{description},update_date=#{updateDate}
+		where id=#{id}
 	</update>
 
 	<!-- 删除角色 -->
 	<update id="deleteRole" parameterType="int">
-		update Role set Enable=0
-		where ID=#{id}
+		update role set enable=0
+		where id=#{id}
 	</update>
 
 	<!-- 角色详情 -->
 	<select id="getRoleByID" parameterType="int" resultType="com.only.model.Role">
 		select
-		ID,
-		Name,
-		Indentation,
-		Description,
-		CreateDate
+		id,
+		name,
+		indentation,
+		description,
+		create_date as createDate
 		from role
 		where
-		ID=#{id}
+		id=#{id}
 		and
-		Enable=1
+		enable=1
 
 	</select>
 
@@ -44,9 +44,9 @@
 		count(0)
 		from role
 		where
-		Enable=1
+		enable=1
 		<if test="name!=null and name !=''">
-			and Name like concat('%',#{name},'%')
+			and name like concat('%',#{name},'%')
 		</if>
 
 	</select>
@@ -54,16 +54,17 @@
 	<!-- 角色列表 -->
 	<select id="getRoleList" resultType="com.only.model.Role">
 		select
-		ID,
-		Name,
-		Indentation,
-		Description,
-		CreateDate
-		from role
+		id,
+		name,
+		indentation,
+		description,
+		create_date as createDate
+		from
+		role
 		where
-		Enable=1
+		enable=1
 		<if test="name!=null and name !=''">
-			and Name like concat('%',#{name},'%')
+			and name like concat('%',#{name},'%')
 		</if>
 		<if test="page!=null">
 

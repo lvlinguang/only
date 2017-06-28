@@ -279,7 +279,7 @@ var role = {
 										width : 300
 									},
 									{
-										field : 'createdate',
+										field : 'createDate',
 										title : '创建时间',
 										width : 80,
 										formatter : function(value) {
@@ -288,7 +288,7 @@ var role = {
 									},
 									{
 										title : '操作',
-										field : 'RoleID',
+										field : 'roleid',
 										width : 60,
 										formatter : function(value, rowData,
 												rowIndex) {
@@ -720,7 +720,7 @@ var user = {
 										width : 80
 									},
 									{
-										field : 'createdate',
+										field : 'createDate',
 										title : '创建时间',
 										width : 120,
 										formatter : function(value) {
@@ -786,6 +786,7 @@ var user = {
 		});
 	}
 }
+
 /*
  * 名称：物流管理
  */
@@ -1108,10 +1109,12 @@ var expressCompany = {
 	}
 
 }
+
 /*
- * 名称：商品类目管理
+ * 名称：商品分类
  */
-var productCategory = {
+var category = {
+
 	// 添加或修改标记
 	mark : 1,
 	// 上传图片
@@ -1144,22 +1147,25 @@ var productCategory = {
 	add : function(a) {
 
 		// 添加标记
-		productCategory.mark = 1;
+		category.mark = 1;
+
+		// 隐藏是否展示
+		$(".js-canshow-item").hide();
 
 		// 清除form数据
 		$("#dlg-form1").form('clear');
 
 		// 打开dialog框并设置标题
 		$("#dlg1").dialog("open").dialog("setTitle", "添加类目");
-		// 上传图片
-		productCategory.myUpload();
+
 		$("#iconpic").attr("src", "/Images/add_img.png");
+
 	},
 	// 修改
 	update : function() {
 
 		// 修改标记
-		productCategory.mark = 0;
+		category.mark = 0;
 
 		// 得到datagrid的当前选中项
 		var data = $("#grid").datagrid('getSelected');
@@ -1171,29 +1177,13 @@ var productCategory = {
 			return;
 		}
 
+		// 显示是否展示
+		$(".js-canshow-item").show();
+
 		// 打开dialog框并设置标题
 		$("#dlg1").dialog("open").dialog("setTitle", "修改类目");
 
-		// 给form赋值
-		console.log("给form赋值");
-		xgui.Ajax("/Category/Details", {
-			ID : data.ProductCategoryID
-		}, "json", true, function(o) {
-
-			$("#dlg-form1").form('clear').form("load", o);
-
-			// 上传图片
-			productCategory.myUpload();
-
-			// icon预览图
-			console.log("icon预览图");
-			var icon = $("#dlg-form1").find("input[name=Icon]").val();
-			if (icon == "")
-				$("#iconpic").attr("src", "/Images/add_img.png");
-			else
-				$("#iconpic").attr("src", "/upload/icon/small/" + icon);
-
-		});
+		$("#dlg-form1").form('clear').form("load", data);
 
 	},
 	// 删除
@@ -1237,83 +1227,87 @@ var productCategory = {
 	},
 	// 保存
 	save : function(target) {
+
 		// 数据合法性验证
 		if (!$("#dlg-form1").form("validate")) {
 			return;
 		}
-		var icon = $("#dlg-form1").find("input[name=Icon]").val();
-		if (icon == "") {
-			xgui.msgtip("请上传图标！", "error");
-			return;
-		}
+
+		// var icon = $("#dlg-form1").find("input[name=Icon]").val();
+		// if (icon == "") {
+		// xgui.msgtip("请上传图标！", "error");
+		// return;
+		// }
+
 		// 添加
-		if (productCategory.mark == 1) {
+		if (category.mark == 1) {
 
-			xgui.Ajax("/Category/Add", $("#dlg-form1").serialize(), "json",
-					true, function(o) {
+			xgui.Ajax(config.path + "/category/add", $("#dlg-form1")
+					.serialize(), "json", true, function(o) {
 
-						if (o.success) {
+				if (o.success) {
 
-							xgui.msgtip(o.msg, "success");
+					xgui.msgtip(o.msg, "success");
 
-							// 关闭dialog对话框
-							$('#dlg1').dialog('close');
+					// 关闭dialog对话框
+					$('#dlg1').dialog('close');
 
-							// 刷新datagrid数据表格
-							$("#grid").datagrid('reload');
-						} else {
-							xgui.alert(o.msg, "error");
-						}
+					// 刷新datagrid数据表格
+					$("#grid").datagrid('reload');
 
-					}, null, function() {
+				} else {
+					xgui.alert(o.msg, "error");
+				}
 
-						xgui.loading("show", "正在提交。。。");
+			}, null, function() {
 
-						// 禁用
-						common.disableAtag($(target));
+				xgui.loading("show", "正在提交。。。");
 
-					}, function() {
+				// 禁用
+				common.disableAtag($(target));
 
-						xgui.loading("hide");
+			}, function() {
 
-						// 启用
-						common.enableAtag($(target));
-					});
+				xgui.loading("hide");
+
+				// 启用
+				common.enableAtag($(target));
+			});
 
 		}
 		// 修改
 		else {
 
-			xgui.Ajax("/Category/Update", $("#dlg-form1").serialize(), "json",
-					true, function(o) {
+			xgui.Ajax(config.path + "/category/update", $("#dlg-form1")
+					.serialize(), "json", true, function(o) {
 
-						if (o.success) {
+				if (o.success) {
 
-							xgui.msgtip(o.msg, "success");
+					xgui.msgtip(o.msg, "success");
 
-							// 关闭dialog对话框
-							$('#dlg1').dialog('close');
+					// 关闭dialog对话框
+					$('#dlg1').dialog('close');
 
-							// 刷新datagrid数据表格
-							$("#grid").datagrid('reload');
-						} else {
-							xgui.alert(o.msg, "error");
-						}
+					// 刷新datagrid数据表格
+					$("#grid").datagrid('reload');
+				} else {
+					xgui.alert(o.msg, "error");
+				}
 
-					}, null, function() {
+			}, null, function() {
 
-						xgui.loading("show", "正在提交。。。");
+				xgui.loading("show", "正在提交。。。");
 
-						// 禁用
-						common.disableAtag($(target));
+				// 禁用
+				common.disableAtag($(target));
 
-					}, function() {
+			}, function() {
 
-						xgui.loading("hide");
+				xgui.loading("hide");
 
-						// 启用
-						common.enableAtag($(target));
-					});
+				// 启用
+				common.enableAtag($(target));
+			});
 
 		}
 	},
@@ -1327,7 +1321,7 @@ var productCategory = {
 							// 每页大小
 							pageSize : 20,
 							// 地址
-							url : "/Category/List",
+							url : config.path + "/category/list",
 							// 远程参数
 							queryParams : {
 								keyWord : ''
@@ -1350,7 +1344,7 @@ var productCategory = {
 											$("#grid").datagrid("selectRow",
 													rowindex);
 
-											productCategory.update();
+											category.update();
 										});
 
 								// 删除
@@ -1366,18 +1360,18 @@ var productCategory = {
 											$("#grid").datagrid("selectRow",
 													rowindex);
 
-											productCategory.del();
+											category.del();
 										});
 							},
 							// 列
 							columns : [ [
 									{
-										field : 'ProductCategoryName',
+										field : 'name',
 										title : '类目名称',
 										width : 80
 									},
 									{
-										field : 'Icon',
+										field : 'icon',
 										title : '图标',
 										width : 60,
 										formatter : function(value) {
@@ -1390,21 +1384,21 @@ var productCategory = {
 										}
 									},
 									{
-										field : 'Sequence',
+										field : 'sequence',
 										title : '类目排序',
 										width : 60
 									},
 									{
-										field : 'CreateDate',
+										field : 'createDate',
 										title : '创建时间',
 										width : 120,
 										formatter : function(value) {
-											return common.jsonDateF(value,
-													"yyyy-MM-dd hh:mm");
+
+											return common.timeStampF(value);
 										}
 									},
 									{
-										field : 'CanShow',
+										field : 'canshow',
 										title : '显示',
 										width : 60,
 										formatter : function(value) {
@@ -1413,13 +1407,13 @@ var productCategory = {
 										}
 									},
 									{
-										field : 'Discription',
+										field : 'discription',
 										title : '备注',
 										width : 260
 									},
 									{
 										title : '操作',
-										field : 'ProductGroupID',
+										field : 'id',
 										width : 60,
 										formatter : function(value, rowData,
 												rowIndex) {
@@ -1429,7 +1423,7 @@ var productCategory = {
 							// 双击操作
 							onDblClickRow : function(rowData) {
 
-								productCategory.update();
+								category.update();
 
 							},
 							// 右击操作
@@ -1463,25 +1457,25 @@ var productCategory = {
 		// 添加
 		$(".js-add").click(function() {
 
-			productCategory.add();
+			category.add();
 		});
 
 		// 修改
 		$(".js-update").click(function() {
 
-			productCategory.update();
+			category.update();
 		});
 
 		// 删除
 		$(".js-delete").click(function() {
 
-			productCategory.del();
+			category.del();
 		});
 
 		// 绑定是（菜单）
 		$(".js-submit1").click(function() {
 
-			productCategory.save(this);
+			category.save(this);
 		});
 
 		// 绑定否
@@ -1492,10 +1486,11 @@ var productCategory = {
 		});
 
 		// 上传图片
-		productCategory.myUpload();
+		category.myUpload();
 	}
 
 }
+
 /*
  * 名称：商品分组管理
  */
@@ -1517,7 +1512,7 @@ var group = {
 		// 顺序
 		$("input[name=Sequence]").val(1);
 		// 上传图片
-		productCategory.myUpload();
+		category.myUpload();
 		$("#iconpic").attr("src", "/Images/add_img.png");
 		// 起步价
 		$("input[name=Price]").val(1);
@@ -1551,7 +1546,7 @@ var group = {
 			$("#dlg-form1").form('clear').form("load", o);
 
 			// 上传图片
-			productCategory.myUpload();
+			category.myUpload();
 
 			// icon预览图
 			console.log("icon预览图");
@@ -5005,9 +5000,6 @@ var activitynumber = {
 	}
 }
 
-/*
- * 名称：订单管理
- */
 var order = {
 
 	// 日志列表
@@ -5582,9 +5574,6 @@ var orderinfo = {
 	}
 }
 
-/*
- * 名称：收入管理
- */
 var income = {
 
 	// 初使化
@@ -6014,9 +6003,6 @@ var incomerecord = {
 	}
 }
 
-/*
- * 名称：banner管理
- */
 var banner = {
 	mark : 1,
 	// 初始化
@@ -6195,7 +6181,7 @@ var banner = {
 		});
 
 		// 上传图片
-		productCategory.myUpload();
+		category.myUpload();
 	},
 	// 添加
 	add : function() {
@@ -6209,7 +6195,7 @@ var banner = {
 		$("#dlg1").dialog("open").dialog("setTitle", "添加广告条");
 
 		// 上传图片
-		productCategory.myUpload();
+		category.myUpload();
 		$("#iconpic").attr("src", "/Images/add_img.png");
 
 		// 活动
@@ -6247,7 +6233,7 @@ var banner = {
 			$("#dlg-form1").form('clear').form("load", o);
 			var activityId = $("input[name=ActivityID]").val();
 			// 上传图片
-			productCategory.myUpload();
+			category.myUpload();
 
 			// icon预览图
 			console.log("icon预览图");

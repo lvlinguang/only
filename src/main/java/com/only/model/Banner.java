@@ -3,23 +3,25 @@ package com.only.model;
 import java.util.Date;
 
 /**
- * 权限
+ * 微信端banner
  * 
  * @author lvlinguang
  * 
  */
-public class Permissions {
+public class Banner {
 	private Integer id;
 
 	private String name;
 
-	private String groupName;
+	private Integer sequence;
 
-	private String controller;
+	private Integer activityId;
 
-	private String action;
+	private String url;
 
-	private String description;
+	private String img;
+
+	private Boolean isValid;
 
 	private Boolean enable;
 
@@ -43,36 +45,44 @@ public class Permissions {
 		this.name = name == null ? null : name.trim();
 	}
 
-	public String getGroupName() {
-		return groupName;
+	public Integer getSequence() {
+		return sequence;
 	}
 
-	public void setGroupName(String groupName) {
-		this.groupName = groupName == null ? null : groupName.trim();
+	public void setSequence(Integer sequence) {
+		this.sequence = sequence;
 	}
 
-	public String getController() {
-		return controller;
+	public Integer getActivityId() {
+		return activityId;
 	}
 
-	public void setController(String controller) {
-		this.controller = controller == null ? null : controller.trim();
+	public void setActivityId(Integer activityId) {
+		this.activityId = activityId;
 	}
 
-	public String getAction() {
-		return action;
+	public String getUrl() {
+		return url;
 	}
 
-	public void setAction(String action) {
-		this.action = action == null ? null : action.trim();
+	public void setUrl(String url) {
+		this.url = url == null ? null : url.trim();
 	}
 
-	public String getDescription() {
-		return description;
+	public String getImg() {
+		return img;
 	}
 
-	public void setDescription(String description) {
-		this.description = description == null ? null : description.trim();
+	public void setImg(String img) {
+		this.img = img == null ? null : img.trim();
+	}
+
+	public Boolean getIsValid() {
+		return isValid;
+	}
+
+	public void setIsValid(Boolean isValid) {
+		this.isValid = isValid;
 	}
 
 	public Boolean getEnable() {

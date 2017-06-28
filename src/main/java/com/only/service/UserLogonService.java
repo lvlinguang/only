@@ -1,6 +1,6 @@
 package com.only.service;
 
-import com.only.model.Userlogon;
+import com.only.model.UserLogon;
 
 /**
  * 用户登录日志
@@ -16,7 +16,7 @@ public interface UserLogonService {
 	 * @param userlogon
 	 * @throws Exception
 	 */
-	public void addUserLogon(Userlogon userlogon) throws Exception;
+	public void addUserLogon(UserLogon userlogon) throws Exception;
 
 	/**
 	 * 删除登录日志
@@ -33,5 +33,5 @@ public interface UserLogonService {
 	 * @return
 	 * @throws Exception
 	 */
-	public Userlogon getUserLogonByUser(int userid) throws Exception;
+	public UserLogon getUserLogonByUser(int userid) throws Exception;
 }

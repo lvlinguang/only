@@ -28,4 +28,7 @@
 	<!-- 用户登录日志 -->
 	<bean class="com.only.service.impl.UserLogonServiceImpl"></bean>
 
+	<!-- 商品分类 -->
+	<bean class="com.only.service.impl.ProductCagegoryServiceImpl"></bean>
+
 </beans>

@@ -22,8 +22,8 @@ import com.only.model.Permissions;
 import com.only.model.Role;
 import com.only.model.User;
 import com.only.model.UserCustom;
+import com.only.model.UserLogon;
 import com.only.model.UserRole;
-import com.only.model.Userlogon;
 import com.only.model.common.DataGrid;
 import com.only.model.common.Json;
 import com.only.model.common.PageHelper;
@@ -101,15 +101,16 @@ public class UserController extends BaseController {
 		}
 
 		// 用户登录日志
-		Userlogon userlogon = userLogonService.getUserLogonByUser(user.getId());
+		UserLogon userlogon = userLogonService.getUserLogonByUser(user.getId());
 
 		// 更新用户信息
 		if (userlogon != null) {
 
 			User user2 = new User();
 			user2.setId(user.getId());
-			user2.setLastlogondate(userlogon.getCreatedate());
-			user2.setUpdatedate(new Date());
+			user2.setLastLogonDate(userlogon.getCreateDate());
+
+			user2.setUpdateDate(new Date());
 			userService.updateUser(user2);
 		}
 
@@ -117,17 +118,17 @@ public class UserController extends BaseController {
 		userLogonService.deleteUserLogon(user.getId());
 
 		// 添加登录日志
-		Userlogon data = new Userlogon();
-		data.setUserid(user.getId());
+		UserLogon data = new UserLogon();
+		data.setUserId(user.getId());
 		data.setToken(UUID.randomUUID().toString().replace("-", ""));
 
 		// 设置过期时间
-		data.setExpirydate(Tool.getDateAdd(new Date(), Calendar.DATE, 7));
+		data.setExpiryDate(Tool.getDateAdd(new Date(), Calendar.DATE, 7));
 
 		// ip地址
 		String ip = InetAddress.getLocalHost().getHostAddress();
 
-		data.setIpaddress(ip);
+		data.setIpAddress(ip);
 
 		userLogonService.addUserLogon(data);
 
@@ -156,7 +157,7 @@ public class UserController extends BaseController {
 		session.invalidate();
 
 		CookieUtil.removeCookie(request, response, "uid");
-		
+
 		CookieUtil.removeCookie(request, response, "valid");
 
 		return "redirect:/user/login";
@@ -305,7 +306,7 @@ public class UserController extends BaseController {
 
 		Json json = new Json();
 
-		user.setUpdatedate(new Date());
+		user.setUpdateDate(new Date());
 
 		// 修改用户
 		userService.updateUser(user);
@@ -337,6 +338,9 @@ public class UserController extends BaseController {
 	@RequestMapping(value = "list", method = RequestMethod.POST)
 	public @ResponseBody
 	DataGrid getUser(PageHelper page, int roleid, String name) throws Exception {
+
+		page.setSort("create_date");
+		page.setOrder("desc");
 
 		DataGrid dataGrid = new DataGrid();
 
@@ -400,7 +404,7 @@ public class UserController extends BaseController {
 
 		for (Permissions item : data) {
 
-			if (!hasTree(resulTrees, item.getGroupname())) {
+			if (!hasTree(resulTrees, item.getGroupName())) {
 
 				i++;
 
@@ -408,9 +412,9 @@ public class UserController extends BaseController {
 
 				t1.setId(i);
 
-				t1.setText(item.getGroupname());
+				t1.setText(item.getGroupName());
 
-				t1.setChildren(getdata(data, item.getGroupname()));
+				t1.setChildren(getdata(data, item.getGroupName()));
 
 				resulTrees.add(t1);
 			}
@@ -455,7 +459,7 @@ public class UserController extends BaseController {
 
 		for (Permissions p : data) {
 
-			if (p.getGroupname().equals(groupName)) {
+			if (p.getGroupName().equals(groupName)) {
 				Tree t1 = new Tree();
 
 				t1.setId(p.getId());

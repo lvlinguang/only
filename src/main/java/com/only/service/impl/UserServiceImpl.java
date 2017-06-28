@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.only.mapper.UserMapper;
 import com.only.model.User;
 import com.only.model.UserCustom;
-import com.only.model.UserQueryVo;
 import com.only.model.common.PageHelper;
 import com.only.service.UserService;
 
@@ -65,8 +64,7 @@ public class UserServiceImpl implements UserService {
 	/**
 	 * 得到用户列表
 	 */
-	public List<UserCustom> getUserList(PageHelper page, int roleid, String name)
-			throws Exception {
+	public List<UserCustom> getUserList(PageHelper page, int roleid, String name) throws Exception {
 
 		if (page != null) {
 

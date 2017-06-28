@@ -62,10 +62,10 @@
 							<input type="hidden" value="${user.id}" name="id" id="hdnUserId" />
 							<select class="xgui-combobox" required="true" id="roleId" name="roleId">
 								<c:forEach var="r" items="${roles}">
-									<c:if test="${userRole.roleid==r.id}">
+									<c:if test="${userRole.roleId==r.id}">
 										<option value="${r.id}" selected="selected">${r.name}</option>
 									</c:if>
-									<c:if test="${userRole.roleid!=r.id}">
+									<c:if test="${userRole.roleId!=r.id}">
 										<option value="${r.id}">${r.name}</option>
 									</c:if>
 								</c:forEach>

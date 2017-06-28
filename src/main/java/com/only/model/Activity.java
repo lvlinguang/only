@@ -9,36 +9,35 @@ import java.util.Date;
  * 
  */
 public class Activity {
-
 	private Integer id;
 
-	private Integer productid;
+	private Integer productId;
 
-	private Integer groupid;
+	private Integer groupId;
 
-	private Integer totalcount;
+	private Integer totalCount;
 
 	private Integer periods;
 
 	private Integer status;
 
-	private Date startdate;
+	private Date startDate;
 
-	private Integer uid;
+	private Integer userId;
 
-	private Date createdate;
+	private Date createDate;
 
-	private Date updatedate;
+	private Date updateDate;
 
-	private Integer audituid;
+	private Integer auditUserId;
 
-	private Date auditdate;
+	private Date auditDate;
 
-	private Integer auditstatus;
+	private Integer auditStatus;
 
 	private Long price;
 
-	private Integer lssuenumber;
+	private Integer lssueNumber;
 
 	public Integer getId() {
 		return id;
@@ -48,28 +47,28 @@ public class Activity {
 		this.id = id;
 	}
 
-	public Integer getProductid() {
-		return productid;
+	public Integer getProductId() {
+		return productId;
 	}
 
-	public void setProductid(Integer productid) {
-		this.productid = productid;
+	public void setProductId(Integer productId) {
+		this.productId = productId;
 	}
 
-	public Integer getGroupid() {
-		return groupid;
+	public Integer getGroupId() {
+		return groupId;
 	}
 
-	public void setGroupid(Integer groupid) {
-		this.groupid = groupid;
+	public void setGroupId(Integer groupId) {
+		this.groupId = groupId;
 	}
 
-	public Integer getTotalcount() {
-		return totalcount;
+	public Integer getTotalCount() {
+		return totalCount;
 	}
 
-	public void setTotalcount(Integer totalcount) {
-		this.totalcount = totalcount;
+	public void setTotalCount(Integer totalCount) {
+		this.totalCount = totalCount;
 	}
 
 	public Integer getPeriods() {
@@ -88,60 +87,60 @@ public class Activity {
 		this.status = status;
 	}
 
-	public Date getStartdate() {
-		return startdate;
+	public Date getStartDate() {
+		return startDate;
 	}
 
-	public void setStartdate(Date startdate) {
-		this.startdate = startdate;
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
 	}
 
-	public Integer getUid() {
-		return uid;
+	public Integer getUserId() {
+		return userId;
 	}
 
-	public void setUid(Integer uid) {
-		this.uid = uid;
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
-	public Date getCreatedate() {
-		return createdate;
+	public Date getCreateDate() {
+		return createDate;
 	}
 
-	public void setCreatedate(Date createdate) {
-		this.createdate = createdate;
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
 	}
 
-	public Date getUpdatedate() {
-		return updatedate;
+	public Date getUpdateDate() {
+		return updateDate;
 	}
 
-	public void setUpdatedate(Date updatedate) {
-		this.updatedate = updatedate;
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
 	}
 
-	public Integer getAudituid() {
-		return audituid;
+	public Integer getAuditUserId() {
+		return auditUserId;
 	}
 
-	public void setAudituid(Integer audituid) {
-		this.audituid = audituid;
+	public void setAuditUserId(Integer auditUserId) {
+		this.auditUserId = auditUserId;
 	}
 
-	public Date getAuditdate() {
-		return auditdate;
+	public Date getAuditDate() {
+		return auditDate;
 	}
 
-	public void setAuditdate(Date auditdate) {
-		this.auditdate = auditdate;
+	public void setAuditDate(Date auditDate) {
+		this.auditDate = auditDate;
 	}
 
-	public Integer getAuditstatus() {
-		return auditstatus;
+	public Integer getAuditStatus() {
+		return auditStatus;
 	}
 
-	public void setAuditstatus(Integer auditstatus) {
-		this.auditstatus = auditstatus;
+	public void setAuditStatus(Integer auditStatus) {
+		this.auditStatus = auditStatus;
 	}
 
 	public Long getPrice() {
@@ -152,11 +151,11 @@ public class Activity {
 		this.price = price;
 	}
 
-	public Integer getLssuenumber() {
-		return lssuenumber;
+	public Integer getLssueNumber() {
+		return lssueNumber;
 	}
 
-	public void setLssuenumber(Integer lssuenumber) {
-		this.lssuenumber = lssuenumber;
+	public void setLssueNumber(Integer lssueNumber) {
+		this.lssueNumber = lssueNumber;
 	}
 }

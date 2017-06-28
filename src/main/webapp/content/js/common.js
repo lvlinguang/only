@@ -205,8 +205,8 @@
 		}
 		// return s;
 		return s.join('').replace(/零([十百千万亿@#%^&~])/g, function(m, d, b) {// 优先处理
-																			// 零百
-																			// 零千 等
+			// 零百
+			// 零千 等
 			b = t.units.indexOf(d);
 			if (b != -1) {
 				if (d == '亿')
@@ -218,9 +218,9 @@
 			}
 			return '';
 		}).replace(/零+/g, '零').replace(/零([万亿])/g, function(m, b) {// 零百 零千处理后
-																	// 可能出现
-																	// 零零相连的
-																	// 再处理结尾为零的
+			// 可能出现
+			// 零零相连的
+			// 再处理结尾为零的
 			return b;
 		}).replace(/亿[万千百]/g, '亿').replace(/[零]$/, '').replace(/[@#%^&~]/g,
 				function(m) {
