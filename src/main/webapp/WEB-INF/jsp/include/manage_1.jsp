@@ -20,7 +20,7 @@
 
 		<li class=""><a href="${path}/user/">用户管理</a></li>
 
-		<li class=""><a href="${path}/category/">商品类目</a></li>
+		<li class=""><a href="${path}/category/">商品分类</a></li>
 
 		<li class=""><a href="${path}/group/">商品分组</a></li>
 

@@ -8,11 +8,6 @@
 <%@include file="/WEB-INF/jsp/include/manage_core.jsp"%>
 
 <style>
-
-.xgui-treegrid-row,.xgui-datagrid-row {
-	height: 50px;
-}
-
 .pic-tips {
 	margin-top: 52px;
 	margin-left: 10px;
@@ -43,7 +38,7 @@
 
 <script>
 	$(function() {
-		category.init();
+		group.init();
 	});
 </script>
 
@@ -65,7 +60,7 @@
 						<div class="search-item">
 							<span class="search-item-tit">关键字：</span>
 							<div class="search floatL">
-								<input class="searchI js-search-input" placeholder="请输入类目名">
+								<input class="searchI js-search-input" placeholder="请输入分组名">
 								<a href="javascript:;" class="btn-r-s js-search"></a>
 							</div>
 						</div>
@@ -83,13 +78,14 @@
 					<div class="js-update">编辑</div>
 					<div class="js-delete js-delete1">删除</div>
 				</div>
+
 				<!--dialog对话框-->
 				<div id="dlg1" class="xgui-dialog" title="创建分组" closed="true" modal="true" style="width: 580px;">
 					<form id="dlg-form1" class="dlg-form2 clearfix">
 						<div class="dlg-form2-item">
 							<label class="dlg-form2-name">
 								<i>*</i>
-								类目名称
+								分组名称
 							</label>
 							<span class="dlg-form2-Info">
 								<input name="id" type="hidden" />
@@ -111,33 +107,22 @@
 						<div class="dlg-form2-item">
 							<label class="dlg-form2-name">
 								<i>*</i>
-								类目排序
+								排序
 							</label>
 							<span class="dlg-form2-Info">
-								<input name="sequence" class="xgui-validatebox" required="true" validtype="number" emptymsg="请输入类目排序！" />
+								<input name="sequence" class="xgui-validatebox" required="true" validtype="number" emptymsg="请输入排序！" />
 							</span>
 						</div>
 						<div class="dlg-form2-item">
 							<label class="dlg-form2-name">
-								<i></i>
-								描述
-							</label>
-							<span class="dlg-form2-Info">
-								<input name="description" class="xgui-validatebox" />
-							</span>
-						</div>
-						<div class="dlg-form2-item js-canshow-item">
-							<label class="dlg-form2-name">
 								<i>*</i>
-								是否展示
+								每人次价格
 							</label>
 							<span class="dlg-form2-Info">
-								<select name="canshow" class="xgui-combobox" style="width: 374px;" editable="false">
-									<option value="true" selected="selected">是</option>
-									<option value="false">否</option>
-								</select>
+								<input name="price" class="xgui-validatebox" required="true" validtype="Integer" emptymsg="请输入起步价！" />
 							</span>
 						</div>
+
 					</form>
 					<div class="xgui-msg-bottom js-submit-btn">
 						<a href="javascript:;" class="xgui-msg-btn blue msg-btn-ok js-submit1">是</a>

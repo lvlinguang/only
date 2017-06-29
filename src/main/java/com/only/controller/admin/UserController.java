@@ -63,7 +63,7 @@ public class UserController extends BaseController {
 	private UserLogonService userLogonService;
 
 	// 登录界面
-	@RequestMapping("/login")
+	@RequestMapping("login")
 	public String Login(HttpServletRequest request, HttpSession session) throws NumberFormatException, Exception {
 
 		// 如果已登录中转到首页
@@ -75,7 +75,7 @@ public class UserController extends BaseController {
 	}
 
 	// 登录验证
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public @ResponseBody
 	Json login(HttpServletRequest request, HttpServletResponse response, HttpSession session, String Account, String PassWord, boolean Rememberme)
 			throws Exception {
@@ -151,7 +151,7 @@ public class UserController extends BaseController {
 	}
 
 	// 用户注销
-	@RequestMapping("/logout")
+	@RequestMapping("logout")
 	public String logout(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		// 清除session
 		session.invalidate();
@@ -180,7 +180,7 @@ public class UserController extends BaseController {
 	}
 
 	// 用户添加
-	@RequestMapping("/add")
+	@RequestMapping("add")
 	public ModelAndView Add(HttpServletRequest request) throws Exception {
 
 		ModelAndView modelAndView = new ModelAndView();
@@ -204,7 +204,7 @@ public class UserController extends BaseController {
 	}
 
 	// 用户修改
-	@RequestMapping("/update")
+	@RequestMapping("update")
 	public ModelAndView Update(HttpServletRequest request, Integer id) throws Exception {
 
 		ModelAndView modelAndView = new ModelAndView();
@@ -252,7 +252,7 @@ public class UserController extends BaseController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(value = "/adduser", method = RequestMethod.POST)
+	@RequestMapping(value = "adduser", method = RequestMethod.POST)
 	public @ResponseBody
 	Json AddUser(User user, Integer roleId, String permissions) throws Exception {
 
@@ -300,7 +300,7 @@ public class UserController extends BaseController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(value = "/updateuser", method = RequestMethod.POST)
+	@RequestMapping(value = "updateuser", method = RequestMethod.POST)
 	public @ResponseBody
 	Json UpdateUser(User user, Integer roleId, String permissions) throws Exception {
 

@@ -179,11 +179,11 @@ CREATE TABLE `product_category` (
   `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_date` datetime DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=gbk;
 
 /*Data for the table `product_category` */
 
-insert  into `product_category`(`id`,`parent_id`,`name`,`level`,`canshow`,`icon`,`sequence`,`description`,`enable`,`create_date`,`update_date`) values (1,0,'电脑办公',1,'','/',10,'这里是描述','','2017-06-28 17:29:37',NULL),(2,0,'数码影音',1,'','',20,'数码影音类','','2017-06-28 17:46:46',NULL),(3,0,'潮流新品',1,'','',30,'这里是描述','','2017-06-28 17:52:39',NULL),(4,0,'美食天地',1,'','',40,'','','2017-06-28 18:03:28',NULL),(5,0,'女性时尚',1,'','',50,'','','2017-06-28 18:03:39',NULL);
+insert  into `product_category`(`id`,`parent_id`,`name`,`level`,`canshow`,`icon`,`sequence`,`description`,`enable`,`create_date`,`update_date`) values (1,0,'电脑办公',1,'','1498724187275.jpg',10,'这里是描述','','2017-06-28 17:29:37',NULL),(2,0,'数码影音',1,'','1498724195801.jpg',20,'数码影音类','','2017-06-28 17:46:46',NULL),(3,0,'潮流新品',1,'','1498724206434.jpg',30,'这里是描述','','2017-06-28 17:52:39',NULL),(4,0,'美食天地',1,'','1498724217448.jpg',40,'','','2017-06-28 18:03:28',NULL),(5,0,'女性时尚',1,'','1498724260609.jpg',50,'','','2017-06-28 18:03:39',NULL),(6,0,'测试',1,'','1498724158254.jpg',1,'asdf','\0','2017-06-29 15:47:24',NULL),(7,0,'测试二',1,'','1498724030776.jpg',1,'','\0','2017-06-29 16:14:05',NULL);
 
 /*Table structure for table `product_comment` */
 
@@ -264,7 +264,7 @@ CREATE TABLE `user` (
 
 /*Data for the table `user` */
 
-insert  into `user`(`id`,`name`,`account`,`password`,`salt`,`mobile`,`qq`,`email`,`address`,`avatar`,`description`,`last_logon_date`,`enable`,`create_date`,`update_date`) values (3,'小吕','admin3','8x/uFhuq6nmWY9f7eRoqCg==','e8ed31b527d240878331414c8f7bfbe5','15825477180',NULL,NULL,NULL,NULL,NULL,'2017-06-28 16:52:55','','2017-06-21 21:14:29','2017-06-28 17:03:58');
+insert  into `user`(`id`,`name`,`account`,`password`,`salt`,`mobile`,`qq`,`email`,`address`,`avatar`,`description`,`last_logon_date`,`enable`,`create_date`,`update_date`) values (3,'小吕','admin3','8x/uFhuq6nmWY9f7eRoqCg==','e8ed31b527d240878331414c8f7bfbe5','15825477180',NULL,NULL,NULL,NULL,NULL,'2017-06-29 17:08:34','','2017-06-21 21:14:29','2017-06-29 17:08:48');
 
 /*Table structure for table `user_logon` */
 
@@ -278,11 +278,11 @@ CREATE TABLE `user_logon` (
   `ip_address` varchar(50) NOT NULL COMMENT '登录IP地址',
   `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=gbk;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=gbk;
 
 /*Data for the table `user_logon` */
 
-insert  into `user_logon`(`id`,`user_id`,`token`,`expiry_date`,`ip_address`,`create_date`) values (31,9,'614135d4847e42a1ab7e5008bd5c8fe2','2017-07-05 16:51:33','192.168.10.1','2017-06-28 16:51:32'),(34,3,'fdb7270e5332495fa9a7e1df7db17dee','2017-07-05 17:03:58','192.168.10.1','2017-06-28 17:03:57');
+insert  into `user_logon`(`id`,`user_id`,`token`,`expiry_date`,`ip_address`,`create_date`) values (31,9,'614135d4847e42a1ab7e5008bd5c8fe2','2017-07-05 16:51:33','192.168.10.1','2017-06-28 16:51:32'),(38,3,'59ab60c9f4d7468e9f61f2a4204fc022','2017-07-06 17:08:48','192.168.10.1','2017-06-29 17:08:47');
 
 /*Table structure for table `user_permissions` */
 

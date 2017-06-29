@@ -23,10 +23,8 @@
 		比如json转换解析器就默认加载了，如果使用mvc:annotation-driven不用配置上边的RequestMappingHandlerMapping和RequestMappingHandlerAdapter 
 		实际开发时使用mvc:annotation-driven -->
 	<mvc:annotation-driven></mvc:annotation-driven>
-	
-	<!-- 全局异常处理器
-	只要实现HandlerExceptionResolver接口就是全局异常处理器
-	 -->
+
+	<!-- 全局异常处理器 只要实现HandlerExceptionResolver接口就是全局异常处理器 -->
 	<bean class="com.only.exception.CustomExceptionResolver"></bean>
 
 	<!-- 视图解析器 解析jsp解析，默认使用jstl标签，classpath下的得有jstl的包 -->
@@ -36,6 +34,15 @@
 		<property name="prefix" value="/WEB-INF/jsp/" />
 		<!-- 配置jsp路径的后缀 -->
 		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<!-- 文件上传 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 设置上传文件的最大尺寸为5MB -->
+		<property name="maxUploadSize">
+			<value>5242880</value>
+		</property>
 	</bean>
 
 	<!--拦截器 -->

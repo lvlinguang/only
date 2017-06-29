@@ -55,7 +55,7 @@ public class RoleController extends BaseController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping("/add")
+	@RequestMapping("add")
 	public ModelAndView Add() throws Exception {
 		ModelAndView modelAndView = new ModelAndView();
 
@@ -80,7 +80,7 @@ public class RoleController extends BaseController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping("/update")
+	@RequestMapping("update")
 	public ModelAndView Update(Integer id) throws Exception {
 
 		ModelAndView modelAndView = new ModelAndView();
@@ -205,7 +205,7 @@ public class RoleController extends BaseController {
 	 * @throws Exception
 	 */
 	public @ResponseBody
-	@RequestMapping("/list")
+	@RequestMapping("list")
 	DataGrid UserList(PageHelper page) throws Exception {
 
 		// page.setSort("Indentation");

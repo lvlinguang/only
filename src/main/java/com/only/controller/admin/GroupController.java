@@ -8,50 +8,48 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.only.model.ProductCategory;
+import com.only.model.ActivityGroup;
 import com.only.model.common.DataGrid;
 import com.only.model.common.Json;
 import com.only.model.common.PageHelper;
-import com.only.service.ProductCategoryService;
+import com.only.service.ActivityGroupService;
 
 /**
- * 商品分类
+ * 商品分组
  * 
  * @author lvlinguang
  * 
  */
 @Controller
-@RequestMapping("category")
-public class CategoryController extends BaseController {
+@RequestMapping("group")
+public class GroupController {
 
 	@Autowired
-	private ProductCategoryService productCategoryService;
+	private ActivityGroupService activityGroupService;
 
 	/**
-	 * 分类主页
+	 * 分组主页
 	 * 
 	 * @return
 	 */
 	@RequestMapping("/")
 	public String index() {
 
-		return "category/index";
+		return "group/index";
 	}
 
 	/**
-	 * 创建分类
+	 * 创建分组
 	 * 
-	 * @param productCategory
+	 * @param activityGroup
 	 * @return
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "add", method = RequestMethod.POST)
 	public @ResponseBody
-	Json Add(ProductCategory productCategory) throws Exception {
+	Json Add(ActivityGroup activityGroup) throws Exception {
 
-		productCategory.setCanshow(true);
-
-		productCategoryService.addCategory(productCategory);
+		activityGroupService.addActivityGroup(activityGroup);
 
 		Json json = new Json();
 
@@ -62,17 +60,17 @@ public class CategoryController extends BaseController {
 	}
 
 	/**
-	 * 修改分类
+	 * 修改分组
 	 * 
-	 * @param productCategory
+	 * @param activityGroup
 	 * @return
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "update", method = RequestMethod.POST)
 	public @ResponseBody
-	Json Update(ProductCategory productCategory) throws Exception {
+	Json Update(ActivityGroup activityGroup) throws Exception {
 
-		productCategoryService.updateCategory(productCategory);
+		activityGroupService.updateActivityGroup(activityGroup);
 
 		Json json = new Json();
 
@@ -83,7 +81,7 @@ public class CategoryController extends BaseController {
 	}
 
 	/**
-	 * 删除分类
+	 * 删除分组
 	 * 
 	 * @param id
 	 * @return
@@ -93,7 +91,7 @@ public class CategoryController extends BaseController {
 	public @ResponseBody
 	Json Delete(int id) throws Exception {
 
-		productCategoryService.deleteCategory(id);
+		activityGroupService.deleteActivityGroup(id);
 
 		Json json = new Json();
 		json.setSuccess(true);
@@ -103,9 +101,10 @@ public class CategoryController extends BaseController {
 	}
 
 	/**
-	 * 分类列表
+	 * 分组列表
 	 * 
 	 * @param page
+	 * @param keyWord
 	 * @return
 	 * @throws Exception
 	 */
@@ -113,20 +112,13 @@ public class CategoryController extends BaseController {
 	public @ResponseBody
 	DataGrid UserList(PageHelper page, String keyWord) throws Exception {
 
-		// page.setSort("Indentation");
-
-		// page.setOrder("desc");
-		// page.setPageIndex(2);
-
-		// page.setPageSize(2);
-
 		DataGrid dataGrid = new DataGrid();
 
 		// 数据
-		List<ProductCategory> list = productCategoryService.getCategoryList(page, keyWord);
+		List<ActivityGroup> list = activityGroupService.getActivityGroupList(page, keyWord);
 
 		// 设置条数
-		dataGrid.setCount(productCategoryService.getCategoryListTotal(keyWord));
+		dataGrid.setCount(activityGroupService.getActivityGroupListTotal(keyWord));
 
 		dataGrid.setData(list);
 

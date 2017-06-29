@@ -3,33 +3,36 @@
 <mapper namespace="com.only.mapper.ActivityGroupMapper">
 
 	<!-- 添加分组 -->
-	<insert id="addGroup" useGeneratedKeys="true" keyProperty="id">
+	<insert id="addActivityGroup" useGeneratedKeys="true"
+		keyProperty="id">
 		insert into
 		activity_group(name,desCription,icon,sequence,price)
 		values(#{name},#{description},#{icon},#{sequence},#{price})
 	</insert>
 
 	<!-- 修改分组 -->
-	<update id="updateGroup">
+	<update id="updateActivityGroup">
 		update activity_group
 		<set>
-			<if test="name!=null and name !=''">name=#{name}</if>
-			<if test="description!=null and description !=''">desCription=#{description}</if>
-			<if test="icon!=null and icon !=''">icon=#{icon}</if>
-			<if test="sequence!=null and sequence !=''">sequence=#{sequence}</if>
+			<if test="name!=null and name !=''">name=#{name},</if>
+			<if test="description!=null and description !=''">desCription=#{description},</if>
+			<if test="icon!=null and icon !=''">icon=#{icon},</if>
+			<if test="sequence!=null and sequence !=''">sequence=#{sequence},</if>
 			<if test="price!=null and price !=''">price=#{price}</if>
 		</set>
+		where id=#{id}
 	</update>
 
 	<!-- 删除分组 -->
-	<update id="deleteGroup" parameterType="int">
-		update activity_group set
+	<update id="deleteActivityGroup" parameterType="int">
+		update
+		activity_group set
 		enable=0
 		where id=#{id}
 	</update>
 
 	<!-- 分组列表总数 -->
-	<select id="getGroupListTotal" resultType="int">
+	<select id="getActivityGroupListTotal" resultType="int">
 		select count(0)
 		from activity_group
 		where enable=1
@@ -40,7 +43,7 @@
 
 
 	<!-- 分组列表 -->
-	<select id="getGroupList" resultType="com.only.model.ActivityGroup">
+	<select id="getActivityGroupListTotal" resultType="com.only.model.ActivityGroup">
 		select
 		id,
 		name,
