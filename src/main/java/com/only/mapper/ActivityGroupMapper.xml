@@ -43,16 +43,15 @@
 
 
 	<!-- 分组列表 -->
-	<select id="getActivityGroupListTotal" resultType="com.only.model.ActivityGroup">
+	<select id="getActivityGroupList" resultType="com.only.model.ActivityGroup">
 		select
 		id,
 		name,
 		icon,
 		sequence,
-		desCription,
+		description,
 		price,
-		create_date as
-		createDate,
+		create_date as createDate,
 		update_date as updateDate
 		from activity_group
 		where enable=1

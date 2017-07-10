@@ -1054,9 +1054,12 @@ var group = {
 
 		// 顺序
 		$("input[name=Sequence]").val(1);
+		
 		// 上传图片
 		category.myUpload();
-		$("#iconpic").attr("src", "/Images/add_img.png");
+		
+		$("#iconpic").attr("src", config.path + "/content/images/add_img.png");
+		
 		// 起步价
 		$("input[name=Price]").val(1);
 

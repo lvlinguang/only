@@ -51,7 +51,7 @@ public class AjaxController {
 
 		// 创建文件夹
 		if (!uploadPic.exists()) {
-			uploadPic.mkdir();
+			uploadPic.mkdirs();
 		}
 
 		File savedFile = new File(uploadPic, file_name);

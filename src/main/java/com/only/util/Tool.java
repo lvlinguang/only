@@ -1,5 +1,6 @@
 package com.only.util;
 
+import java.io.File;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -25,12 +26,38 @@ public class Tool {
 	 */
 	public static Date getDateAdd(Date date, int field, int amount) {
 
-		Calendar calendar = new GregorianCalendar();
+		Calendar calendar = Calendar.getInstance();
 
 		calendar.setTime(date);
 		calendar.add(field, amount);
 
 		return calendar.getTime();
+	}
+
+	/**
+	 * 递归删除文件及目录
+	 * 
+	 * @param file
+	 */
+	public static void deleteFile(File file) {
+
+		// 是目录
+		if (file.isDirectory()) {
+
+			File[] subs = file.listFiles();
+
+			if (subs.length > 0) {
+				for (File sub : subs) {
+
+					// 递归
+					deleteFile(sub);
+				}
+			} else {
+				file.delete();
+			}
+		}
+
+		file.delete();
 	}
 
 }

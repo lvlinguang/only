@@ -77,8 +77,7 @@ public class UserController extends BaseController {
 	// 登录验证
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public @ResponseBody
-	Json login(HttpServletRequest request, HttpServletResponse response, HttpSession session, String Account, String PassWord, boolean Rememberme)
-			throws Exception {
+	Json login(HttpServletRequest request, HttpServletResponse response, HttpSession session, String Account, String PassWord, boolean Rememberme) throws Exception {
 
 		Json json = new Json();
 
