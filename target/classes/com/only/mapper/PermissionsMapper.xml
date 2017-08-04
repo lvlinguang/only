@@ -3,7 +3,7 @@
 <mapper namespace="com.only.mapper.PermissionsMapper">
 
 	<!-- 权限列表 -->
-	<select id="getPermissionsList" resultType="com.only.model.Permissions">
+	<select id="getPermissionsList" resultType="com.only.entity.Permissions">
 		select
 		id,
 		name,
@@ -30,7 +30,7 @@
 	</delete>
 
 	<!-- 角色权限列表 -->
-	<select id="getRolePermissionsList" resultType="com.only.model.Permissions">
+	<select id="getRolePermissionsList" resultType="com.only.entity.Permissions">
 
 		select
 		a.id,
@@ -63,7 +63,7 @@
 	</delete>
 
 	<!-- 用户权限列表 -->
-	<select id="getUserPrmissionsList" resultType="com.only.model.Permissions">
+	<select id="getUserPrmissionsList" resultType="com.only.entity.Permissions">
 		SELECT
 		a.id,
 		a.name,

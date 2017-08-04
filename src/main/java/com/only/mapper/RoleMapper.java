@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.only.model.Role;
+import com.only.entity.Role;
 import com.only.model.common.PageHelper;
 
 /**

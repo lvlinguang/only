@@ -2,8 +2,8 @@ package com.only.service;
 
 import java.util.List;
 
-import com.only.model.User;
-import com.only.model.UserCustom;
+import com.only.entity.User;
+import com.only.entity.UserCustom;
 import com.only.model.common.PageHelper;
 
 /**

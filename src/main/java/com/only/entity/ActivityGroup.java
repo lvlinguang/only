@@ -1,21 +1,25 @@
-package com.only.model;
+package com.only.entity;
 
 import java.util.Date;
 
 /**
- * 角色
+ * 活动分组（一元、十元）
  * 
  * @author lvlinguang
  * 
  */
-public class Role {
+public class ActivityGroup {
 	private Integer id;
 
 	private String name;
 
-	private Integer indentation;
-
 	private String description;
+
+	private String icon;
+
+	private Integer sequence;
+
+	private Integer price;
 
 	private Boolean enable;
 
@@ -39,20 +43,36 @@ public class Role {
 		this.name = name == null ? null : name.trim();
 	}
 
-	public Integer getIndentation() {
-		return indentation;
-	}
-
-	public void setIndentation(Integer indentation) {
-		this.indentation = indentation;
-	}
-
 	public String getDescription() {
 		return description;
 	}
 
 	public void setDescription(String description) {
 		this.description = description == null ? null : description.trim();
+	}
+
+	public String getIcon() {
+		return icon;
+	}
+
+	public void setIcon(String icon) {
+		this.icon = icon == null ? null : icon.trim();
+	}
+
+	public Integer getSequence() {
+		return sequence;
+	}
+
+	public void setSequence(Integer sequence) {
+		this.sequence = sequence;
+	}
+
+	public Integer getPrice() {
+		return price;
+	}
+
+	public void setPrice(Integer price) {
+		this.price = price;
 	}
 
 	public Boolean getEnable() {

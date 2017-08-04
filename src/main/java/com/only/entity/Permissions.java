@@ -1,25 +1,25 @@
-package com.only.model;
+package com.only.entity;
 
 import java.util.Date;
 
 /**
- * 活动分组（一元、十元）
+ * 权限
  * 
  * @author lvlinguang
  * 
  */
-public class ActivityGroup {
+public class Permissions {
 	private Integer id;
 
 	private String name;
 
+	private String groupName;
+
+	private String controller;
+
+	private String action;
+
 	private String description;
-
-	private String icon;
-
-	private Integer sequence;
-
-	private Integer price;
 
 	private Boolean enable;
 
@@ -43,36 +43,36 @@ public class ActivityGroup {
 		this.name = name == null ? null : name.trim();
 	}
 
+	public String getGroupName() {
+		return groupName;
+	}
+
+	public void setGroupName(String groupName) {
+		this.groupName = groupName == null ? null : groupName.trim();
+	}
+
+	public String getController() {
+		return controller;
+	}
+
+	public void setController(String controller) {
+		this.controller = controller == null ? null : controller.trim();
+	}
+
+	public String getAction() {
+		return action;
+	}
+
+	public void setAction(String action) {
+		this.action = action == null ? null : action.trim();
+	}
+
 	public String getDescription() {
 		return description;
 	}
 
 	public void setDescription(String description) {
 		this.description = description == null ? null : description.trim();
-	}
-
-	public String getIcon() {
-		return icon;
-	}
-
-	public void setIcon(String icon) {
-		this.icon = icon == null ? null : icon.trim();
-	}
-
-	public Integer getSequence() {
-		return sequence;
-	}
-
-	public void setSequence(Integer sequence) {
-		this.sequence = sequence;
-	}
-
-	public Integer getPrice() {
-		return price;
-	}
-
-	public void setPrice(Integer price) {
-		this.price = price;
 	}
 
 	public Boolean getEnable() {

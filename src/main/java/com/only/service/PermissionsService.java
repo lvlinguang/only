@@ -2,7 +2,7 @@ package com.only.service;
 
 import java.util.List;
 
-import com.only.model.Permissions;
+import com.only.entity.Permissions;
 
 /**
  * 权限

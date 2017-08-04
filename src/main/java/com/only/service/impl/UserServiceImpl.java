@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.only.entity.User;
+import com.only.entity.UserCustom;
 import com.only.mapper.UserMapper;
-import com.only.model.User;
-import com.only.model.UserCustom;
 import com.only.model.common.PageHelper;
 import com.only.service.UserService;
 

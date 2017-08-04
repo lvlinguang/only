@@ -2,7 +2,7 @@ package com.only.service;
 
 import java.util.List;
 
-import com.only.model.ProductCategory;
+import com.only.entity.ProductCategory;
 import com.only.model.common.PageHelper;
 
 /**

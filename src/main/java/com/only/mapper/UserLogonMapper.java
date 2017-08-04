@@ -1,6 +1,6 @@
 package com.only.mapper;
 
-import com.only.model.UserLogon;
+import com.only.entity.UserLogon;
 
 /**
  * 用户登录日志

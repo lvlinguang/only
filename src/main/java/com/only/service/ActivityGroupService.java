@@ -2,7 +2,7 @@ package com.only.service;
 
 import java.util.List;
 
-import com.only.model.ActivityGroup;
+import com.only.entity.ActivityGroup;
 import com.only.model.common.PageHelper;
 
 /**

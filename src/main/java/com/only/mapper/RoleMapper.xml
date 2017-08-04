@@ -10,7 +10,7 @@
 	</insert>
 
 	<!-- 修改角色 -->
-	<update id="updateRole" parameterType="com.only.model.Role">
+	<update id="updateRole" parameterType="com.only.entity.Role">
 		update role set
 		name=#{name},description=#{description},update_date=#{updateDate}
 		where id=#{id}
@@ -23,7 +23,7 @@
 	</update>
 
 	<!-- 角色详情 -->
-	<select id="getRoleByID" parameterType="int" resultType="com.only.model.Role">
+	<select id="getRoleByID" parameterType="int" resultType="com.only.entity.Role">
 		select
 		id,
 		name,
@@ -52,7 +52,7 @@
 	</select>
 
 	<!-- 角色列表 -->
-	<select id="getRoleList" resultType="com.only.model.Role">
+	<select id="getRoleList" resultType="com.only.entity.Role">
 		select
 		id,
 		name,

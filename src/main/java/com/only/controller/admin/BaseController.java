@@ -8,8 +8,8 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.only.model.User;
-import com.only.model.UserLogon;
+import com.only.entity.User;
+import com.only.entity.UserLogon;
 import com.only.service.UserLogonService;
 import com.only.service.UserService;
 import com.only.util.CookieUtil;

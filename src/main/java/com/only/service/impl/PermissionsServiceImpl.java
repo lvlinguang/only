@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.only.entity.Permissions;
 import com.only.mapper.PermissionsMapper;
-import com.only.model.Permissions;
 import com.only.service.PermissionsService;
 
 /**

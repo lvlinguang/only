@@ -1,23 +1,19 @@
-package com.only.model;
+package com.only.entity;
 
 import java.util.Date;
 
 /**
- * 权限
+ * 角色
  * 
  * @author lvlinguang
  * 
  */
-public class Permissions {
+public class Role {
 	private Integer id;
 
 	private String name;
 
-	private String groupName;
-
-	private String controller;
-
-	private String action;
+	private Integer indentation;
 
 	private String description;
 
@@ -43,28 +39,12 @@ public class Permissions {
 		this.name = name == null ? null : name.trim();
 	}
 
-	public String getGroupName() {
-		return groupName;
+	public Integer getIndentation() {
+		return indentation;
 	}
 
-	public void setGroupName(String groupName) {
-		this.groupName = groupName == null ? null : groupName.trim();
-	}
-
-	public String getController() {
-		return controller;
-	}
-
-	public void setController(String controller) {
-		this.controller = controller == null ? null : controller.trim();
-	}
-
-	public String getAction() {
-		return action;
-	}
-
-	public void setAction(String action) {
-		this.action = action == null ? null : action.trim();
+	public void setIndentation(Integer indentation) {
+		this.indentation = indentation;
 	}
 
 	public String getDescription() {

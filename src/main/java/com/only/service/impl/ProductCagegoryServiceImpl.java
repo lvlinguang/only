@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.only.entity.ProductCategory;
 import com.only.mapper.ProductCategoryMapper;
-import com.only.model.ProductCategory;
 import com.only.model.common.PageHelper;
 import com.only.service.ProductCategoryService;
 

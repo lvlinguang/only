@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.only.model.ActivityGroup;
+import com.only.entity.ActivityGroup;
 import com.only.model.common.PageHelper;
 
 /**

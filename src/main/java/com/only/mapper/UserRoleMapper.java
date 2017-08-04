@@ -2,7 +2,7 @@ package com.only.mapper;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.only.model.UserRole;
+import com.only.entity.UserRole;
 
 /**
  * 用户角色管理

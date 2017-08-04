@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.only.entity.ActivityGroup;
 import com.only.mapper.ActivityGroupMapper;
-import com.only.model.ActivityGroup;
 import com.only.model.common.PageHelper;
 import com.only.service.ActivityGroupService;
 

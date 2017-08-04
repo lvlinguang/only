@@ -2,8 +2,8 @@ package com.only.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.only.entity.UserLogon;
 import com.only.mapper.UserLogonMapper;
-import com.only.model.UserLogon;
 import com.only.service.UserLogonService;
 
 /**

@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.only.model.Permissions;
-import com.only.model.Role;
+import com.only.entity.Permissions;
+import com.only.entity.Role;
 import com.only.model.common.DataGrid;
 import com.only.model.common.Json;
 import com.only.model.common.PageHelper;

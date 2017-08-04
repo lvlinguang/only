@@ -1,4 +1,4 @@
-package com.only.model;
+package com.only.entity;
 
 /**
  * 用户查询包装类

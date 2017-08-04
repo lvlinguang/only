@@ -10,7 +10,7 @@
 	</insert>
 
 	<!-- 修改用户 -->
-	<update id="updateUser" parameterType="com.only.model.User">
+	<update id="updateUser" parameterType="com.only.entity.User">
 		update user
 		<set>
 			<if test="name!=null and name!=''">name=#{name},</if>
@@ -31,7 +31,7 @@
 	</update>
 
 	<!-- 根据id得到数据 -->
-	<select id="getUserByID" parameterType="int" resultType="com.only.model.User">
+	<select id="getUserByID" parameterType="int" resultType="com.only.entity.User">
 		select
 		u1.id,
 		u1.name,
@@ -48,7 +48,7 @@
 	</select>
 
 	<!-- 根据帐号得到数据 -->
-	<select id="getUserByAccount" resultType="com.only.model.User">
+	<select id="getUserByAccount" resultType="com.only.entity.User">
 		select
 		u1.id,
 		u1.name,
@@ -85,7 +85,7 @@
 	</select>
 
 	<!-- 用户列表 -->
-	<select id="getUserList" resultType="com.only.model.UserCustom">
+	<select id="getUserList" resultType="com.only.entity.UserCustom">
 		SELECT
 		u1.id,
 		u1.name,

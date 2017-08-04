@@ -43,7 +43,7 @@
 
 
 	<!-- 分组列表 -->
-	<select id="getActivityGroupList" resultType="com.only.model.ActivityGroup">
+	<select id="getActivityGroupList" resultType="com.only.entity.ActivityGroup">
 		select
 		id,
 		name,

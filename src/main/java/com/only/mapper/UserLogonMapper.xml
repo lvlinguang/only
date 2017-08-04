@@ -16,7 +16,7 @@
 	</delete>
 
 	<!-- 日志详情 -->
-	<select id="getUserLogonByUser" resultType="com.only.model.UserLogon">
+	<select id="getUserLogonByUser" resultType="com.only.entity.UserLogon">
 		select
 		id,
 		user_id as userId,

@@ -42,7 +42,7 @@
 
 
 	<!-- 分类列表 -->
-	<select id="getProductCategoryList" resultType="com.only.model.ProductCategory">
+	<select id="getProductCategoryList" resultType="com.only.entity.ProductCategory">
 		select
 		id,
 		name,

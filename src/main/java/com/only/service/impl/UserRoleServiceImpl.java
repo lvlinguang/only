@@ -2,8 +2,8 @@ package com.only.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.only.entity.UserRole;
 import com.only.mapper.UserRoleMapper;
-import com.only.model.UserRole;
 import com.only.service.UserRoleService;
 
 /**

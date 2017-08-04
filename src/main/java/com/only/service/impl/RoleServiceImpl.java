@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.only.entity.Role;
 import com.only.mapper.RoleMapper;
-import com.only.model.Role;
 import com.only.model.common.PageHelper;
 import com.only.service.RoleService;
 

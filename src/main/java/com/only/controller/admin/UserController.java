@@ -18,12 +18,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.only.model.Permissions;
-import com.only.model.Role;
-import com.only.model.User;
-import com.only.model.UserCustom;
-import com.only.model.UserLogon;
-import com.only.model.UserRole;
+import com.only.entity.Permissions;
+import com.only.entity.Role;
+import com.only.entity.User;
+import com.only.entity.UserCustom;
+import com.only.entity.UserLogon;
+import com.only.entity.UserRole;
 import com.only.model.common.DataGrid;
 import com.only.model.common.Json;
 import com.only.model.common.PageHelper;

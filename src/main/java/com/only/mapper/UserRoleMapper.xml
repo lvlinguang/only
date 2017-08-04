@@ -18,7 +18,7 @@
 
 	<!-- 用户角色 -->
 	<select id="getUserRoleByUser" parameterType="int"
-		resultType="com.only.model.UserRole">
+		resultType="com.only.entity.UserRole">
 		select
 		id,
 		user_id as userId,

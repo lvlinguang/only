@@ -20,7 +20,7 @@ var role = {
 			return;
 		}
 
-		window.location.href = config.path + '/role/update?id=' + data.id;
+		window.location.href = 'update?id=' + data.id;
 	},
 	// 保存
 	save : function(target) {
@@ -47,13 +47,13 @@ var role = {
 		// 添加
 		if (role.mark == 1) {
 
-			xgui.Ajax(config.path + "/role/add", $("#dlg-form").serialize(), "json", true, function(o) {
+			xgui.Ajax("add", $("#dlg-form").serialize(), "json", true, function(o) {
 
 				if (o.success) {
 
 					xgui.msgtip(o.msg, "success", function() {
 
-						window.location.href = config.path + '/role/';
+						window.location.href = 'role/';
 					});
 				} else {
 
@@ -80,7 +80,7 @@ var role = {
 		// 修改
 		else {
 
-			xgui.Ajax(config.path + "/role/update", $("#dlg-form").serialize(), "json", true, function(o) {
+			xgui.Ajax("update", $("#dlg-form").serialize(), "json", true, function(o) {
 
 				if (o.success) {
 
@@ -196,7 +196,7 @@ var role = {
 			// 每页大小
 			pageSize : 20,
 			// 地址
-			url : config.path + "/role/list",
+			url : "list",
 			// 远程参数
 			queryParams : {
 				keyWord : ''
@@ -281,7 +281,7 @@ var user = {
 			return;
 		}
 
-		window.location.href = config.path + '/user/update?id=' + data.id;
+		window.location.href = 'update?id=' + data.id;
 	},
 	// 保存
 	save : function(target) {
@@ -309,13 +309,13 @@ var user = {
 		// 添加
 		if (user.mark == 1) {
 
-			xgui.Ajax(config.path + "/user/adduser", $("#dlg-form").serialize(), "json", true, function(o) {
+			xgui.Ajax("adduser", $("#dlg-form").serialize(), "json", true, function(o) {
 
 				if (o.success) {
 
 					xgui.msgtip(o.msg, "success", function() {
 
-						window.location.href = config.path + '/user/';
+						window.location.href = 'user/';
 					});
 				} else {
 
@@ -342,13 +342,13 @@ var user = {
 		// 修改
 		else {
 
-			xgui.Ajax(config.path + "/user/updateuser", $("#dlg-form").serialize(), "json", true, function(o) {
+			xgui.Ajax("updateuser", $("#dlg-form").serialize(), "json", true, function(o) {
 
 				if (o.success) {
 
 					xgui.msgtip(o.msg, "success", function() {
 
-						window.parent.location = config.path + '/user/';
+						window.parent.location = '../user/';
 					});
 				} else {
 
@@ -386,7 +386,7 @@ var user = {
 				var data = {
 					roleId : value
 				};
-				$.get(config.path + '/role/getRolePermissions', data, function(result) {
+				$.get('getRolePermissions', data, function(result) {
 
 					// 内容项
 					var item = $(template('permission-item', {
@@ -405,7 +405,7 @@ var user = {
 			var data = {
 				roleId : roleIdValue
 			};
-			$.get(config.path + '/role/getRolePermissions', data, function(result) {
+			$.get('getRolePermissions', data, function(result) {
 
 				// 内容项
 				var item = $(template('permission-item', {
@@ -514,7 +514,7 @@ var user = {
 			return false;
 		}
 
-		xgui.Ajax(config.path + "/user/reset", $("#dlg-form1").serialize(), "json", true, function(o) {
+		xgui.Ajax("reset", $("#dlg-form1").serialize(), "json", true, function(o) {
 
 			if (o.success) {
 
@@ -551,7 +551,7 @@ var user = {
 			// 每页大小
 			pageSize : 20,
 			// 地址
-			url : config.path + "/user/list",
+			url : "list",
 			// 远程参数
 			queryParams : {
 				roleid : 0,
@@ -769,7 +769,7 @@ var category = {
 
 		xgui.confirm("确定要删除吗？", function() {
 
-			xgui.Ajax(config.path + "/category/delete", {
+			xgui.Ajax("delete", {
 				id : data.id
 			}, "json", true, function(o) {
 
@@ -810,7 +810,7 @@ var category = {
 		// 添加
 		if (category.mark == 1) {
 
-			xgui.Ajax(config.path + "/category/add", $("#dlg-form1").serialize(), "json", true, function(o) {
+			xgui.Ajax("add", $("#dlg-form1").serialize(), "json", true, function(o) {
 
 				if (o.success) {
 
@@ -845,7 +845,7 @@ var category = {
 		// 修改
 		else {
 
-			xgui.Ajax(config.path + "/category/update", $("#dlg-form1").serialize(), "json", true, function(o) {
+			xgui.Ajax("update", $("#dlg-form1").serialize(), "json", true, function(o) {
 
 				if (o.success) {
 
@@ -885,7 +885,7 @@ var category = {
 			// 每页大小
 			pageSize : 20,
 			// 地址
-			url : config.path + "/category/list",
+			url : "list",
 			// 远程参数
 			queryParams : {
 				keyWord : ''
@@ -1054,12 +1054,12 @@ var group = {
 
 		// 顺序
 		$("input[name=Sequence]").val(1);
-		
+
 		// 上传图片
 		category.myUpload();
-		
+
 		$("#iconpic").attr("src", config.path + "/content/images/add_img.png");
-		
+
 		// 起步价
 		$("input[name=Price]").val(1);
 
@@ -1083,26 +1083,14 @@ var group = {
 		// 打开dialog框并设置标题
 		$("#dlg1").dialog("open").dialog("setTitle", "修改分组");
 
-		// 给form赋值
-		console.log("给form赋值");
-		xgui.Ajax("/Group/Details", {
-			ID : data.ProductGroupID
-		}, "json", true, function(o) {
+		$("#dlg-form1").form('clear').form("load", data);
 
-			$("#dlg-form1").form('clear').form("load", o);
+		// 设置图片
+		$("#iconpic").attr("src", "/upload/images/" + data.icon);
 
-			// 上传图片
-			category.myUpload();
+		// 上传图片
+		category.myUpload();
 
-			// icon预览图
-			console.log("icon预览图");
-			var icon = $("#dlg-form1").find("input[name=Icon]").val();
-			if (icon == "")
-				$("#iconpic").attr("src", "/Images/add_img.png");
-			else
-				$("#iconpic").attr("src", "/upload/icon/small/" + icon);
-
-		});
 	},
 	// 删除
 	del : function() {
@@ -1119,8 +1107,8 @@ var group = {
 
 		xgui.confirm("确定要删除吗？", function() {
 
-			xgui.Ajax("/Group/Delete", {
-				ID : data.ProductGroupID
+			xgui.Ajax("delete", {
+				id : data.id
 			}, "json", true, function(o) {
 
 				if (o.success) {
@@ -1158,7 +1146,7 @@ var group = {
 		// 添加
 		if (group.mark == 1) {
 
-			xgui.Ajax("/Group/Add", $("#dlg-form1").serialize(), "json", true, function(o) {
+			xgui.Ajax("add", $("#dlg-form1").serialize(), "json", true, function(o) {
 
 				if (o.success) {
 
@@ -1192,7 +1180,7 @@ var group = {
 		// 修改
 		else {
 
-			xgui.Ajax("/Group/Update", $("#dlg-form1").serialize(), "json", true, function(o) {
+			xgui.Ajax("update", $("#dlg-form1").serialize(), "json", true, function(o) {
 
 				if (o.success) {
 
@@ -1232,7 +1220,7 @@ var group = {
 			// 每页大小
 			pageSize : 10,
 			// 地址
-			url : config.path + "/group/list",
+			url : "list",
 			// 远程参数
 			queryParams : {
 				keyWord : ''

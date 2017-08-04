@@ -1,23 +1,25 @@
-package com.only.model;
+package com.only.entity;
 
 import java.util.Date;
 
 /**
- * 用户权限
+ * 物流公司
  * 
  * @author lvlinguang
  * 
  */
-public class UserPermissions {
+public class ExpressCompany {
 	private Integer id;
 
-	private Integer userId;
+	private String number;
 
-	private Integer permissionId;
+	private String name;
 
 	private Date createDate;
 
 	private Date updateDate;
+
+	private Boolean enable;
 
 	public Integer getId() {
 		return id;
@@ -27,20 +29,20 @@ public class UserPermissions {
 		this.id = id;
 	}
 
-	public Integer getUserId() {
-		return userId;
+	public String getNumber() {
+		return number;
 	}
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
+	public void setNumber(String number) {
+		this.number = number == null ? null : number.trim();
 	}
 
-	public Integer getPermissionId() {
-		return permissionId;
+	public String getName() {
+		return name;
 	}
 
-	public void setPermissionId(Integer permissionId) {
-		this.permissionId = permissionId;
+	public void setName(String name) {
+		this.name = name == null ? null : name.trim();
 	}
 
 	public Date getCreateDate() {
@@ -57,5 +59,13 @@ public class UserPermissions {
 
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
+	}
+
+	public Boolean getEnable() {
+		return enable;
+	}
+
+	public void setEnable(Boolean enable) {
+		this.enable = enable;
 	}
 }

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.only.model.ActivityGroup;
+import com.only.entity.ActivityGroup;
 import com.only.model.common.DataGrid;
 import com.only.model.common.Json;
 import com.only.model.common.PageHelper;

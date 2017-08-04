@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.only.model.User;
-import com.only.model.UserCustom;
-import com.only.model.UserRole;
+import com.only.entity.User;
+import com.only.entity.UserCustom;
+import com.only.entity.UserRole;
 import com.only.model.common.PageHelper;
 
 /**

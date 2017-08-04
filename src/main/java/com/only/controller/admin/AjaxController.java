@@ -5,7 +5,9 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -19,8 +21,9 @@ import com.only.util.SettingUtil;
  * @author lvlinguang
  * 
  */
+@Controller
 @RequestMapping("ajax")
-public class AjaxController {
+public class AjaxController extends BaseController {
 
 	/**
 	 * 图片主传
@@ -30,7 +33,7 @@ public class AjaxController {
 	 * @throws IllegalStateException
 	 * @throws IOException
 	 */
-	@RequestMapping("upload")
+	@RequestMapping(value = "upload", method = RequestMethod.POST)
 	public @ResponseBody
 	Json Upload(HttpServletRequest request, MultipartFile upload_file) throws IllegalStateException, IOException {
 

@@ -10,7 +10,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.only.controller.admin.BaseController;
-import com.only.model.User;
+import com.only.entity.User;
 
 /**
  * 登录控制

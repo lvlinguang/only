@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.only.model.Permissions;
+import com.only.entity.Permissions;
 
 /**
  * 权限管理

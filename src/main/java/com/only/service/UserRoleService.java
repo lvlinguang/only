@@ -1,6 +1,6 @@
 package com.only.service;
 
-import com.only.model.UserRole;
+import com.only.entity.UserRole;
 
 /**
  * 用户角色

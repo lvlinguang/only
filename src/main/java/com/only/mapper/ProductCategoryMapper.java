@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.only.model.ProductCategory;
+import com.only.entity.ProductCategory;
 import com.only.model.common.PageHelper;
 
 /**

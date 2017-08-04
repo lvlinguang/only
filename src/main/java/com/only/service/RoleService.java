@@ -2,7 +2,7 @@ package com.only.service;
 
 import java.util.List;
 
-import com.only.model.Role;
+import com.only.entity.Role;
 import com.only.model.common.PageHelper;
 
 /**
