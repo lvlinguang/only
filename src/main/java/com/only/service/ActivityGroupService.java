@@ -35,7 +35,7 @@ public interface ActivityGroupService {
 	 * @param id
 	 * @throws Exception
 	 */
-	public void deleteActivityGroup(int id) throws Exception;
+	public void deleteActivityGroup(Integer id) throws Exception;
 
 	/**
 	 * 分组列表数量

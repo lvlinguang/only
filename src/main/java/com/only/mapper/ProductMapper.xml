@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.only.mapper.ProductMapper">
+
+	<!-- 添加商品 -->
+	<insert id="addProduct" useGeneratedKeys="true" keyProperty="id">
+		insert into
+		product(name,category_id,thumbnail,price,art_number,put_time,in_time,under_time,description,user_id,flag,city_id)
+		values(#{name},#{category_id},#{thumbnail},#{price},#{art_number},#{put_time},#{in_time},#{under_time},#{description},#{user_id},#{flag},#{city_id})
+	</insert>
+
+	<!-- 修改商品 -->
+	<update id="updateProduct">
+		update product
+		<set>
+			<if test="name!=null and name!=''">name=#{nme},</if>
+			<if test="category_id!=null and category_id!=''">category_id=#{category_id},</if>
+			<if test="thumbnail!=null and thumbnail!=''">thumbnail=#{thumbnail},</if>
+			<if test="price!=null and price!=''">price=#{price},</if>
+			<if test="art_number!=null and art_number!=''">art_number=#{art_number},</if>
+			<if test="description!=null and description!=''">description=#{description},</if>
+			<if test="flag!=null and flag!=''">flag=#{flag},</if>
+			<if test="city_id!=null and city_id!=''">city_id=#{city_id}</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<!-- 商品上架/下架 -->
+	<update id="upAndDownProduct">
+		update product set flag=#{flag} where id=#{id}
+	</update>
+
+	<!-- 删除商品 -->
+	<update id="deleteProduct" parameterType="int">
+		update product set
+		enable=0 where id=#{id}
+	</update>
+
+	<!-- 商品列表条数 -->
+	<select id="getproductTotal" resultType="int">
+		SELECT
+		count(0)
+		FROM
+		product AS p
+		JOIN product_category AS pc
+		ON
+		p.category_id=pc.id
+		where
+		enable=1
+		and flag=#{flag}
+		<if test="category_id!=null and category_id!=''">
+			and p.category_id=#{category_id}
+		</if>
+		<if test="name!=null and name!=''">
+			and p.name like concate('%',#{name},'%')
+		</if>
+	</select>
+
+	<!-- 商品列表 -->
+	<select id="getproductList" resultType="com.only.entity.ProductCustom">
+		SELECT
+		p.id,
+		p.name,
+		p.thumbnail,
+		p.category_id,
+		pc.name AS category_name,
+		p.price,
+		p.create_date,
+		p.flag
+		FROM
+		product AS p
+		JOIN product_category AS
+		pc
+		ON p.category_id=pc.id
+		where
+		enable=1
+		and flag=#{flag}
+		<if test="category_id!=null and category_id!=''">
+			and p.category_id=#{category_id}
+		</if>
+		<if test="name!=null and name!=''">
+			and p.name like concate('%',#{name},'%')
+		</if>
+		<if test="page!=null">
+			<if test="page.sort!=null and page.sort!=''">
+				order by p.${page.sort} ${page.order}
+			</if>
+			<if test="page.pageIndex>0">
+				limit #{page.start},#{page.end}
+			</if>
+		</if>
+	</select>
+
+</mapper>

@@ -40,7 +40,7 @@ public class ProductCagegoryServiceImpl implements ProductCategoryService {
 	/**
 	 * 删除分类
 	 */
-	public void deleteCategory(int id) throws Exception {
+	public void deleteCategory(Integer id) throws Exception {
 
 		productCategoryMapper.deleteProductCategory(id);
 

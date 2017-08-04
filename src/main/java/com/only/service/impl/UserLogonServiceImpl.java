@@ -29,7 +29,7 @@ public class UserLogonServiceImpl implements UserLogonService {
 	/**
 	 * 删除登录日志
 	 */
-	public void deleteUserLogon(int userid) throws Exception {
+	public void deleteUserLogon(Integer userid) throws Exception {
 
 		userlogonMapper.deleteUserLogon(userid);
 
@@ -38,7 +38,7 @@ public class UserLogonServiceImpl implements UserLogonService {
 	/**
 	 * 根据用户得到登录日志
 	 */
-	public UserLogon getUserLogonByUser(int userid) throws Exception {
+	public UserLogon getUserLogonByUser(Integer userid) throws Exception {
 
 		return userlogonMapper.getUserLogonByUser(userid);
 	}

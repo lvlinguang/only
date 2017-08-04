@@ -1373,7 +1373,7 @@ var product = {
 			return;
 		}
 
-		window.location.href = '/Product/Update?ID=' + data.ProductID;
+		window.location.href = 'update?id=' + data.id;
 	},
 	// 删除
 	del : function(target) {
@@ -1391,8 +1391,8 @@ var product = {
 
 		xgui.confirm("确定要删除吗？", function() {
 
-			xgui.Ajax("/Product/Delete", {
-				ids : data.ProductID
+			xgui.Ajax("delete", {
+				ids : data.id
 			}, "json", true, function(o) {
 
 				if (o.success) {
@@ -1432,7 +1432,7 @@ var product = {
 
 		for (i = 0; i < data.length; i++) {
 
-			ids.push(data[i].ProductID);
+			ids.push(data[i].id);
 		}
 
 		if (ids.length == 0) {
@@ -1444,7 +1444,7 @@ var product = {
 
 		xgui.confirm("确定要删除勾选的<i class='alert-del-info'>" + ids.length + "条</i>数据吗？", function() {
 
-			xgui.Ajax("/Product/Delete", {
+			xgui.Ajax("delete", {
 				ids : ids.join(',')
 			}, "json", true, function(o) {
 
@@ -1498,8 +1498,8 @@ var product = {
 
 		xgui.confirm("确定要" + text + "吗？", function() {
 
-			xgui.Ajax("/Product/DownProduct", {
-				ids : data.ProductID,
+			xgui.Ajax("upanddown", {
+				ids : data.id,
 				tag : tag
 			}, "json", true, function(o) {
 
@@ -1540,7 +1540,7 @@ var product = {
 
 		for (i = 0; i < data.length; i++) {
 
-			ids.push(data[i].ProductID);
+			ids.push(data[i].id);
 		}
 
 		if (tag != 1) {
@@ -1558,7 +1558,7 @@ var product = {
 		}
 		xgui.confirm("确定要" + text + "吗？", function() {
 
-			xgui.Ajax("/Product/DownProduct", {
+			xgui.Ajax("upanddown", {
 				ids : ids.join(','),
 				tag : tag
 			}, "json", true, function(o) {
@@ -1653,7 +1653,7 @@ var product = {
 
 		if (product.mark == 1) {
 
-			xgui.Ajax('/Product/Add', $("#dlg-form").serialize() + "&Flag=" + Flag + "&RegionId=" + RegionId, "json", true, function(o) {
+			xgui.Ajax('add', $("#dlg-form").serialize() + "&flag=" + Flag + "&city_id=" + RegionId, "json", true, function(o) {
 
 				if (o.success) {
 
@@ -1691,7 +1691,7 @@ var product = {
 
 		} else {
 
-			xgui.Ajax('/Product/Update', $("#dlg-form").serialize() + "&Flag=" + Flag + "&RegionId=" + RegionId + "&ProductID=" + ProductID, "json", true, function(o) {
+			xgui.Ajax('update', $("#dlg-form").serialize() + "&flag=" + Flag + "&city_id=" + RegionId + "&id=" + ProductID, "json", true, function(o) {
 
 				if (o.success) {
 
@@ -1957,12 +1957,12 @@ var product = {
 			// 每页大小
 			pageSize : 20,
 			// 地址
-			url : "/Product/List",
+			url : "list",
 			// 远程参数
 			queryParams : {
-				CategoryID : 0,
-				keyWord : '',
-				Flag : Flag
+				category_id : 0,
+				name : '',
+				flag : Flag
 			},
 			// 行标
 			// rownumbers: true,

@@ -40,7 +40,7 @@ public class RoleServiceImpl implements RoleService {
 	/**
 	 * 删除角色
 	 */
-	public void deleteRole(int id) throws Exception {
+	public void deleteRole(Integer id) throws Exception {
 
 		roleMapper.deleteRole(id);
 
@@ -49,7 +49,7 @@ public class RoleServiceImpl implements RoleService {
 	/**
 	 * 角色详情
 	 */
-	public Role getRoleByID(int id) throws Exception {
+	public Role getRoleByID(Integer id) throws Exception {
 
 		return roleMapper.getRoleByID(id);
 	}

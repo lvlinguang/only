@@ -35,7 +35,7 @@ public interface ProductCategoryService {
 	 * @param id
 	 * @throws Exception
 	 */
-	public void deleteCategory(int id) throws Exception;
+	public void deleteCategory(Integer id) throws Exception;
 
 	/**
 	 * 分类列表数量

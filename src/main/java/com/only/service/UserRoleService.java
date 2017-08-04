@@ -17,7 +17,7 @@ public interface UserRoleService {
 	 * @param roleid
 	 * @throws Exception
 	 */
-	public void addUserRole(int userid, int roleid) throws Exception;
+	public void addUserRole(Integer userid, Integer roleid) throws Exception;
 
 	/**
 	 * 修改用户角色
@@ -26,7 +26,7 @@ public interface UserRoleService {
 	 * @param roleid
 	 * @throws Exception
 	 */
-	public void updateUserRole(int userid, int roleid) throws Exception;
+	public void updateUserRole(Integer userid, Integer roleid) throws Exception;
 
 	/**
 	 * 得到用户角色
@@ -34,5 +34,5 @@ public interface UserRoleService {
 	 * @param userid
 	 * @throws Exception
 	 */
-	public UserRole getUserRoleByUser(int userid) throws Exception;
+	public UserRole getUserRoleByUser(Integer userid) throws Exception;
 }

@@ -24,7 +24,7 @@ public interface UserLogonService {
 	 * @param userid
 	 * @throws Exception
 	 */
-	public void deleteUserLogon(int userid) throws Exception;
+	public void deleteUserLogon(Integer userid) throws Exception;
 
 	/**
 	 * 日志详情
@@ -33,5 +33,5 @@ public interface UserLogonService {
 	 * @return
 	 * @throws Exception
 	 */
-	public UserLogon getUserLogonByUser(int userid) throws Exception;
+	public UserLogon getUserLogonByUser(Integer userid) throws Exception;
 }

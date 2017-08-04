@@ -38,7 +38,7 @@ public interface RoleMapper {
 	 * @param id
 	 * @throws Exception
 	 */
-	public void deleteRole(int id) throws Exception;
+	public void deleteRole(Integer id) throws Exception;
 
 	/**
 	 * 角色详情
@@ -47,7 +47,7 @@ public interface RoleMapper {
 	 * @return
 	 * @throws Exception
 	 */
-	public Role getRoleByID(int id) throws Exception;
+	public Role getRoleByID(Integer id) throws Exception;
 
 	/**
 	 * 角色列表条数

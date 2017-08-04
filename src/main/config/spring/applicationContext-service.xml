@@ -30,8 +30,11 @@
 
 	<!-- 商品分类 -->
 	<bean class="com.only.service.impl.ProductCagegoryServiceImpl"></bean>
-	
+
 	<!-- 活动分组 -->
 	<bean class="com.only.service.impl.ActivityGroupServiceImpl"></bean>
+
+	<!-- 商品管理 -->
+	<bean class="com.only.service.impl.ProductServiceImpl"></bean>
 
 </beans>

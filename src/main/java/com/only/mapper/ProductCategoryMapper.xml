@@ -27,7 +27,7 @@
 	<update id="deleteProductCategory" parameterType="int">
 		update
 		product_category set
-		enable=0 where ID=#{id}
+		enable=0 where id=#{id}
 	</update>
 
 	<!-- 分类列表总数 -->
@@ -36,7 +36,7 @@
 		from product_category
 		where enable=1
 		<if test="name!=null and name!=''">
-			and Name like concat('%',#{name},'%')
+			and name like concat('%',#{name},'%')
 		</if>
 	</select>
 

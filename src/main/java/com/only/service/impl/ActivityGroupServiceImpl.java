@@ -40,7 +40,7 @@ public class ActivityGroupServiceImpl implements ActivityGroupService {
 	/**
 	 * 删除分组
 	 */
-	public void deleteActivityGroup(int id) throws Exception {
+	public void deleteActivityGroup(Integer id) throws Exception {
 
 		activityGroupMapper.deleteActivityGroup(id);
 

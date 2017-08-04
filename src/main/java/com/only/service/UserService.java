@@ -37,7 +37,7 @@ public interface UserService {
 	 * @return
 	 * @throws exception
 	 */
-	public User getUserByID(int id) throws Exception;
+	public User getUserByID(Integer id) throws Exception;
 
 	/**
 	 * 根据帐号得到用户
@@ -56,7 +56,7 @@ public interface UserService {
 	 * @return
 	 * @throws Exception
 	 */
-	public int getUserListTotal(int roleid, String name) throws Exception;
+	public int getUserListTotal(Integer roleid, String name) throws Exception;
 
 	/**
 	 * 得到用户列表
@@ -66,5 +66,5 @@ public interface UserService {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<UserCustom> getUserList(PageHelper page, int roleid, String name) throws Exception;
+	public List<UserCustom> getUserList(PageHelper page, Integer roleid, String name) throws Exception;
 }

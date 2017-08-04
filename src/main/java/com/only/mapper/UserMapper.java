@@ -40,7 +40,7 @@ public interface UserMapper {
 	 * @return
 	 * @throws exception
 	 */
-	public User getUserByID(int id) throws Exception;
+	public User getUserByID(Integer id) throws Exception;
 
 	/**
 	 * 根据帐号得到用户

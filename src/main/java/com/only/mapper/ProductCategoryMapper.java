@@ -37,7 +37,7 @@ public interface ProductCategoryMapper {
 	 * @param id
 	 * @throws Exception
 	 */
-	public void deleteProductCategory(int id) throws Exception;
+	public void deleteProductCategory(Integer id) throws Exception;
 
 	/**
 	 * 分类列表数量

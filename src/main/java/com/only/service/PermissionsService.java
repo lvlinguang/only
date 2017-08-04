@@ -26,7 +26,7 @@ public interface PermissionsService {
 	 * @param rolepermissions
 	 * @throws Exception
 	 */
-	public void addRolePermissions(int roleid, String permissionid) throws Exception;
+	public void addRolePermissions(Integer roleid, String permissionid) throws Exception;
 
 	/**
 	 * 删除角色权限
@@ -34,7 +34,7 @@ public interface PermissionsService {
 	 * @param roleid
 	 * @throws Exception
 	 */
-	public void deleteRolePermissions(int roleid) throws Exception;
+	public void deleteRolePermissions(Integer roleid) throws Exception;
 
 	/**
 	 * 角色权限列表
@@ -42,7 +42,7 @@ public interface PermissionsService {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<Permissions> getRolePermissionsList(int roleid) throws Exception;
+	public List<Permissions> getRolePermissionsList(Integer roleid) throws Exception;
 
 	/**
 	 * 添加用户权限
@@ -50,7 +50,7 @@ public interface PermissionsService {
 	 * @param rolepermissions
 	 * @throws Exception
 	 */
-	public void addUserPermissions(int userid, String permissionid) throws Exception;
+	public void addUserPermissions(Integer userid, String permissionid) throws Exception;
 
 	/**
 	 * 删除用户权限
@@ -58,7 +58,7 @@ public interface PermissionsService {
 	 * @param userid
 	 * @throws Exception
 	 */
-	public void deleteUserPermissions(int userid) throws Exception;
+	public void deleteUserPermissions(Integer userid) throws Exception;
 
 	/**
 	 * 用户权限列表
@@ -67,5 +67,5 @@ public interface PermissionsService {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<Permissions> getUserPrmissionsList(int userid) throws Exception;
+	public List<Permissions> getUserPrmissionsList(Integer userid) throws Exception;
 }

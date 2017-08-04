@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
 	/**
 	 * 根据id得到数据
 	 */
-	public User getUserByID(int id) throws Exception {
+	public User getUserByID(Integer id) throws Exception {
 
 		return userMapper.getUserByID(id);
 	}
@@ -56,7 +56,7 @@ public class UserServiceImpl implements UserService {
 	/**
 	 * 用户列表条数
 	 */
-	public int getUserListTotal(int roleid, String name) throws Exception {
+	public int getUserListTotal(Integer roleid, String name) throws Exception {
 
 		return userMapper.getUserListTotal(roleid, name);
 	}
@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService {
 	/**
 	 * 得到用户列表
 	 */
-	public List<UserCustom> getUserList(PageHelper page, int roleid, String name) throws Exception {
+	public List<UserCustom> getUserList(PageHelper page, Integer roleid, String name) throws Exception {
 
 		if (page != null) {
 
